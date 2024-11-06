@@ -5,7 +5,6 @@ export interface User {
     id: string;
     email: string;
     password: string;
-    userName: string;
     name: string;
     phone: string;
     address: string;
@@ -22,5 +21,5 @@ export interface User {
 export interface storeUser {
   user: User | undefined;
   //todo delete "?" went back have Authentification
-  fetchAuthToken: (email?: string, password?: string) => void;
+  fetchAuthToken: (email?: string, password?: string) => Promise<void>;
 }
