@@ -22,6 +22,7 @@ const config: Config = {
         "light-green": "#92C56E",
         "background-color": "#FAFAFA",
         "text-color-black": "#242424",
+        gray: "#959595",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
