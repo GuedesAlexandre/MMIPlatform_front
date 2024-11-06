@@ -1,5 +1,5 @@
 import React from "react";
-import { MMI_Image } from "../../../public/assets/svg/index";
+import { MMI_Image } from "@/public/assets/svg";
 
 function HeaderLayout() {
   return (
