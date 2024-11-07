@@ -8,6 +8,8 @@ export default function InputUI({
   label,
   placeholder,
   icon,
+  register,
+  rules,
 }: InputUIProps) {
   const [isClose, setIsClose] = useState(false);
 
@@ -16,15 +18,21 @@ export default function InputUI({
   };
   return (
     <span className="flex flex-col w-72">
-      <label htmlFor={name}>{label}</label>
-      <span className="border border-gray rounded-[10px] p-1 pl-[12px] py-2 flex items-center gap-x-[14px]">
+      <label className="mb-[5px] font-tahoma" htmlFor={name}>
+        {label}
+      </label>
+      <span
+        className="border border-gray rounded-[10px] 
+      p-1 pl-[12px] py-2 flex items-center gap-x-[14px] 
+      focus-within:border-text-color-black transition-colors duration-500 font-tahoma"
+      >
         {icon && <div className="text-gray">{icon}</div>}
         <input
           className=" outline-none w-full"
           type={type === "password" && isClose ? "text" : type}
           id={name}
-          name={name}
           placeholder={placeholder}
+          {...register(name, rules)}
         />
         {type === "password" &&
           (isClose ? (

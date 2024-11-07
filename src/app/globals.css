@@ -1,3 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Tahoma font */
+  @font-face {
+    font-family: "tahoma";
+    src: url(../app/fonts/tahoma/tahoma.ttf) format("ttf");
+  }
+
+  /* TT Norms Pro font variants */
+  @font-face {
+    font-family: "TT-Norms-Pro-Black";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Black.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Black-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Black\ Italic.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-ExtraBlack";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBlack.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-ExtraBlack-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBlack\ Italic.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-ExtraBold";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBold.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-ExtraBold-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBold\ Italic.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Bold";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Bold.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Bold-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Bold\ Italic.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-ExtraLight";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraLight.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-ExtraLight-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraLight\ Italic.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Light";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Light.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Light-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Light\ Italic.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Italic.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Medium";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Medium.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Medium-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Medium\ Italic.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Regular";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Regular.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Thin";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Thin.otf)
+      format("opentype");
+  }
+  @font-face {
+    font-family: "TT-Norms-Pro-Thin-Italic";
+    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Thin\ Italic.otf)
+      format("opentype");
+  }
+}
