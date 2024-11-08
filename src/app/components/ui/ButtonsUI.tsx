@@ -8,7 +8,6 @@ function ButtonsUI({ type, label }: ButtonsUIProps) {
     {
       "bg-primary-blue text-background-color hover:bg-primary-blue-hover transition-colors duration-200":
         type === "submit",
-      "bg-gray-500 text-gray-200": type === "button",
     }
   );
   return (

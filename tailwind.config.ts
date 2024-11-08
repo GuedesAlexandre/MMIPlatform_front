@@ -41,10 +41,10 @@ const config: Config = {
       colors: {
         "primary-blue": "#2F2A85",
         "primary-blue-hover": "#0F273B",
-        "alert-red": "#D2213C",
+        "danger": "#D2213C",
         "background-color": "#FAFAFA",
         "text-color-black": "#242424",
-        "placeholder": "#959595",
+        "secondary-text-color": "#959595",
       },
     },
   },
