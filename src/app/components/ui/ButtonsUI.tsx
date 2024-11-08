@@ -6,7 +6,7 @@ function ButtonsUI({ type, label }: ButtonsUIProps) {
   const buttonClasses = classNames(
     "w-72 rounded-[10px] py-[10px] font-tahoma",
     {
-      "bg-principale-blue text-background-color hover:bg-principal-blue-hover transition-colors duration-200":
+      "bg-primary-blue text-background-color hover:bg-primary-blue-hover transition-colors duration-200":
         type === "submit",
       "bg-gray-500 text-gray-200": type === "button",
     }

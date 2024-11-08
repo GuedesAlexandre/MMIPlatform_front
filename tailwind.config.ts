@@ -39,8 +39,8 @@ const config: Config = {
         "tt-norms-thin-italic": ["TT-Norms-Pro-Thin-Italic", "sans-serif"],
       },
       colors: {
-        "principale-blue": "#2F2A85",
-        "principal-blue-hover": "#0F273B",
+        "primary-blue": "#2F2A85",
+        "primary-blue-hover": "#0F273B",
         "alert-red": "#D2213C",
         "background-color": "#FAFAFA",
         "text-color-black": "#242424",
