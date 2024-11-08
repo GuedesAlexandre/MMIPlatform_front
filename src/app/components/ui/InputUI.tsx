@@ -17,7 +17,7 @@ export default function InputUI({
     setIsClose(!isClose);
   };
   return (
-    <span className="flex flex-col w-72">
+    <span className="flex flex-col xs:w-72 w-60">
       <label className="mb-[5px] font-tahoma" htmlFor={name}>
         {label}
       </label>
@@ -28,7 +28,7 @@ export default function InputUI({
       >
         {icon && <div className="text-secondary-text-color">{icon}</div>}
         <input
-          className=" outline-none w-full"
+          className=" outline-none w-full text-xs xs:text-base"
           type={type === "password" && isClose ? "text" : type}
           id={name}
           placeholder={placeholder}
