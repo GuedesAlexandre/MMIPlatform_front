@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        "xs": "425px",
+      },
       fontFamily: {
         tahoma: ["tahoma", "sans-serif"],
         "tt-norms-black": ["TT-Norms-Pro-Black", "sans-serif"],

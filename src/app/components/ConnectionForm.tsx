@@ -23,7 +23,7 @@ function ConnectionForm() {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="w-fit px-12 py-10 border-primary-blue border rounded-[30px] flex flex-col gap-5 mx-auto mt-40">
+      <div className="w-fit py-6 px-8 xs:px-12 xs:py-10 border-primary-blue border rounded-[30px] flex flex-col gap-5 mx-auto mt-40">
         <InputUI
           type="text"
           name="mail"
