@@ -22,11 +22,11 @@ export default function InputUI({
         {label}
       </label>
       <span
-        className="border border-gray rounded-[10px] 
+        className="border border-secondary-text-color rounded-[10px] 
       p-1 pl-[12px] py-2 flex items-center gap-x-[14px] 
       focus-within:border-text-color-black transition-colors duration-500 font-tahoma"
       >
-        {icon && <div className="text-gray">{icon}</div>}
+        {icon && <div className="text-secondary-text-color">{icon}</div>}
         <input
           className=" outline-none w-full"
           type={type === "password" && isClose ? "text" : type}
