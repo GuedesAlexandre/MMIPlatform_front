@@ -1,5 +1,7 @@
 "use client";
 
+import ConnectionForm from "./components/ConnectionForm";
+
 export default function Home() {
-  return <div>Hello World</div>;
+  return <ConnectionForm />;
 }

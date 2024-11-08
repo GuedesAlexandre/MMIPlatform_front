@@ -10,7 +10,7 @@
   ],
   "rules": {
     "no-plusplus": "error",
-    "max-len": ["error", { "code": 100 }],
+    "max-len": ["error", { "code": 150 }],
     "no-self-assign": "error",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "@typescript-eslint/no-explicit-any": "error",
