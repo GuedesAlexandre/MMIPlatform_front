@@ -1,6 +1,5 @@
 import { NotFoundImage } from "@/public/assets/svg";
 import Link from "next/link";
-// import NotFound from "@/public/"
 
 export default function NotFound() {
   return (
