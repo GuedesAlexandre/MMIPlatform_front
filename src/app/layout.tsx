@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import HeaderLayout from "@/app/components/HeaderLayout";
-
-import { useAuthStore } from "./store/AuthRepository";
-
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./components/app-sidebar";
+import HeaderSidebar from "../lib/HeaderSidebar";
 
 export const metadata: Metadata = {
   title: "MMIPlatform",
@@ -18,25 +13,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user } = useAuthStore();
-
   return (
     <html lang="fr">
       <body>
-        {user === undefined ? (
-          <>
-            <HeaderLayout />
-            {children}
-          </>
-        ) : (
-          <SidebarProvider>
-            <AppSidebar />
-            <main>
-              <SidebarTrigger />
-              {children}
-            </main>
-          </SidebarProvider>
-        )}
+        <HeaderSidebar>{children}</HeaderSidebar>
       </body>
     </html>
   );
