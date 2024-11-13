@@ -20,6 +20,7 @@
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
+    "dicebear": "^9.2.2",
     "eslint-plugin-tailwindcss": "^3.17.5",
     "jsonwebtoken": "^8.5.1",
     "lucide-react": "^0.456.0",

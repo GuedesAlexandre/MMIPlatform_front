@@ -1,6 +1,6 @@
-import { Home, LayoutGrid, Frame, BadgeAlert, Box } from "lucide-react";
+import { sidebarMenu } from "../utils/sidebarMenu";
 import { MMI_Image } from "@/public/assets/svg";
-
+import AvatarInitialIcon from "./ui/AvatarInitialIcon";
 import {
   Sidebar,
   SidebarContent,
@@ -9,52 +9,25 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarHeader
+  SidebarHeader,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "/dashboard",
-    icon: Home,
-  },
-  {
-    title: "Modules",
-    url: "/dashboard",
-    icon: LayoutGrid,
-  },
-  {
-    title: "Matrices",
-    url: "/dashboard",
-    icon: Frame,
-  },
-  {
-    title: "Absences",
-    url: "/dashboard",
-    icon: BadgeAlert,
-  },
-  {
-    title: "Salles",
-    url: "/dashboard",
-    icon: Box,
-  },
-];
+import TextAvatarIcon from "./ui/TextAvatarIcon";
 
 export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
         <Link href="/dashboard" className="mt-2">
-          <MMI_Image className="w-2/3 mx-auto"/>
+          <MMI_Image className="w-2/3 mx-auto" />
         </Link>
       </SidebarHeader>
       <SidebarContent className="mt-5">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {sidebarMenu.map((item) => (
                 <SidebarMenuItem key={item.title} className="mt-2">
                   <SidebarMenuButton asChild>
                     <Link href={item.url}>
@@ -68,6 +41,10 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter className="text-center text-sm flex flex-row items-center justify-around mb-5">
+        <AvatarInitialIcon firstName={"cheriffa"}/>
+        <TextAvatarIcon firstName={"cheriffa"} lastName={"boucetta"}/>
+      </SidebarFooter>
     </Sidebar>
   );
 }

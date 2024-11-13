@@ -11,7 +11,7 @@ export default function Home() {
     if (user !== undefined) {
       sessionStorage.setItem("token", JSON.stringify(user));
     } else {
-      sessionStorage.setItem("token", "caca");
+      sessionStorage.setItem("token", "temp");
     }
   }, []);
 
