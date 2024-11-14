@@ -3,17 +3,21 @@
 import { useEffect } from "react";
 import ConnectionForm from "./components/ConnectionForm";
 import { useAuthStore } from "./store/AuthRepository";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function Home() {
-  const { user, fetchAuthToken } = useAuthStore();
+  const { user } = useAuthStore();
+  const router = useRouter();
   useEffect(() => {
-    fetchAuthToken();
     if (user !== undefined) {
-      sessionStorage.setItem("token", JSON.stringify(user));
+      Cookies.set("token", JSON.stringify(user));
+      router.push("/dashboard");
     } else {
-      sessionStorage.setItem("token", "temp");
+      Cookies.remove("token");
+      router.push("/");
     }
-  }, []);
+  }, [user, router]);
 
   return <ConnectionForm />;
 }

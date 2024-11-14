@@ -17,10 +17,11 @@ import {
 
 import Link from "next/link";
 import TextAvatarIcon from "./ui/TextAvatarIcon";
+import { useAuthStore } from "../store/AuthRepository";
 
 export function AppSidebar() {
   const { isOpen } = useSidebarState();
-
+  const { user } = useAuthStore();
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -53,13 +54,20 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="flex flex-row mb-3 items-center">
-        {!isOpen ? (
+        {user && (
           <>
-            <AvatarInitialIcon firstName={"cherifa"} />
-            <TextAvatarIcon firstName={"cherifa"} lastName={"boucetta"} />
+            {!isOpen ? (
+              <>
+                <AvatarInitialIcon firstName={user.user.firstName} />
+                <TextAvatarIcon
+                  firstName={user.user.firstName}
+                  lastName={user.user.name}
+                />
+              </>
+            ) : (
+              <AvatarInitialIcon firstName={user.user.firstName} />
+            )}
           </>
-        ) : (
-          <AvatarInitialIcon firstName={"cherifa"} />
         )}
       </SidebarFooter>
     </Sidebar>
