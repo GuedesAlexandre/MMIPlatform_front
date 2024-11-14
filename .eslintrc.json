@@ -10,10 +10,11 @@
   ],
   "rules": {
     "no-plusplus": "error",
-    "max-len": ["error", { "code": 150 }],
+    "max-len": ["warn", { "code": 150 }],
     "no-self-assign": "error",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-require-imports": "off",
     "no-var": "error",
     "no-unused-vars": [
       "warn",

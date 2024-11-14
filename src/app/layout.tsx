@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import HeaderLayout from "@/app/components/HeaderLayout";
+import HeaderSidebar from "@/lib/HeaderSidebar";
 
 export const metadata: Metadata = {
   title: "MMIPlatform",
@@ -16,8 +16,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
-        <HeaderLayout />
-        {children}
+        <HeaderSidebar>{children}</HeaderSidebar>
       </body>
     </html>
   );

@@ -1,0 +1,1 @@
+export { default as MMI_Image_mini } from "./MMIPlatform_logo_mini.svg";
