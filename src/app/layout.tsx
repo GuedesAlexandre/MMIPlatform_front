@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import HeaderSidebar from "../lib/HeaderSidebar";
+import HeaderSidebar from "@/lib/HeaderSidebar";
 
 export const metadata: Metadata = {
   title: "MMIPlatform",

@@ -1,9 +1,7 @@
-import { Avatar } from "@/app/models/ui/avatar.model";
-
-export default function TextAvatarIcon({ firstName, lastName }: Avatar) {
+export default function TextAvatarIcon({ firstName, lastName }: {firstName: string, lastName: string}) {
   return (
-    <div className="w-2/3 flex flex-col items-start pl-2 text-base">
-      <p>{firstName}</p>
+    <div className="flex flex-row text-left text-sm leading-tight w-1/3 ml-1">
+      <p className="mr-1">{firstName}</p>
       <p>{lastName}</p>
     </div>
   );

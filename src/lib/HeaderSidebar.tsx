@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "../app/components/app-sidebar";
 import HeaderLayout from "@/app/components/HeaderLayout";
+import { useSidebarState } from "@/app/store/SidebarState";
 
 export default function HeaderSidebar({
   children,
@@ -11,11 +12,10 @@ export default function HeaderSidebar({
   children: React.ReactNode;
 }) {
   const [token, setToken] = useState<string | null>(null);
+  const { isOpen, setIsOpen } = useSidebarState();
 
   useEffect(() => {
-    // const tokenFromCookie = getCookie("token"); 
-    // setToken(tokenFromCookie);
-    setToken(sessionStorage.getItem("token"))
+    setToken(sessionStorage.getItem("token"));
   }, []);
 
   return (
@@ -29,7 +29,11 @@ export default function HeaderSidebar({
         <SidebarProvider>
           <AppSidebar />
           <main>
-            <SidebarTrigger />
+            <SidebarTrigger
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}
+            />
             {children}
           </main>
         </SidebarProvider>
