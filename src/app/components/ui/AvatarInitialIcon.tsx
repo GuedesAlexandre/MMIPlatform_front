@@ -5,7 +5,6 @@ export default function AvatarInitialIcon({
 }: {
   firstName: string;
 }) {
-  // return <div dangerouslySetInnerHTML={{ __html: svgAvatarInitial }} className="w-1/3 flex justify-center ml-3"/>;
   return (
     <Avatar className="size-8 rounded-lg">
       <AvatarImage
