@@ -8,4 +8,5 @@ export interface InputUIProps {
   icon?: React.ReactNode;
   register: UseFormRegister<FieldValues>;
   rules?: RegisterOptions;
+  haveError?: boolean;
 }
