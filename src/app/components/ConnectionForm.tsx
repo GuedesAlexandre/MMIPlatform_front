@@ -12,18 +12,26 @@ interface FormData {
 function ConnectionForm() {
   const { user, fetchAuthToken } = useAuthStore();
   const { register, handleSubmit } = useForm<FieldValues>();
-
-  useEffect(() => {
-    fetchAuthToken();
-  }, []);
+  const [error, setError] = React.useState(false);
 
   const onSubmit = (data: FieldValues) => {
     const myData = data as FormData;
-    return;
+    fetchAuthToken(myData.mail, myData.password);
+    if (!user) {
+      setError(true);
+      return;
+    }
+    if (user) return;
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="w-fit py-6 px-8 xs:px-12 xs:py-10 border-primary-blue border rounded-[30px] flex flex-col gap-5 mx-auto mt-40">
+        {error && (
+          <div className="text-sm text-center text-danger">
+            Une erreur s'est produite lors de la connexion.
+          </div>
+        )}
         <InputUI
           type="text"
           name="mail"
@@ -32,6 +40,7 @@ function ConnectionForm() {
           icon={<EnvelopeClosedIcon />}
           register={register}
           rules={{ required: true }}
+          haveError={error}
         />
         <InputUI
           type="password"
@@ -41,6 +50,7 @@ function ConnectionForm() {
           icon={<LockClosedIcon />}
           register={register}
           rules={{ required: true }}
+          haveError={error}
         />
         <ButtonsUI type="submit" label="Connexion" />
       </div>

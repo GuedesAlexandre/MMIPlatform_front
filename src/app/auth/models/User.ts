@@ -1,5 +1,4 @@
 import { Permissions } from "./enums/PermissionsEnum";
-
 export interface User {
   user: {
     id: string;
@@ -11,6 +10,7 @@ export interface User {
     city: string;
     country: string;
     establishment: string;
+    firstName: string;
     access: Permissions;
   };
   exp: number;
@@ -20,6 +20,5 @@ export interface User {
 
 export interface storeUser {
   user: User | undefined;
-  //todo delete "?" went back have Authentification
-  fetchAuthToken: (email?: string, password?: string) => Promise<void>;
+  fetchAuthToken: (email: string, password: string) => Promise<void>;
 }
