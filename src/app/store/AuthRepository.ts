@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { storeUser, User } from "../auth/models/User";
 import axios from "axios";
+import { set } from "react-hook-form";
 
 export const useAuthStore = create(
   persist<storeUser>(
@@ -41,6 +42,7 @@ export const useAuthStore = create(
           );
         }
       },
+      removeUserSession: () => set({ user: undefined }),
     }),
     {
       name: "auth-storage",
