@@ -42,7 +42,7 @@ export const useAuthStore = create(
           );
         }
       },
-      logout: () => set({ user: undefined }),
+      removeUser: () => set({ user: undefined }),
     }),
     {
       name: "auth-storage",
