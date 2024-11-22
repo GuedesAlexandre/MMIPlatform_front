@@ -9,10 +9,10 @@ interface LogOutProps {
 }
 
 const LogOut: React.FC<LogOutProps> = ({ cookieKey }) => {
-    const { user, removeUser } = useAuthStore();
+    const { user, removeUserSession } = useAuthStore();
     const router = useRouter();
     const handleLogout = () => {
-        removeUser();
+        removeUserSession();
         if(user) {
             Cookies.remove(cookieKey);
             router.push('/');
