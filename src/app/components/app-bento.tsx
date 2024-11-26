@@ -14,7 +14,6 @@ export default function AppBento() {
   return (
     <BentoGrid className="max-w-full mx-auto md:auto-rows-[20rem]">
       {items.map((item, i) => (
-        console.log(item.color),
         <BentoGridItem
           key={i}
           title={item.title}
@@ -29,11 +28,12 @@ export default function AppBento() {
 }
 const Skeleton = ({ url }: { url?: string }) => (
   <div
-    className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-red-400 border border-transparent dark:border-white/[0.2]"
+    className="flex flex-1 w-full h-full min-h-[8rem] rounded-xl bg-red-400 border border-transparent dark:border-white/[0.2]"
     style={{
       backgroundImage: `url(${url})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
+      resize: "both",
     }}
   ></div>
 );

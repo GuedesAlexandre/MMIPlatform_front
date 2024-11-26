@@ -27,14 +27,14 @@ export default function InputUI({
     }
   );
   return (
-    <span className="flex flex-col xs:w-72 w-60">
+    <span className="flex flex-col xs:w-72 w-full ">
       <label className="mb-[5px] font-tahoma" htmlFor={name}>
         {label}
       </label>
       <span className={buttonClasses}>
         {icon && <div className="text-secondary-text-color">{icon}</div>}
         <input
-          className=" outline-none w-full text-xs xs:text-base"
+          className=" outline-none w-full text-xs xs:text-base !bg-white"
           type={type === "password" && isClose ? "text" : type}
           id={name}
           placeholder={placeholder}
