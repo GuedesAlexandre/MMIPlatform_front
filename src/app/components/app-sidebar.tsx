@@ -98,7 +98,7 @@ export function AppSidebar() {
                 className="w-[--radix-popper-anchor-width]"
               >
                 <DropdownMenuItem>
-                  <LogOut cookieKey="token" />
+                  <LogOut  cookieKey="token" />
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
