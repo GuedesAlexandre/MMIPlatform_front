@@ -3,105 +3,32 @@
 @tailwind utilities;
 
 @layer base {
-  /* Tahoma font */
-  @font-face {
-    font-family: "tahoma";
-    src: url(../app/fonts/tahoma/tahoma.ttf) format("ttf");
-  }
-
-  /* TT Norms Pro font variants */
-  @font-face {
-    font-family: "TT-Norms-Pro-Black";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Black.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Black-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Black\ Italic.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-ExtraBlack";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBlack.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-ExtraBlack-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBlack\ Italic.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-ExtraBold";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBold.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-ExtraBold-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBold\ Italic.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Bold";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Bold.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Bold-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Bold\ Italic.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-ExtraLight";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraLight.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-ExtraLight-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraLight\ Italic.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Light";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Light.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Light-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Light\ Italic.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Italic.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Medium";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Medium.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Medium-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Medium\ Italic.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Regular";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Regular.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Thin";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Thin.otf)
-      format("opentype");
-  }
-  @font-face {
-    font-family: "TT-Norms-Pro-Thin-Italic";
-    src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Thin\ Italic.otf)
-      format("opentype");
-  }
   :root {
-    --radius: 0.4rem;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
     --sidebar-background: #2F2A85;
     --sidebar-foreground: #FAFAFA;
     --sidebar-primary: 240 5.9% 10%;
@@ -111,4 +38,138 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+ /* Tahoma font */
+ @font-face {
+  font-family: "tahoma";
+  src: url(../app/fonts/tahoma/tahoma.ttf) format("ttf");
+}
+
+/* TT Norms Pro font variants */
+@font-face {
+  font-family: "TT-Norms-Pro-Black";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Black.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Black-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Black\ Italic.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-ExtraBlack";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBlack.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-ExtraBlack-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBlack\ Italic.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-ExtraBold";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBold.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-ExtraBold-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraBold\ Italic.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Bold";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Bold.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Bold-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Bold\ Italic.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-ExtraLight";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraLight.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-ExtraLight-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ ExtraLight\ Italic.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Light";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Light.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Light-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Light\ Italic.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Italic.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Medium";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Medium.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Medium-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Medium\ Italic.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Regular";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Regular.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Thin";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Thin.otf)
+    format("opentype");
+}
+@font-face {
+  font-family: "TT-Norms-Pro-Thin-Italic";
+  src: url(../app/fonts/tt-norms-pro/TT\ Norms\ Pro\ Thin\ Italic.otf)
+    format("opentype");
 }
