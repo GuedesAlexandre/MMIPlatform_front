@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import InputUI from "./ui/InputUI";
 import { EnvelopeClosedIcon, LockClosedIcon } from "@radix-ui/react-icons";
 import ButtonsUI from "./ui/ButtonsUI";
@@ -16,12 +16,13 @@ function ConnectionForm() {
 
   const onSubmit = (data: FieldValues) => {
     const myData = data as FormData;
-    fetchAuthToken(myData.mail, myData.password);
-    if (!user) {
-      setError(true);
-      return;
-    }
-    if (user) return;
+    fetchAuthToken(myData.mail, myData.password).then((response) => {
+      if (!response) {
+        setError(true);
+        return;
+      }
+      if (response) return;
+    });
   };
 
   return (

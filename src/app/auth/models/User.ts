@@ -20,6 +20,9 @@ export interface User {
 
 export interface storeUser {
   user: User | undefined;
-  fetchAuthToken: (email: string, password: string) => Promise<void>;
+  fetchAuthToken: (
+    email: string,
+    password: string
+  ) => Promise<User | undefined>;
   removeUserSession: () => void;
 }
