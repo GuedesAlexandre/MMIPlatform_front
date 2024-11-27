@@ -1,6 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React from "react";
-import AvatarInitialIcon from "./AvatarInitialIcon";
 
 interface HeaderUserDashboardProps {
   name?: string;

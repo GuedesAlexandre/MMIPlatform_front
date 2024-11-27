@@ -1,16 +1,6 @@
+import { SkeletonItem } from "./models/ui/SkeletonItem";
 import { User } from "./models/User";
 
-export interface SkeletonItem {
-  title: string;
-  description: string;
-  header?: React.ReactNode;
-  className: string;
-  icon?: JSX.Element;
-  access: string;
-  color: string;
-  category : string;
-  url?: string;
-}
 const itemsForAdmin: SkeletonItem[] = [
   {
     title: "Gérer votre matrice",
