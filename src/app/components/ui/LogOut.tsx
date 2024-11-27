@@ -20,9 +20,9 @@ const LogOut: React.FC<LogOutProps> = ({ cookieKey }) => {
     };
 
     return (
-        <div className="flex gap-1 items-center pl-1">
-            <button  onClick={handleLogout}>Déconnexion </button>
-            <ExitIcon />
+        <div className="flex gap-1 items-center pl-1 w-full cursor-pointer" onClick={handleLogout} >
+             <ExitIcon />
+            <button>Déconnexion</button>   
         </div>
     );
 };
