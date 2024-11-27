@@ -42,6 +42,7 @@ export default function HeaderSidebar({
               onClick={() => {
                 setIsOpen(!isOpen);
               }}
+              className="fixed"
             />
             {children}
           </main>

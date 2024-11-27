@@ -17,15 +17,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -34,20 +26,26 @@ import TextAvatarIcon from "./ui/TextAvatarIcon";
 import { useAuthStore } from "../store/AuthRepository";
 import LogOut from "./ui/LogOut";
 import { ChevronUp } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function AppSidebar() {
   const { isOpen } = useSidebarState();
   const { user } = useAuthStore();
+  const isMobile = useIsMobile();
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        {!isOpen ? (
+        {isMobile ? (
           <Link href="/dashboard" className="mt-2">
             <MMI_Image className="w-2/3 mx-auto" />
           </Link>
-        ) : (
+        ) : isOpen ? (
           <Link href="/dashboard" className="mt-2">
             <MMI_Image_mini className="w-2/3 mx-auto" />
+          </Link>
+        ) : (
+          <Link href="/dashboard" className="mt-2">
+            <MMI_Image className="w-2/3 mx-auto" />
           </Link>
         )}
       </SidebarHeader>
@@ -77,18 +75,12 @@ export function AppSidebar() {
                 <SidebarMenuButton className="!py-6">
                   {user && (
                     <>
-                      {!isOpen ? (
-                        <>
-                          <AvatarInitialIcon firstName={user.user.firstName} />
-                          <TextAvatarIcon
-                            firstName={user.user.firstName}
-                            lastName={user.user.name}
-                          />
-                          <ChevronUp className="ml-auto" />
-                        </>
-                      ) : (
-                        <AvatarInitialIcon firstName={user.user.firstName} />
-                      )}
+                      <AvatarInitialIcon firstName={user.user.firstName} />
+                      <TextAvatarIcon
+                        firstName={user.user.firstName}
+                        lastName={user.user.name}
+                      />
+                      <ChevronUp className="ml-auto" />
                     </>
                   )}
                 </SidebarMenuButton>
@@ -98,7 +90,7 @@ export function AppSidebar() {
                 className="w-[--radix-popper-anchor-width]"
               >
                 <DropdownMenuItem>
-                  <LogOut  cookieKey="token" />
+                  <LogOut cookieKey="token" />
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
