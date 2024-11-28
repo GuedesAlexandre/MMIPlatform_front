@@ -1,4 +1,4 @@
-import { sidebarMenu } from "../utils/sidebarMenu";
+import { defineMenuSidebar } from "../utils/sidebarMenu";
 import { MMI_Image } from "@/public/assets/svg";
 import { MMI_Image_mini } from "@/public/assets/svg";
 import AvatarInitialIcon from "./ui/AvatarInitialIcon";
@@ -31,6 +31,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 export function AppSidebar() {
   const { isOpen } = useSidebarState();
   const { user } = useAuthStore();
+  const sidebarMenu = defineMenuSidebar(user);
   const isMobile = useIsMobile();
   return (
     <Sidebar collapsible="icon">
@@ -75,7 +76,10 @@ export function AppSidebar() {
                 <SidebarMenuButton className="!py-6">
                   {user && (
                     <>
-                      <AvatarInitialIcon firstName={user.user.firstName} lastName={user.user.name}/>
+                      <AvatarInitialIcon
+                        firstName={user.user.firstName}
+                        lastName={user.user.name}
+                      />
                       <TextAvatarIcon
                         firstName={user.user.firstName}
                         lastName={user.user.name}

@@ -37,7 +37,7 @@ export default function HeaderSidebar({
       ) : (
         <SidebarProvider>
           <AppSidebar />
-          <main>
+          <main className="size-full">
             <SidebarTrigger
               onClick={() => {
                 setIsOpen(!isOpen);
