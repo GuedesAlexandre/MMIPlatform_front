@@ -75,7 +75,7 @@ export function AppSidebar() {
                 <SidebarMenuButton className="!py-6">
                   {user && (
                     <>
-                      <AvatarInitialIcon firstName={user.user.firstName} />
+                      <AvatarInitialIcon firstName={user.user.firstName} lastName={user.user.name}/>
                       <TextAvatarIcon
                         firstName={user.user.firstName}
                         lastName={user.user.name}
