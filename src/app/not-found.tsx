@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-row items-center justify-around mt-10">
+    <div className="flex flex-row items-center justify-around mt-24 w-full">
       <NotFoundImage className="w-1/3" />
       <div className="w-1/3 flex flex-col items-start justify-around">
         <h2 className="font-tt-norms-black text-6xl my-5">Oh nooon ... </h2>
