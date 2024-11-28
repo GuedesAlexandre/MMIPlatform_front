@@ -16,7 +16,7 @@ const itemsForAdmin: SkeletonItem[] = [
   {
     title: "Gérer vos intervenants",
     description:
-      "Gérer vos intervenants comme des futures utilisateurs de MMIPlatform. Vous leurs donnez accès à leurs ressources afin qu’ils attribuent des notes à vos étudiants ",
+      "Gérer vos intervenants comme des futures utilisateurs de MMIPlatform. Vous leurs donnez accès à leurs ressources afin qu’ils attribuent des notes à vos étudiants.",
     className: "md:col-span-2",
     access: "ADMIN",
     color: "green",
@@ -36,7 +36,7 @@ const itemsForAdmin: SkeletonItem[] = [
   {
     title: "Visualiser votre établissement",
     description:
-      "Visualiser votre établissement grâce à notre module de visualisation dans l’espace",
+      "Visualiser votre établissement grâce à notre module de visualisation dans l’espace.",
     className: "md:col-span-1",
     access: "ADMIN",
     color: "purple",
@@ -68,7 +68,7 @@ const itemsForScolarity: SkeletonItem[] = [
   {
     title: "Visualiser l’établissement",
     description:
-      "Visualiser votre établissement grâce à notre module de visualisation dans l’espace",
+      "Visualiser votre établissement grâce à notre module de visualisation dans l’espace.",
     className: "md:col-span-1",
     access: "SCOLARITY",
     color: "orange",
@@ -81,7 +81,7 @@ const itemsForTeacher: SkeletonItem[] = [
   {
     title: "Visualisez votre matrice",
     description:
-      "Votre matrice vous permet de suivre en temps réel l’avancé de chaque ressources dans le semestre",
+      "Votre matrice vous permet de suivre en temps réel l’avancé de chaque ressources dans le semestre.",
     className: "md:col-span-1",
     access: "TEACHER",
     color: "#1EAFD0",
@@ -91,7 +91,7 @@ const itemsForTeacher: SkeletonItem[] = [
   {
     title: "Gérer les absences et les rattrapages",
     description:
-      "Gérer les absences dans les ressources et définissez des éventuels rattrapages",
+      "Gérer les absences dans les ressources et définissez des éventuels rattrapages.",
     className: "md:col-span-2",
     access: "TEACHER",
     color: "purple",
@@ -111,7 +111,7 @@ const itemsForTeacher: SkeletonItem[] = [
   {
     title: "Visualiser l’établissement",
     description:
-      "Visualiser votre établissement grâce à notre module de visualisation dans l’espace",
+      "Visualiser votre établissement grâce à notre module de visualisation dans l’espace.",
     className: "md:col-span-2",
     access: "TEACHER",
     color: "orange",

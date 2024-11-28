@@ -1,14 +1,41 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
-  safelist: ["bg-yellow-100", "bg-green-100", "bg-blue-100", "bg-purple-100", "bg-orange-100", "border-yellow-300", "border-green-300", "border-blue-300", "border-purple-300", "border-orange-300", "text-yellow-800", "text-green-800", "text-blue-800", "text-purple-800", "text-orange-800", "text-yellow-300", "text-green-300", "text-blue-300", "text-purple-300", "text-orange-300", "dark:bg-gray-700", "dark:text-yellow-300", "dark:text-green-300", "dark:text-blue-300", "dark:text-purple-300", "dark:text-orange-300"],
+  safelist: [
+    "bg-yellow-100",
+    "bg-green-100",
+    "bg-blue-100",
+    "bg-purple-100",
+    "bg-orange-100",
+    "border-yellow-300",
+    "border-green-300",
+    "border-blue-300",
+    "border-purple-300",
+    "border-orange-300",
+    "text-yellow-800",
+    "text-green-800",
+    "text-blue-800",
+    "text-purple-800",
+    "text-orange-800",
+    "text-yellow-300",
+    "text-green-300",
+    "text-blue-300",
+    "text-purple-300",
+    "text-orange-300",
+    "dark:bg-gray-700",
+    "dark:text-yellow-300",
+    "dark:text-green-300",
+    "dark:text-blue-300",
+    "dark:text-purple-300",
+    "dark:text-orange-300",
+  ],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -16,9 +43,8 @@ const config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
-        "xs": "425px",
+        xs: "425px",
       },
-      
     },
     fontFamily: {
       tahoma: ["tahoma", "sans-serif"],
@@ -103,7 +129,7 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -123,9 +149,12 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontSize: {
+        "2xs": "0.65rem",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

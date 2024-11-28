@@ -9,7 +9,6 @@ export default function AppBento() {
   const items = defineDashboardActions(user);
   items.map((item) => {
     item.header = <Skeleton url={item.url} />;
-
   });
   return (
     <BentoGrid className="max-w-full mx-auto md:auto-rows-[20rem]">
@@ -20,7 +19,7 @@ export default function AppBento() {
           description={item.description}
           header={item.header}
           className={item.className}
-          icon= <Tag name={item.category} color={item.color} />
+          icon={<Tag name={item.category} color={item.color} />}
         />
       ))}
     </BentoGrid>
@@ -28,7 +27,7 @@ export default function AppBento() {
 }
 const Skeleton = ({ url }: { url?: string }) => (
   <div
-    className="flex flex-1 w-full h-full min-h-[8rem] rounded-xl bg-red-400 border border-transparent dark:border-white/[0.2]"
+    className="flex flex-1 size-full min-h-32 rounded-xl bg-red-400 border border-transparent dark:border-white/[0.2]"
     style={{
       backgroundImage: `url(${url})`,
       backgroundSize: "cover",
