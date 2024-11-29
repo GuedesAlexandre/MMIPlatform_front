@@ -1,3 +1,7 @@
+export interface storeUser {
+  all_user: User[] | undefined;
+  fetchUsers: () => Promise<void>;
+}
 export interface User {
   email: string;
   password: string;
@@ -10,9 +14,15 @@ export interface User {
   country: string;
   establishment: string;
   access: string;
+  modules: Module[];
 }
 
-export interface storeUser {
-  all_user: User[] | undefined;
-  fetchUsers: () => Promise<void>;
+interface Module {
+  name: string;
+  promo: string;
+  semester: string;
+  coeff: number;
+  ueName: string;
+  notes: number[];
+  sum: number;
 }

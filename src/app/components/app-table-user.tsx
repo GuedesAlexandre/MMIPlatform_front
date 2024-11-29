@@ -10,6 +10,8 @@ import React, { useEffect } from "react";
 import { UserStore } from "../store/UserStore";
 import { Permissions } from "../auth/models/enums/PermissionsEnum";
 import { translateAccess } from "../utils/translateAccess";
+import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
+import TooltipUI from "./ui/TooltipUI";
 
 function AppTableUser() {
   const { all_user, fetchUsers } = UserStore();
@@ -26,7 +28,7 @@ function AppTableUser() {
             <TableHead>Email</TableHead>
             <TableHead>Promo</TableHead>
             <TableHead>Rôle</TableHead>
-            <TableHead>Ressources</TableHead>
+            <TableHead className="text-center">Ressources</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -38,10 +40,34 @@ function AppTableUser() {
                     <TableCell>{user.name}</TableCell>
                     <TableCell>{user.firstName}</TableCell>
                     <TableCell>{user.email}</TableCell>
-                    <TableCell>{}</TableCell>
+                    <TableCell>
+                      {[
+                        ...new Set(user.modules.map((module) => module.promo)),
+                      ].join(" | ")}
+                    </TableCell>
                     <TableCell>{translateAccess(user.access)}</TableCell>
-                    <TableCell>{}</TableCell>
-                    <TableCell>icon des actions</TableCell>
+                    <TableCell className="text-center">
+                      <TooltipUI
+                        icon={<QuestionMarkCircledIcon />}
+                        message={
+                          <div className="ml-3 bg-blue-50 border border-blue-200 p-3 rounded-xl shadow-md">
+                            <h4 className="text-sm font-semibold text-blue-600 mb-2">
+                              Modules :
+                            </h4>
+                            <ul className="text-start space-y-1">
+                              {user.modules.map((module) => (
+                                <li
+                                  key={module.name}
+                                  className="text-sm text-gray-800"
+                                >
+                                  {module.name}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        }
+                      />
+                    </TableCell>
                   </TableRow>
                 )
             )
