@@ -1,19 +1,18 @@
 import axios from "axios";
 import { create } from "zustand";
-import { storeUser } from "../users/models/user.model";
 import Cookies from "js-cookie";
+import { storeUser } from "../users/models/user.model";
 
 export const UserStore = create<storeUser>((set) => ({
   all_user: undefined,
   fetchUsers: async () => {
+    const bearer = Cookies.get("bearer");
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_PATH}/auth/user/all`,
         {
           headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "*",
-            Authorization: `Bearer ${Cookies.get("bearer")}`,
+            Authorization: `Bearer ${bearer?.toString()}`, 
           },
         }
       );
