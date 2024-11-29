@@ -1,4 +1,4 @@
-export interface storeUser {
+export interface storeUsers {
   all_user: User[] | undefined;
   fetchUsers: () => Promise<void>;
 }

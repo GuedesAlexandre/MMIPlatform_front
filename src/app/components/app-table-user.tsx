@@ -7,7 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import React, { useEffect } from "react";
-import { UserStore } from "../store/UserStore";
+import { UserStore } from "../store/UsersStore";
 import { Permissions } from "../auth/models/enums/PermissionsEnum";
 import { translateAccess } from "../utils/translateAccess";
 import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
@@ -20,7 +20,7 @@ function AppTableUser() {
   }, []);
   return (
     <>
-      <Table className="w-5/6 mx-auto">
+      <Table className="w-5/6 mb-10 mx-auto border-2 border-gray-100">
         <TableHeader>
           <TableRow>
             <TableHead>Nom</TableHead>

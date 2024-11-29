@@ -18,7 +18,7 @@ export interface User {
   sub: string;
 }
 
-export interface storeUser {
+export interface storeUsers {
   user: User | undefined;
   fetchAuthToken: (
     email: string,
