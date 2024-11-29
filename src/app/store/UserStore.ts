@@ -12,12 +12,11 @@ export const UserStore = create<storeUser>((set) => ({
         `${process.env.NEXT_PUBLIC_API_PATH}/auth/user/all`,
         {
           headers: {
-            Authorization: `Bearer ${bearer?.toString()}`, 
+            Authorization: `Bearer ${bearer?.toString()}`,
           },
         }
       );
       const data = response.data;
-      console.log(data);
       set({ all_user: data });
     } catch (error) {
       console.error("Erreur lors de la récupération des utilisateurs :", error);

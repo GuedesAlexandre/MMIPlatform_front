@@ -1,13 +1,21 @@
-import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import React, { useEffect } from "react";
 import { UserStore } from "../store/UserStore";
+import { Permissions } from "../auth/models/enums/PermissionsEnum";
+import { translateAccess } from "../utils/translateAccess";
 
 function AppTableUser() {
   const { all_user, fetchUsers } = UserStore();
   useEffect(() => {
     fetchUsers();
   }, []);
-  console.log(all_user);
   return (
     <>
       <Table className="w-5/6 mx-auto">
@@ -19,13 +27,36 @@ function AppTableUser() {
             <TableHead>Promo</TableHead>
             <TableHead>Rôle</TableHead>
             <TableHead>Ressources</TableHead>
-            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
+        <TableBody>
+          {all_user && all_user.length > 0 ? (
+            all_user.map(
+              (user) =>
+                user.access !== Permissions.ADMIN && (
+                  <TableRow key={user.email}>
+                    <TableCell>{user.name}</TableCell>
+                    <TableCell>{user.firstName}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell>{}</TableCell>
+                    <TableCell>{translateAccess(user.access)}</TableCell>
+                    <TableCell>{}</TableCell>
+                    <TableCell>icon des actions</TableCell>
+                  </TableRow>
+                )
+            )
+          ) : (
+            <TableRow>
+              <TableCell
+                colSpan={7}
+                className="text-center text-placeholder-color"
+              >
+                Aucun utilisateur trouvée.
+              </TableCell>
+            </TableRow>
+          )}
+        </TableBody>
       </Table>
-      <p className="text-placeholder-color w-fit mx-auto mt-3">
-        Aucun utilisateur trouvée.
-      </p>
     </>
   );
 }

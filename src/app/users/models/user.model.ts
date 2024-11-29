@@ -13,6 +13,6 @@ export interface User {
 }
 
 export interface storeUser {
-  all_user: User | undefined;
+  all_user: User[] | undefined;
   fetchUsers: () => Promise<void>;
 }
