@@ -1,8 +1,8 @@
 "use client";
 
-import ResourceCard from "../components/resourcesCard";
-import TitleUI from "../components/ui/TitleUi";
-import { useAuthStore } from "../store/AuthRepository";
+import ResourceCard from "@/app/components/resourcesCard"
+import TitleUI from "@/app/components/ui/TitleUi";
+import { useAuthStore } from "@/app/store/AuthRepository"
 
 const Resources = () => {
   const { user } = useAuthStore();

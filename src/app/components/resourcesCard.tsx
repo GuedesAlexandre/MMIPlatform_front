@@ -1,4 +1,4 @@
-import { UserModules } from "../auth/models/User";
+import { UserModules } from "@/app/auth/models/User";
 
 const ResourceCard = ({
   module,
