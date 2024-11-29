@@ -12,10 +12,45 @@ export interface User {
     establishment: string;
     firstName: string;
     access: Permissions;
+    moduleDaos: UserModules[];
   };
   exp: number;
   iat: number;
   sub: string;
+}
+
+export interface UserModules {
+  id: string;
+  coeff: number;
+  name: string;
+  ueName: string;
+  semester: string;
+  promo: string;
+  sumNote: number;
+  notes: NoteDao[];
+}
+
+export interface NoteDao {
+  coeff: number;
+  name: string;
+  note: number;
+}
+
+export interface UserModules {
+  id: string;
+  coeff: number;
+  name: string;
+  ueName: string;
+  semester: string;
+  promo: string;
+  sumNote: number;
+  notes: NoteDao[];
+}
+
+export interface NoteDao {
+  coeff: number;
+  name: string;
+  note: number;
 }
 
 export interface storeUsers {

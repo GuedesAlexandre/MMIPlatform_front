@@ -105,12 +105,9 @@ const itemsForTeacher: SkeletonItem[] = [
       "Votre matrice vous permet de suivre en temps réel l’avancé de chaque ressources dans le semestre.",
     className: "md:col-span-1",
     access: "TEACHER",
-    color: "#1EAFD0",
-    category: "green",
-    url: new URL(
-      "../../public/assets/dashboard/excel.png",
-      import.meta.url
-    ).toString(),
+    color: "green",
+    category: "Matrices",
+    url : new URL("../../public/assets/dashboard/excel.png", import.meta.url).toString()
   },
   {
     title: "Gérer les absences et les rattrapages",
@@ -131,7 +128,7 @@ const itemsForTeacher: SkeletonItem[] = [
       "Gérer vos ressources enseignées et créer des notes pour vos étudiants jusqu’à la fusion dans la matrice principale.",
     className: "md:col-span-1",
     access: "TEACHER",
-    color: "red",
+    color: "blue",
     category: "Modules",
     url: new URL(
       "../../public/assets/dashboard/modules.jpg",

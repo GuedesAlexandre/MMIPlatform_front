@@ -30,7 +30,7 @@ function ConnectionForm() {
       <div className="w-fit py-6 px-8 xs:px-12 xs:py-10 border-primary-blue border rounded-[30px] flex flex-col gap-5 mx-auto mt-40">
         {error && (
           <div className="text-sm text-center text-danger">
-            Une erreur s'est produite lors de la connexion.
+            Une erreur s&apos;est produite lors de la connexion.
           </div>
         )}
         <InputUI
