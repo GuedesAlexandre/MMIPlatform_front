@@ -1,4 +1,4 @@
-import { Permissions } from "../auth/models/enums/PermissionsEnum";
+import { Permissions } from "@/app/auth/models/enums/PermissionsEnum";
 
 export function translateAccess(access: string) {
   switch (access) {
