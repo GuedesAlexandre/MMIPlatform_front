@@ -8,9 +8,14 @@ export default function Dashboard() {
   const { user } = useAuthStore();
   return (
     <div className="p-10">
-      <div className="pb-10"><HeaderUserDashboard firstName={user?.user.firstName} lastName={user?.user.name} /></div>
+      <div className="pb-10">
+        <HeaderUserDashboard
+          firstName={user?.user.firstName}
+          lastName={user?.user.name}
+        />
+      </div>
       <div className="pt-10">
-      <AppBento />
+        <AppBento />
       </div>
     </div>
   );

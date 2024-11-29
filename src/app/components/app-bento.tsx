@@ -19,6 +19,7 @@ export default function AppBento() {
           description={item.description}
           header={item.header}
           className={item.className}
+          link={item.link}
           icon={<Tag name={item.category} color={item.color} />}
         />
       ))}

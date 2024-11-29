@@ -10,8 +10,10 @@ const itemsForAdmin: SkeletonItem[] = [
     access: "ADMIN",
     color: "yellow",
     category: "Matrices",
-    url : new URL("../../public/assets/dashboard/excel.png", import.meta.url).toString()
-  
+    url: new URL(
+      "../../public/assets/dashboard/excel.png",
+      import.meta.url
+    ).toString(),
   },
   {
     title: "Gérer vos intervenants",
@@ -21,7 +23,11 @@ const itemsForAdmin: SkeletonItem[] = [
     access: "ADMIN",
     color: "green",
     category: "Utilisateurs",
-    url : new URL("../../public/assets/dashboard/user.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/user.png",
+      import.meta.url
+    ).toString(),
+    link: "/users",
   },
   {
     title: "Gérer vos modules et évalutations",
@@ -30,8 +36,11 @@ const itemsForAdmin: SkeletonItem[] = [
     className: "md:col-span-2",
     access: "ADMIN",
     color: "blue",
-    category: "Modules", 
-    url : new URL("../../public/assets/dashboard/modules.jpg", import.meta.url).toString()
+    category: "Modules",
+    url: new URL(
+      "../../public/assets/dashboard/modules.jpg",
+      import.meta.url
+    ).toString(),
   },
   {
     title: "Visualiser votre établissement",
@@ -41,7 +50,10 @@ const itemsForAdmin: SkeletonItem[] = [
     access: "ADMIN",
     color: "purple",
     category: "Visualisation 3D",
-    url : new URL("../../public/assets/dashboard/3D.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/3D.png",
+      import.meta.url
+    ).toString(),
   },
 ];
 
@@ -53,7 +65,10 @@ const itemsForScolarity: SkeletonItem[] = [
     access: "SCOLARITY",
     color: "yellow",
     category: "Utilisateurs",
-    url : new URL("../../public/assets/dashboard/user.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/user.png",
+      import.meta.url
+    ).toString(),
   },
   {
     title: "Gérer les absences et les rattrapages",
@@ -63,7 +78,10 @@ const itemsForScolarity: SkeletonItem[] = [
     access: "SCOLARITY",
     color: "purple",
     category: "Scolarité",
-    url : new URL("../../public/assets/dashboard/missing.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/missing.png",
+      import.meta.url
+    ).toString(),
   },
   {
     title: "Visualiser l’établissement",
@@ -73,7 +91,10 @@ const itemsForScolarity: SkeletonItem[] = [
     access: "SCOLARITY",
     color: "orange",
     category: "Visualisation 3D",
-    url : new URL("../../public/assets/dashboard/3D.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/3D.png",
+      import.meta.url
+    ).toString(),
   },
 ];
 
@@ -86,7 +107,10 @@ const itemsForTeacher: SkeletonItem[] = [
     access: "TEACHER",
     color: "#1EAFD0",
     category: "green",
-    url : new URL("../../public/assets/dashboard/excel.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/excel.png",
+      import.meta.url
+    ).toString(),
   },
   {
     title: "Gérer les absences et les rattrapages",
@@ -96,7 +120,10 @@ const itemsForTeacher: SkeletonItem[] = [
     access: "TEACHER",
     color: "purple",
     category: "Scolarité",
-    url : new URL("../../public/assets/dashboard/user.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/user.png",
+      import.meta.url
+    ).toString(),
   },
   {
     title: "Gérer vos modules et évalutations",
@@ -106,7 +133,10 @@ const itemsForTeacher: SkeletonItem[] = [
     access: "TEACHER",
     color: "red",
     category: "Modules",
-    url : new URL("../../public/assets/dashboard/modules.jpg", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/modules.jpg",
+      import.meta.url
+    ).toString(),
   },
   {
     title: "Visualiser l’établissement",
@@ -116,7 +146,10 @@ const itemsForTeacher: SkeletonItem[] = [
     access: "TEACHER",
     color: "orange",
     category: "Visualisation 3D",
-    url : new URL("../../public/assets/dashboard/3D.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/3D.png",
+      import.meta.url
+    ).toString(),
   },
 ];
 
