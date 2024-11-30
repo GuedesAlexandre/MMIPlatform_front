@@ -14,7 +14,7 @@ const menuForAdmin = [
   },
   {
     title: "Ressources",
-    url: "/dashboard",
+    url: "/resources",
     icon: LayoutGrid,
   },
   {
@@ -60,7 +60,7 @@ const menuForTeacher = [
   },
   {
     title: "Ressources",
-    url: "/dashboard",
+    url: "/resources",
     icon: LayoutGrid,
   },
   {
