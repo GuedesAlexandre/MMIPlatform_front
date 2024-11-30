@@ -1,14 +1,14 @@
 "use client";
 
 import ResourceCard from "@/app/components/resourcesCard"
-import TitleUI from "@/app/components/ui/TitleUi";
 import { useAuthStore } from "@/app/store/AuthRepository"
+import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI"
 
 const Resources = () => {
   const { user } = useAuthStore();
   return (
     <div>
-      <TitleUI label="Mes Ressources" />
+      <TitleHeaderUI label="Mes Ressources" />
       <div className="w-[90%] mx-auto">
         {user &&
           user.user.moduleDaos.map((module) => {
