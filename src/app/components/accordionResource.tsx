@@ -1,4 +1,5 @@
-import { ChevronRight, ChevronDown } from "lucide-react";
+import { ChevronRight, ChevronDown, User } from "lucide-react";
+import { PersonIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import AccordionResourceTable from "@/app/components/ui/accordionResourceTable";
 import { UserModules } from "@/app/auth/models/User";
@@ -11,7 +12,10 @@ const AccordionResource = ({ module }: { module: UserModules }) => {
         className="flex flex-row justify-between px-4 py-5 cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        <p className="w-fit select-none">Voir les étudiants</p>
+        <div className="flex flex-row items-center">
+          <PersonIcon className="mr-2"/>
+          <p className="w-fit select-none">Liste des étudiants</p>
+        </div>
         {open ? (
           <ChevronDown onClick={() => setOpen(!open)} />
         ) : (
