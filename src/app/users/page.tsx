@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import TitleUI from "@/app/components/ui/TitleUI";
+import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import AppTableUser from "@/app/components/app-table-user";
 
 function pages() {
   return (
     <>
-      <TitleUI label="Gestion des professeurs" />
+      <TitleHeaderUI label="Gestion des professeurs" />
       <AppTableUser />
     </>
   );
