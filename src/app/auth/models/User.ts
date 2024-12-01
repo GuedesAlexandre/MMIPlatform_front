@@ -26,7 +26,7 @@ export interface UserModules {
   ueName: string;
   semester: string;
   promo: string;
-  sumNote: number;
+  sum: number;
   notes: NoteDao[];
 }
 
