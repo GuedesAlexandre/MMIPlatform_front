@@ -1,6 +1,6 @@
 import { UserModules } from "@/app/auth/models/User";
 import { useRouter } from "next/navigation";
-import { toSlug } from "@/app/utils/textToSlug"
+import { toSlug } from "@/app/utils/textToSlug";
 
 const ResourceCard = ({
   module,
@@ -9,9 +9,8 @@ const ResourceCard = ({
   module: UserModules;
   key: string;
 }) => {
-
   const router = useRouter();
-  const slugName = toSlug(module.name)
+  const slugName = toSlug(module.name);
   const handleClickNavigation = () => {
     router.push(
       `/resources/${slugName}?data=${encodeURIComponent(
