@@ -1,4 +1,4 @@
-import { Student } from "@/app/models/student.model"
+import { Student } from "@/app/models/student.model";
 
 export const transformToStudentTable = (
   data: Student[] | undefined,
@@ -7,16 +7,30 @@ export const transformToStudentTable = (
 ) => {
   if (data === undefined) return [];
   return data.map((student) => {
-    const targetModule = student.modules.find(
-      (module) => module.name === moduleName && module.ueName === ueName
+    const filteredNotes = student.notes
+      .filter(
+        (note) =>
+          note.module.name === moduleName && note.module.ueName === ueName
+      )
+      .map((note) => ({
+        note: note.note,
+        coeff: note.coeff,
+      }));
+
+    const coeffSum = filteredNotes.reduce((sum, item) => sum + item.coeff, 0);
+    const weightedSum = filteredNotes.reduce(
+      (sum, item) => sum + item.note * item.coeff,
+      0
     );
+    const average = coeffSum > 0 ? weightedSum / coeffSum : 0;
+
     return {
       NumEtu: student.numEtu,
       lastName: student.lastName,
       firstName: student.firstName,
       promo: student.promo,
       group: student.group,
-      average: targetModule?.sum || 0,
+      average: average.toFixed(2),
     };
   });
 };
