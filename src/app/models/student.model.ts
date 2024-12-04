@@ -1,5 +1,4 @@
 export interface Student {
-  id: null;
   lastName: string;
   firstName: string;
   promo: string;
@@ -9,16 +8,13 @@ export interface Student {
 }
 
 export interface Note {
-  id: null;
   coeff: number;
   name: string;
   note: number;
   module: ModuleNote;
-  student: null;
 }
 
 export interface ModuleNote {
-  id: null;
   name: string;
   promo: string;
   semester: string;
