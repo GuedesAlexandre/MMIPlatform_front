@@ -1,4 +1,4 @@
-import { ChevronRight, ChevronDown, User } from "lucide-react";
+import { ChevronRight, ChevronDown } from "lucide-react";
 import { PersonIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import AccordionResourceTable from "@/app/components/ui/accordionResourceTable";
