@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/table";
 import React, { useEffect, useState } from "react";
 import { UserStore } from "../store/UsersStore";
-import { Permissions } from "../auth/models/enums/PermissionsEnum";
 import { translateAccess } from "../utils/translateAccess";
 import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
 import TooltipUI from "./ui/TooltipUI";

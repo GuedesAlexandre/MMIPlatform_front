@@ -20,21 +20,21 @@ export default function InputUI({
   };
 
   const buttonClasses = classNames(
-    "border rounded-[10px] p-1 pl-[12px] py-2 flex items-center gap-x-[14px] focus-within:border-text-color-black transition-colors duration-500 font-tahoma",
+    "border rounded-[5px] p-1 pl-[12px] py-2 flex items-center gap-x-[14px] focus-within:border-text-color-black transition-colors duration-500 font-tahoma",
     {
       "border-secondary-text-color": !haveError,
       "border-danger": haveError,
     }
   );
   return (
-    <span className="flex flex-col xs:w-72 w-full ">
+    <span className="flex flex-col xs:w-72 w-full">
       <label className="mb-[5px] font-tahoma" htmlFor={name}>
         {label}
       </label>
       <span className={buttonClasses}>
         {icon && <div className="text-secondary-text-color">{icon}</div>}
         <input
-          className=" outline-none w-full text-xs xs:text-base !bg-white"
+          className="outline-none w-full text-xs xs:text-base !bg-white h-6"
           type={type === "password" && isClose ? "text" : type}
           id={name}
           placeholder={placeholder}

@@ -1,4 +1,4 @@
-import { ChevronRight, ChevronDown, User } from "lucide-react";
+import { ChevronRight, ChevronDown } from "lucide-react";
 import { PersonIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import AccordionResourceTable from "@/app/components/ui/accordionResourceTable";
@@ -13,7 +13,7 @@ const AccordionResource = ({ module }: { module: UserModules }) => {
         onClick={() => setOpen(!open)}
       >
         <div className="flex flex-row items-center">
-          <PersonIcon className="mr-2"/>
+          <PersonIcon className="mr-2" />
           <p className="w-fit select-none">Liste des étudiants</p>
         </div>
         {open ? (
