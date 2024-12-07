@@ -1,4 +1,9 @@
-import { FieldValues, RegisterOptions, UseFormRegister } from "react-hook-form";
+import {
+  FieldErrors,
+  FieldValues,
+  RegisterOptions,
+  UseFormRegister,
+} from "react-hook-form";
 
 export interface InputUIProps {
   type: "text" | "password";
@@ -9,4 +14,6 @@ export interface InputUIProps {
   register: UseFormRegister<FieldValues>;
   rules?: RegisterOptions;
   haveError?: boolean;
+  errors?: FieldErrors<FieldValues>;
+  trigger?: (field: string) => Promise<boolean>;
 }

@@ -2,9 +2,9 @@
 
 import React from "react";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
-import AppTableUser from "@/app/components/app-table-user";
 import Link from "next/link";
-import ButtonsUI from "../components/ui/ButtonsUI";
+import ButtonsUI from "@/app/components/ui/ButtonsUI";
+import AppTableUser from "@/app/users/components/app-table-user";
 
 function pages() {
   return (

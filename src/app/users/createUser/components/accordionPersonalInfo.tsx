@@ -1,14 +1,19 @@
 import { PersonIcon } from "@radix-ui/react-icons";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import InputUI from "./ui/InputUI";
-import { FieldValues, UseFormRegister } from "react-hook-form";
-import SelectUI from "./ui/SelectUI";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import InputUI from "@/app/components/ui/InputUI";
+import SelectUI from "@/app/components/ui/SelectUI";
 
 function AccordionPersonalInfo({
   register,
+  errors,
+  trigger,
 }: {
   register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+  // eslint-disable-next-line no-unused-vars
+  trigger: (field: string) => Promise<boolean>;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -29,15 +34,22 @@ function AccordionPersonalInfo({
         )}
       </div>
       {open && (
-        <div className="pb-10 px-10 grid lg:grid-cols-2 lg:gap-x-10 gap-y-5 gap-10 pr-60">
+        <div className="pb-10 px-10 grid lg:grid-cols-2 lg:gap-x-10 gap-y-5 gap-10 lg:pr-60">
           <InputUI
             type="text"
             name="Prénom"
             label="Prénom"
             placeholder="Entrer le prénom"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
+            errors={errors}
+            trigger={trigger}
+            rules={{
+              required: "Veuillez remplir ce champ.",
+              pattern: {
+                value: /^[A-Za-zÀ-ÿéèàêëôùïçÇ-]+$/,
+                message: "Veuillez indiquer un prénom valide.",
+              },
+            }}
           />
           <InputUI
             type="text"
@@ -45,8 +57,15 @@ function AccordionPersonalInfo({
             label="Nom"
             placeholder="Entrer le nom"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
+            errors={errors}
+            trigger={trigger}
+            rules={{
+              required: "Veuillez remplir ce champ.",
+              pattern: {
+                value: /^[A-Za-zÀ-ÿéèàêëôùïçÇ-]+$/,
+                message: "Veuillez indiquer un nom valide.",
+              },
+            }}
           />
           <InputUI
             type="text"
@@ -54,8 +73,9 @@ function AccordionPersonalInfo({
             label="Nom d’utilisateur"
             placeholder="Entrer le nom d’utilisateur"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
+            errors={errors}
+            trigger={trigger}
+            rules={{ required: "Veuillez remplir ce champ." }}
           />
           <InputUI
             type="text"
@@ -63,8 +83,15 @@ function AccordionPersonalInfo({
             label="Numéro de téléphone"
             placeholder="Entrer le numéro de téléphone"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
+            errors={errors}
+            trigger={trigger}
+            rules={{
+              required: "Veuillez remplir ce champ.",
+              pattern: {
+                value: /^(\+33|0)[1-9](\d{2}){4}$/,
+                message: "Veuillez indiquer un numéro valide.",
+              },
+            }}
           />
           <InputUI
             type="text"
@@ -72,8 +99,15 @@ function AccordionPersonalInfo({
             label="Email"
             placeholder="Entrer l’adresse mail"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
+            errors={errors}
+            trigger={trigger}
+            rules={{
+              required: "Veuillez remplir ce champ.",
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Veuillez indiquer une adresse e-mail valide.",
+              },
+            }}
           />
           <InputUI
             type="text"
@@ -81,33 +115,44 @@ function AccordionPersonalInfo({
             label="Adresse"
             placeholder="Entrer l’adresse de résidence"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
-          />{" "}
+            rules={{
+              required: "Veuillez remplir ce champ.",
+            }}
+            errors={errors}
+            trigger={trigger}
+          />
           <InputUI
             type="text"
             name="Ville"
             label="Ville"
             placeholder="Entrer la ville de résidence"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
-          />{" "}
+            rules={{
+              required: "Veuillez remplir ce champ.",
+            }}
+            errors={errors}
+            trigger={trigger}
+          />
           <InputUI
             type="text"
             name="Pays origine"
             label="Pays"
             placeholder="Entrer le pays de résidence"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
+            rules={{
+              required: "Veuillez remplir ce champ.",
+            }}
+            errors={errors}
+            trigger={trigger}
           />
           <SelectUI
             name="Établissement"
             label="Établissement"
             placeholder="Sélectionner l’établissement d’enseignement"
             register={register}
-            rules={{ required: true }}
+            rules={{
+              required: "Veuillez remplir ce champ.",
+            }}
             options={[
               { label: "IUT-Meaux", value: "Meaux" },
               { label: "IUT-Champ sur Marne", value: "Champ sur Marne" },

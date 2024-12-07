@@ -7,11 +7,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import React, { useEffect, useState } from "react";
-import { UserStore } from "../store/UsersStore";
-import { translateAccess } from "../utils/translateAccess";
 import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
-import TooltipUI from "./ui/TooltipUI";
-import LoaderUi from "./ui/LoaderUi";
+import { UserStore } from "@/app/store/UsersStore";
+import { translateAccess } from "@/app/utils/translateAccess";
+import TooltipUI from "@/app/components/ui/TooltipUI";
+import LoaderUi from "@/app/components/ui/LoaderUi";
 
 function AppTableUser() {
   const { all_user, fetchUsers } = UserStore();

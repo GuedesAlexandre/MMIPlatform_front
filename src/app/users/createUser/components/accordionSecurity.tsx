@@ -1,13 +1,18 @@
+import InputToolTipUI from "@/app/components/ui/InputToolTipUI";
 import { LockClosedIcon, QuestionMarkCircledIcon } from "@radix-ui/react-icons";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
-import InputToolTipUI from "./ui/InputToolTipUI";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 function AccordionSecurity({
   register,
+  errors,
+  trigger,
 }: {
   register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+  // eslint-disable-next-line no-unused-vars
+  trigger: (field: string) => Promise<boolean>;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -28,11 +33,12 @@ function AccordionSecurity({
         )}
       </div>
       {open && (
-        <div className="pb-10 px-10 grid lg:grid-cols-2 lg:gap-x-10 gap-y-5 gap-10 pr-60">
+        <div className="pb-10 px-10 grid lg:grid-cols-2 lg:gap-x-10 gap-y-5 gap-10 lg:pr-60">
           <InputToolTipUI
             type="password"
             name="password"
             label="Mot de passe"
+            trigger={trigger}
             icon={<QuestionMarkCircledIcon />}
             message={
               <div className="ml-3 bg-blue-50 border border-blue-200 p-3 rounded-xl shadow-md">
@@ -50,8 +56,16 @@ function AccordionSecurity({
             }
             placeholder="Entrer le mot de passe"
             register={register}
-            rules={{ required: true }}
-            //   haveError={error}
+            rules={{
+              required: true,
+              pattern: {
+                value:
+                  /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,}$/,
+                message:
+                  "Votre mot de passe ne respecte pas la politique de sécurité de notre site.",
+              },
+            }}
+            errors={errors}
           />
         </div>
       )}

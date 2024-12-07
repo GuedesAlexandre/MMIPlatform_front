@@ -1,5 +1,10 @@
-import { FieldValues, RegisterOptions, UseFormRegister } from "react-hook-form";
-
+import {
+  FieldError,
+  FieldErrors,
+  FieldValues,
+  RegisterOptions,
+  UseFormRegister,
+} from "react-hook-form";
 export interface InputTooltipUIProps {
   type: "text" | "password";
   name: string;
@@ -10,4 +15,6 @@ export interface InputTooltipUIProps {
   register: UseFormRegister<FieldValues>;
   rules?: RegisterOptions;
   haveError?: boolean;
+  errors: FieldErrors<FieldValues>;
+  trigger: (field: string) => Promise<boolean>;
 }
