@@ -41,6 +41,7 @@ const itemsForAdmin: SkeletonItem[] = [
       "../../public/assets/dashboard/modules.jpg",
       import.meta.url
     ).toString(),
+    link: "/resources"
   },
   {
     title: "Visualiser votre établissement",
@@ -134,6 +135,7 @@ const itemsForTeacher: SkeletonItem[] = [
       "../../public/assets/dashboard/modules.jpg",
       import.meta.url
     ).toString(),
+    link: "/resources"
   },
   {
     title: "Visualiser l’établissement",

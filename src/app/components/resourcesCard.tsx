@@ -2,16 +2,20 @@ import { UserModules } from "@/app/auth/models/User";
 import { useRouter } from "next/navigation";
 import { toSlug } from "@/app/utils/textToSlug";
 import { PersonIcon, Pencil1Icon } from "@radix-ui/react-icons";
+import { useStudentsByPromo } from "../store/useStudentsByPromo";
+import { useEffect } from "react";
 
 const ResourceCard = ({
   module,
-  key,
 }: {
   module: UserModules;
-  key: string;
 }) => {
   const router = useRouter();
   const slugName = toSlug(module.name);
+  const {studentsByPromo, setStudentByPromo} = useStudentsByPromo()
+  useEffect(()=>{
+    setStudentByPromo(module.promo)
+  },[])
   const handleClickNavigation = () => {
     router.push(
       `/resources/${slugName}?data=${encodeURIComponent(
@@ -19,29 +23,29 @@ const ResourceCard = ({
       )}`
     );
   };
+
   return (
     <div
-      key={key}
-      className="mt-5 w-[90%] border border-placeholder-color rounded-md"
+      className="mt-5 w-full mx-auto border border-placeholder-color rounded-md"
     >
       <div
         className={
           module.promo === "MMI01"
-            ? "bg-[#00936E] text-background-color flex flex-row justify-between items-end pt-44 px-4 pb-2"
+            ? "bg-[#00936E] text-background-color flex flex-row justify-between pt-44 px-5"
             : module.promo === "MMI02"
-            ? "bg-[#E83583] text-background-color flex flex-row justify-between items-end pt-44 px-4 pb-2"
-            : "bg-[#8B4A97] text-background-color flex flex-row justify-between items-end pt-44 px-4 pb-2"
+            ? "bg-[#E83583] text-background-color flex flex-row justify-between pt-44 px-5"
+            : "bg-[#8B4A97] text-background-color flex flex-row justify-between pt-44 px-5"
         }
       >
-        <p>{module.promo}</p>
-        <div className="flex flex-row items-center">
+        <p className="pb-3">{module.promo}</p>
+        <div className="flex flex-row items-center pb-3">
           <PersonIcon />
-          <p>42</p>
+          <p>{studentsByPromo?.length}</p>
         </div>
       </div>
-      <div className="px-4">
-        <p className="py-2">{module?.name}</p>
-        <div className="flex justify-end p-4 ">
+      <div className="px-4 flex flex-row justify-between items-center py-5">
+        <p className="w-3/4">{module?.name}</p>
+        <div className="flex justify-end h-fit">
           <p
             className="cursor-pointer border border-primary-blue p-1 rounded-sm"
             onClick={handleClickNavigation}
