@@ -37,7 +37,7 @@ function AccordionPersonalInfo({
         <div className="pb-10 px-10 grid lg:grid-cols-2 lg:gap-x-10 gap-y-5 gap-10 lg:pr-60">
           <InputUI
             type="text"
-            name="Prénom"
+            name="firstName"
             label="Prénom"
             placeholder="Entrer le prénom"
             register={register}
@@ -53,7 +53,7 @@ function AccordionPersonalInfo({
           />
           <InputUI
             type="text"
-            name="Nom"
+            name="name"
             label="Nom"
             placeholder="Entrer le nom"
             register={register}
@@ -69,7 +69,7 @@ function AccordionPersonalInfo({
           />
           <InputUI
             type="text"
-            name="Nom d’utilisateur"
+            name="username"
             label="Nom d’utilisateur"
             placeholder="Entrer le nom d’utilisateur"
             register={register}
@@ -79,7 +79,7 @@ function AccordionPersonalInfo({
           />
           <InputUI
             type="text"
-            name="Numéro de téléphone"
+            name="phone"
             label="Numéro de téléphone"
             placeholder="Entrer le numéro de téléphone"
             register={register}
@@ -95,7 +95,7 @@ function AccordionPersonalInfo({
           />
           <InputUI
             type="text"
-            name="Email"
+            name="email"
             label="Email"
             placeholder="Entrer l’adresse mail"
             register={register}
@@ -111,7 +111,7 @@ function AccordionPersonalInfo({
           />
           <InputUI
             type="text"
-            name="Adresse"
+            name="address"
             label="Adresse"
             placeholder="Entrer l’adresse de résidence"
             register={register}
@@ -123,7 +123,7 @@ function AccordionPersonalInfo({
           />
           <InputUI
             type="text"
-            name="Ville"
+            name="city"
             label="Ville"
             placeholder="Entrer la ville de résidence"
             register={register}
@@ -135,7 +135,7 @@ function AccordionPersonalInfo({
           />
           <InputUI
             type="text"
-            name="Pays origine"
+            name="country"
             label="Pays"
             placeholder="Entrer le pays de résidence"
             register={register}
@@ -146,7 +146,7 @@ function AccordionPersonalInfo({
             trigger={trigger}
           />
           <SelectUI
-            name="Établissement"
+            name="establishment"
             label="Établissement"
             placeholder="Sélectionner l’établissement d’enseignement"
             register={register}

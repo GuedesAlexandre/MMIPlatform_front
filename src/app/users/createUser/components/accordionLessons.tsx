@@ -1,9 +1,18 @@
 import { GridIcon } from "@radix-ui/react-icons";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { DataTable } from "./data-table/data-table";
+import { columns } from "./data-table/columns";
+import { getModuleStore } from "@/app/store/getAllModules";
+import { moduleDataTable } from "@/app/utils/ModulesTableHelper";
 
 function AccordionLessons() {
   const [open, setOpen] = useState(false);
+  const { all_module, fetchModule } = getModuleStore();
+  useEffect(() => {
+    fetchModule();
+  }, []);
+  const allModuleToDataTable = moduleDataTable(all_module);
 
   return (
     <div className="border-placeholder-color border rounded-md  mt-6">
@@ -22,7 +31,9 @@ function AccordionLessons() {
         )}
       </div>
       {open && (
-        <div className="pb-10 px-10 grid lg:grid-cols-2 lg:gap-x-10 gap-y-5 gap-10 lg:pr-60"></div>
+        <div className="pb-10 px-10">
+          <DataTable columns={columns} data={allModuleToDataTable} />
+        </div>
       )}
     </div>
   );

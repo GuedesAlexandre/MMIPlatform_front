@@ -8,6 +8,12 @@ import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import Link from "next/link";
 import AccordionLessons from "@/app/users/createUser/components/accordionLessons";
+import { getModuleStore } from "@/app/store/getAllModules";
+import { ModuleCheckedStore } from "@/app/store/ModuleTableStore";
+import { User, Module } from "../models/user.model";
+import { Permissions } from "@/app/auth/models/enums/PermissionsEnum";
+import { CreateUser } from "@/app/store/CreateUser.store";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const {
@@ -16,17 +22,34 @@ function Page() {
     trigger,
     formState: { errors },
   } = useForm<FieldValues>();
+  const { lessons } = ModuleCheckedStore();
+  const { all_module, fetchModule } = getModuleStore();
+  const { createUser } = CreateUser();
+  const router = useRouter();
 
   const onSubmit = (data: FieldValues) => {
-    const myData = data as FormData;
-    console.log(myData);
-    // fetchAuthToken(myData.mail, myData.password).then((response) => {
-    //   if (!response) {
-    //     setError(true);
-    //     return;
-    //   }
-    //   if (response) return;
-    // });
+    const myData = data as User;
+    if (!all_module) fetchModule();
+    if (!all_module || !lessons) return;
+    const moduleToCreateUser: Module[] = all_module
+      ?.filter((module) =>
+        lessons.find(
+          (lesson) =>
+            lesson.promo === module.promo &&
+            lesson.resourceName === module.name &&
+            lesson.semester === module.semester
+        )
+      )
+      .filter(
+        (value, index, self) =>
+          index === self.findIndex((t) => t.name === value.name)
+      );
+    myData.modules = moduleToCreateUser;
+    myData.access = Permissions.TEACHER;
+    createUser(myData).then((user) => {
+      // if (!false) return;
+      // router.push("/users");
+    });
   };
   return (
     <>

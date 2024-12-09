@@ -57,7 +57,7 @@ function AccordionSecurity({
             placeholder="Entrer le mot de passe"
             register={register}
             rules={{
-              required: true,
+              required: "Veuillez remplir ce champ.",
               pattern: {
                 value:
                   /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,}$/,
