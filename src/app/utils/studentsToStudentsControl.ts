@@ -1,7 +1,7 @@
 import { Student } from "@/app/models/student.model";
 
 export const studentsToStudentsControl = (data: Student[] | undefined) => {
-  if (data === undefined) return [];
+  if (!data) return [];
   return data.map((student) => {
     return {
       numEtu: student.numEtu,

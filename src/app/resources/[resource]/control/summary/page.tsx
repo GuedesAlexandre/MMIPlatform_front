@@ -15,6 +15,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState } from "react";
+import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -124,23 +125,30 @@ const Summary = () => {
                 <span className="text-sm text-gray-600">
                   {`Éléments ${startItemIndex}-${endItemIndex} sur ${notes.length} (Page ${currentPage} sur ${totalPages})`}
                 </span>
-                <div>
-                  <Button
-                    variant="outline"
-                    disabled={currentPage === 1}
+                <div className="flex flex-row">
+                  <div
+                    className={
+                      currentPage === 1
+                        ? "flex flex-row items-center mr-5 text-placeholder-color select-none"
+                        : "flex flex-row items-center cursor-pointer hover:underline mr-5 select-none"
+                    }
                     onClick={goToPreviousPage}
-                    className="mr-4 bg-primary-blue text-background-color hover:text-background-color hover:bg-primary-blue-hover"
                   >
-                    Précédent
-                  </Button>
-                  <Button
-                    variant="outline"
-                    disabled={currentPage === totalPages}
+                    <ArrowLeftIcon className="size-5 mr-1" />
+                    <p>Précédent</p>
+                  </div>
+                  <p className="mr-5">|</p>
+                  <div
+                    className={
+                      currentPage === totalPages
+                        ? "flex flex-row items-center mr-5 text-placeholder-color select-none"
+                        : "flex flex-row items-center cursor-pointer hover:underline mr-5 select-none"
+                    }
                     onClick={goToNextPage}
-                    className="bg-primary-blue text-background-color hover:text-background-color hover:bg-primary-blue-hover"
                   >
-                    Suivant
-                  </Button>
+                    <p>Suivant</p>
+                    <ArrowRightIcon className="size-5 ml-1" />
+                  </div>
                 </div>
               </div>
               <div className="mt-5 flex justify-end">

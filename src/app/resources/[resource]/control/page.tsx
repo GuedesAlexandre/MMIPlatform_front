@@ -13,9 +13,7 @@ const Control = () => {
   const promo: string | null = searchParams.get("promo");
   const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
   useEffect(() => {
-    setTimeout(() => {
-      if (promo) setStudentByPromo(promo);
-    }, 0);
+    if (promo) setStudentByPromo(promo);
   }, []);
   const data = studentsToStudentsControl(studentsByPromo);
   return (

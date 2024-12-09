@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 
 interface Student {
   numEtu: string;
@@ -33,12 +34,14 @@ const TableNotes = ({
 }) => {
   const [notes, setNotes] = useState<{ numEtu: string; note?: number }[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
   const controlName = useDataStore((state) => state.controlName);
   const coefficient = useDataStore((state) => state.coefficient);
   const setControlName = useDataStore((state) => state.setControlName);
   const setCoefficient = useDataStore((state) => state.setCoefficient);
   const setNotesStore = useDataStore((state) => state.setNotes);
   const setResource = useDataStore((state) => state.setResource);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -164,23 +167,30 @@ const TableNotes = ({
         <span className="text-sm text-gray-600">
           {`Éléments ${startItemIndex}-${endItemIndex} sur ${data.length} (Page ${currentPage} sur ${totalPages})`}
         </span>
-        <div>
-          <Button
-            variant="outline"
-            disabled={currentPage === 1}
+        <div className="flex flex-row">
+          <div
+            className={
+              currentPage === 1
+                ? "flex flex-row items-center mr-5 text-placeholder-color select-none"
+                : "flex flex-row items-center cursor-pointer hover:underline mr-5 select-none"
+            }
             onClick={goToPreviousPage}
-            className="mr-4 bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mt-4"
           >
-            Précédent
-          </Button>
-          <Button
-            variant="outline"
-            disabled={currentPage === totalPages}
+            <ArrowLeftIcon className="size-5 mr-1" />
+            <p>Précédent</p>
+          </div>
+          <p className="mr-5">|</p>
+          <div
+            className={
+              currentPage === totalPages
+                ? "flex flex-row items-center mr-5 text-placeholder-color select-none"
+                : "flex flex-row items-center cursor-pointer hover:underline mr-5 select-none"
+            }
             onClick={goToNextPage}
-            className="bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mt-4"
           >
-            Suivant
-          </Button>
+            <p>Suivant</p>
+            <ArrowRightIcon className="size-5 ml-1" />
+          </div>
         </div>
       </div>
       <div className="flex justify-end mt-10">
