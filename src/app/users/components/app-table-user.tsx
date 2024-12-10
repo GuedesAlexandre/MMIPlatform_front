@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
 import { UserStore } from "@/app/store/UsersStore";
 import { translateAccess } from "@/app/utils/translateAccess";

@@ -1,6 +1,4 @@
 "use client";
-
-import React from "react";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import Link from "next/link";
 import ButtonsUI from "@/app/components/ui/ButtonsUI";

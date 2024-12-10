@@ -4,7 +4,7 @@ import AccordionPersonalInfo from "@/app/users/createUser/components/accordionPe
 import AccordionSecurity from "@/app/users/createUser/components/accordionSecurity";
 import ButtonsUI from "@/app/components/ui/ButtonsUI";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import Link from "next/link";
 import AccordionLessons from "@/app/users/createUser/components/accordionLessons";

@@ -1,6 +1,6 @@
 import { GridIcon } from "@radix-ui/react-icons";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { DataTable } from "./data-table/data-table";
 import { columns } from "./data-table/columns";
 import { getModuleStore } from "@/app/store/getAllModules";

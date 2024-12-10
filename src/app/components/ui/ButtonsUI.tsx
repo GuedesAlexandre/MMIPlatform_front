@@ -1,6 +1,5 @@
 import { ButtonsUIProps } from "@/app/models/ui/buttons.model";
 import classNames from "classnames";
-import React from "react";
 
 function ButtonsUI({ type, label, customClassName, disbled }: ButtonsUIProps) {
   const buttonClasses = classNames(

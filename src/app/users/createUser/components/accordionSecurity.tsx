@@ -1,7 +1,7 @@
 import InputToolTipUI from "@/app/components/ui/InputToolTipUI";
 import { LockClosedIcon, QuestionMarkCircledIcon } from "@radix-ui/react-icons";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 function AccordionSecurity({

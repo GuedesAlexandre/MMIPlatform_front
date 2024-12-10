@@ -1,5 +1,3 @@
-import React from "react";
-
 function LoaderUi() {
   return (
     <div className="mx-auto w-fit">
