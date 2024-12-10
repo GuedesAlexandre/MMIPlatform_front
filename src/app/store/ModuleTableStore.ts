@@ -8,5 +8,7 @@ interface storeModule {
 
 export const ModuleCheckedStore = create<storeModule>((set) => ({
   lessons: undefined,
-  setLessons: (lessons: ModuleTable[]) => set({ lessons: lessons }),
+  setLessons: (lessons: ModuleTable[]) => {
+    set({ lessons: lessons });
+  },
 }));

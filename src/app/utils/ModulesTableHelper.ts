@@ -1,5 +1,5 @@
 import { ModuleTable } from "../users/createUser/components/data-table/columns";
-import { Module } from "../users/createUser/components/data-table/models/data-table.model";
+import { Module } from "../users/models/user.model";
 
 export function moduleDataTable(
   modules: Module[] | undefined
@@ -18,6 +18,7 @@ export function moduleDataTable(
 
   return modulesFiltered.map((module) => {
     return {
+      id: module.name + "." + module.semester,
       promo: module.promo,
       semester: module.semester,
       resourceName: module.name,
@@ -25,16 +26,17 @@ export function moduleDataTable(
   });
 }
 
-export function DataModuleTableToDataAPIModule(modules: Module[] | undefined) {
-  if (!modules) return;
+export function DataModuleTableToDataAPIModule(
+  modules: Module[] | undefined
+): Module[] {
+  if (!modules) return [];
   return modules.map((module) => ({
     name: module.name,
     promo: module.promo,
     semester: module.semester,
     coeff: module.coeff,
-    ueName: module.ueName,
-    sumNote: module.sumNote,
     sum: 0,
-    note: [],
+    ueName: module.ueName,
+    notes: [],
   }));
 }

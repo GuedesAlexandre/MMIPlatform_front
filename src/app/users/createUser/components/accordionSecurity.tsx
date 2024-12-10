@@ -14,7 +14,7 @@ function AccordionSecurity({
   // eslint-disable-next-line no-unused-vars
   trigger: (field: string) => Promise<boolean>;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <div className="border-placeholder-color border rounded-md mt-6">

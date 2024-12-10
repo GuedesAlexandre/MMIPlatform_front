@@ -2,7 +2,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ColumnDef } from "@tanstack/react-table";
 
 export interface ModuleTable {
-  id?: string;
+  id: string;
   promo: string;
   semester: string;
   resourceName: string;

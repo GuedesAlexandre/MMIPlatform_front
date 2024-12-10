@@ -7,5 +7,5 @@ export interface storeModule {
 
 export interface CreateUserStore {
   user: User | undefined;
-  createUser: (user: User) => Promise<void>;
+  createUser: (user: User) => Promise<User | undefined>;
 }

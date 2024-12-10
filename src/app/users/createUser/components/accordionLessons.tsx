@@ -7,7 +7,7 @@ import { getModuleStore } from "@/app/store/getAllModules";
 import { moduleDataTable } from "@/app/utils/ModulesTableHelper";
 
 function AccordionLessons() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const { all_module, fetchModule } = getModuleStore();
   useEffect(() => {
     fetchModule();
@@ -32,7 +32,9 @@ function AccordionLessons() {
       </div>
       {open && (
         <div className="pb-10 px-10">
-          <DataTable columns={columns} data={allModuleToDataTable} />
+          {allModuleToDataTable && (
+            <DataTable columns={columns} data={allModuleToDataTable} />
+          )}
         </div>
       )}
     </div>
