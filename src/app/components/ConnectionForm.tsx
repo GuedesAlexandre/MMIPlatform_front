@@ -10,7 +10,7 @@ interface FormData {
   mail: string;
 }
 function ConnectionForm() {
-  const { user, fetchAuthToken } = useAuthStore();
+  const { fetchAuthToken } = useAuthStore();
   const { register, handleSubmit } = useForm<FieldValues>();
   const [error, setError] = React.useState(false);
 

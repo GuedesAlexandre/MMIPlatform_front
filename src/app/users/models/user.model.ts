@@ -17,7 +17,7 @@ export interface User {
   modules: Module[];
 }
 
-interface Module {
+export interface Module {
   name: string;
   promo: string;
   semester: string;
