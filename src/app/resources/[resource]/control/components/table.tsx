@@ -13,6 +13,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Student {
   numEtu: string;
@@ -35,8 +42,10 @@ const TableNotes = ({
   const [notes, setNotes] = useState<{ numEtu: string; note?: number }[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
+  const statut = useDataStore((state) => state.statut);
   const controlName = useDataStore((state) => state.controlName);
   const coefficient = useDataStore((state) => state.coefficient);
+  const setStatut = useDataStore((state) => state.setStatut);
   const setControlName = useDataStore((state) => state.setControlName);
   const setCoefficient = useDataStore((state) => state.setCoefficient);
   const setNotesStore = useDataStore((state) => state.setNotes);
@@ -53,12 +62,29 @@ const TableNotes = ({
     setCoefficient(1);
   }, [data, resource, setResource, setCoefficient, setControlName]);
 
+  useEffect(() => {
+    setStatut(
+      data.map((student) => ({ numEtu: student.numEtu, status: "DONE" }))
+    );
+  }, [data, setStatut]);
+
   const updateNote = (numEtu: string, newNote?: number) => {
     setNotes((prevNotes) =>
       prevNotes.map((item) =>
         item.numEtu === numEtu ? { ...item, note: newNote } : item
       )
     );
+  };
+
+  const updateStatut = (numEtu: string, status: string) => {
+    const statuses = useDataStore.getState().statut;
+    useDataStore
+      .getState()
+      .setStatut(
+        statuses.map((item) =>
+          item.numEtu === numEtu ? { ...item, status } : item
+        )
+      );
   };
 
   const areAllNotesFilled = notes.every((item) => item.note !== undefined);
@@ -130,6 +156,7 @@ const TableNotes = ({
             <TableHead>Promo</TableHead>
             <TableHead>Groupe</TableHead>
             <TableHead>Note</TableHead>
+            <TableHead>Statut</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -144,9 +171,16 @@ const TableNotes = ({
                 <Input
                   type="number"
                   placeholder="Note"
+                  disabled={
+                    statut.find((item) => item.numEtu === student.numEtu)
+                      ?.status === "ABS"
+                  }
                   value={
-                    notes.find((item) => item.numEtu === student.numEtu)
-                      ?.note ?? ""
+                    statut.find((item) => item.numEtu === student.numEtu)
+                      ?.status === "ABS"
+                      ? 0
+                      : notes.find((item) => item.numEtu === student.numEtu)
+                          ?.note ?? ""
                   }
                   onChange={(e) => {
                     const value = e.target.value;
@@ -158,6 +192,29 @@ const TableNotes = ({
                     }
                   }}
                 />
+              </TableCell>
+              <TableCell>
+                <Select
+                  value={
+                    statut.find((item) => item.numEtu === student.numEtu)
+                      ?.status ?? "DONE"
+                  }
+                  onValueChange={(value) => {
+                    updateStatut(student.numEtu, value);
+                    if (value === "ABS") {
+                      updateNote(student.numEtu, 0);
+                    }
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Statut" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="DONE">Valide</SelectItem>
+                    <SelectItem value="DEF">Rattrapage</SelectItem>
+                    <SelectItem value="ABS">Absent</SelectItem>
+                  </SelectContent>
+                </Select>
               </TableCell>
             </TableRow>
           ))}

@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 
 export const postStudentGrade = async (
-  data: { coeff: number; note: number; name: string },
+  data: { coeff: number; note: number; name: string; status: string },
   numEtu: string,
   resource: string
 ) => {
@@ -14,6 +14,7 @@ export const postStudentGrade = async (
         coeff: data.coeff,
         note: data.note,
         name: data.name,
+        status: data.status,
         headers: {
           Authorization: `Bearer ${bearer?.toString()}`,
         },
