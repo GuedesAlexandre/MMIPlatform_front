@@ -53,7 +53,8 @@ function Page() {
     createUser(myData).then((user) => {
       setLoading(false);
       if (!user) return;
-      router.push("/users");
+      localStorage.setItem("user", JSON.stringify(user));
+      router.push("/users/users-recap");
     });
   };
   return (

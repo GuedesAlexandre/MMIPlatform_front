@@ -4,7 +4,7 @@ import { User } from "../users/models/user.model";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const CreateUser = create<CreateUserStore>((set) => ({
+export const CreateUser = create<CreateUserStore>((set) => ({ 
   user: undefined,
   createUser: async (data: User) => {
     const bearer = Cookies.get("bearer");
