@@ -20,6 +20,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 const ITEMS_PER_PAGE = 5;
 
 const Summary = () => {
+  const statut = useDataStore((state) => state.statut);
   const notes = useDataStore((state) => state.notes);
   const controlName = useDataStore((state) => state.controlName);
   const coefficient = useDataStore((state) => state.coefficient);
@@ -47,12 +48,14 @@ const Summary = () => {
   const sendNotes = async () => {
     try {
       if (resource) {
-        notes.map((note) =>
+        notes.map((note) => {
+          const statutNote = String(statut.find((item) => item.numEtu === note.numEtu)?.status);
           postStudentGrade(
-            { coeff: coefficient, note: note.note, name: controlName },
+            { coeff: coefficient, note: note.note, name: controlName, status: statutNote},
             note.numEtu,
             resource
           )
+        }
         );
         router.push("/resources");
       }
@@ -101,6 +104,7 @@ const Summary = () => {
                     <TableHead>Promo</TableHead>
                     <TableHead>Groupe</TableHead>
                     <TableHead>Note</TableHead>
+                    <TableHead>Statut</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -115,6 +119,12 @@ const Summary = () => {
                         <TableCell>{studentInfo?.group}</TableCell>
                         <TableCell>
                           {note.note !== undefined && note.note}
+                        </TableCell>
+                        <TableCell>
+                          {replaceStatut(
+                            statut.find((item) => item.numEtu === note.numEtu)
+                              ?.status
+                          )}
                         </TableCell>
                       </TableRow>
                     );
@@ -179,6 +189,19 @@ const Summary = () => {
       </div>
     </>
   );
+};
+
+export const replaceStatut = (statut: string | undefined) => {
+  switch (statut) {
+    case "ABS":
+      return "Absent";
+    case "DEF":
+      return "Rattrapage";
+    case "DONE":
+      return "Valide";
+    default:
+      return statut;
+  }
 };
 
 export default Summary;
