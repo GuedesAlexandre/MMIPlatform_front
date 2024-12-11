@@ -80,6 +80,7 @@ const config = {
       colors: {
         "primary-blue": "#2F2A85",
         "primary-blue-hover": "#0F273B",
+        "primary-blue-disbled": "#49677f",
         danger: "#D2213C",
         "background-color": "#FAFAFA",
         "text-color-black": "#242424",

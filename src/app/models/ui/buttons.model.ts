@@ -1,6 +1,7 @@
 export interface ButtonsUIProps {
   type: "submit" | "reset" | "button";
   disbled?: boolean;
-  label: string;
+  label?: string;
   customClassName?: string;
+  icon?: React.ReactNode;
 }

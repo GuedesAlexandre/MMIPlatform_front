@@ -1,9 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import InputUI from "./ui/InputUI";
 import { EnvelopeClosedIcon, LockClosedIcon } from "@radix-ui/react-icons";
 import ButtonsUI from "./ui/ButtonsUI";
 import { FieldValues, useForm } from "react-hook-form";
 import { useAuthStore } from "../store/AuthRepository";
+import LoaderUi from "./ui/LoaderUi";
 
 interface FormData {
   password: string;
@@ -12,11 +13,14 @@ interface FormData {
 function ConnectionForm() {
   const { fetchAuthToken } = useAuthStore();
   const { register, handleSubmit } = useForm<FieldValues>();
-  const [error, setError] = React.useState(false);
+  const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const onSubmit = (data: FieldValues) => {
+    setLoader(true);
     const myData = data as FormData;
     fetchAuthToken(myData.mail, myData.password).then((response) => {
+      setLoader(false);
       if (!response) {
         setError(true);
         return;
@@ -53,7 +57,15 @@ function ConnectionForm() {
           rules={{ required: true }}
           haveError={error}
         />
-        <ButtonsUI type="submit" label="Connexion" />
+        {loader ? (
+          <ButtonsUI
+            type="submit"
+            icon={<LoaderUi sizeCustome="size-[20px]" />}
+            disbled={true}
+          />
+        ) : (
+          <ButtonsUI type="submit" label="Connexion" />
+        )}
       </div>
     </form>
   );
