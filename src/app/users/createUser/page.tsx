@@ -1,20 +1,26 @@
 "use client";
 
-import AccordionPersonalInfo from "@/app/users/createUser/components/accordionPersonalInfo";
-import AccordionSecurity from "@/app/users/createUser/components/accordionSecurity";
 import ButtonsUI from "@/app/components/ui/ButtonsUI";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import Link from "next/link";
-import AccordionLessons from "@/app/users/createUser/components/accordionLessons";
 import { getModuleStore } from "@/app/store/getAllModules";
 import { User, Module } from "../models/user.model";
 import { Permissions } from "@/app/auth/models/enums/PermissionsEnum";
 import { useRouter } from "next/navigation";
-import { DataModuleTableToDataAPIModule } from "@/app/utils/ModulesTableHelper";
+import {
+  DataModuleTableToDataAPIModule,
+  moduleDataTable,
+} from "@/app/utils/ModulesTableHelper";
 import { ModuleCheckedStore } from "@/app/store/ModuleTableStore";
 import { CreateUser } from "@/app/store/CreateUser.store";
+import Accordion from "@/app/components/accordion";
+import FormPersonalInfo from "./components/formPersonalInfo";
+import { PersonIcon, LockClosedIcon, GridIcon } from "@radix-ui/react-icons";
+import FormSecurity from "./components/formSecurity";
+import { DataTable } from "./components/data-table/data-table";
+import { columns } from "./components/data-table/columns";
 
 function Page() {
   const {
@@ -28,6 +34,10 @@ function Page() {
   const { all_module, fetchModule } = getModuleStore();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    fetchModule();
+  }, []);
+  const allModuleToDataTable = moduleDataTable(all_module);
 
   const onSubmit = (data: FieldValues) => {
     setLoading(true);
@@ -62,17 +72,38 @@ function Page() {
       <TitleHeaderUI label="Création d’un utilisateur" />
       <div className="sm:p-10 p-2">
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-          <AccordionPersonalInfo
-            register={register}
-            errors={errors}
-            trigger={trigger}
+          <Accordion
+            open={true}
+            data={
+              <FormPersonalInfo
+                register={register}
+                errors={errors}
+                trigger={trigger}
+              />
+            }
+            name={"Informations personnelles"}
+            icon={<PersonIcon />}
           />
-          <AccordionSecurity
-            register={register}
-            errors={errors}
-            trigger={trigger}
+          <Accordion
+            open={true}
+            data={
+              <FormSecurity
+                register={register}
+                errors={errors}
+                trigger={trigger}
+              />
+            }
+            name={"Sécurité"}
+            icon={<LockClosedIcon />}
           />
-          <AccordionLessons />
+          {allModuleToDataTable && (
+            <Accordion
+              open={true}
+              data={<DataTable columns={columns} data={allModuleToDataTable} />}
+              name={"Ressources du professeur"}
+              icon={<GridIcon />}
+            />
+          )}
           <div className="justify-end flex mt-5">
             <Link href="/users">
               <ButtonsUI
