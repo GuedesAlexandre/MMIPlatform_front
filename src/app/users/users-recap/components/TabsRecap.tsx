@@ -1,6 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
-import React from "react";
-import { User } from "../../models/user.model";
+import { User } from "@/app/users/models/user.model";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 
 interface TabsRecapProps {
@@ -101,7 +100,6 @@ const TabsRecap: React.FC<TabsRecapProps> = ({ user: TabsRecapProps }) => {
   ))}
 </TabsContent>
       </Tabs>
-      
     </>
   );
 };

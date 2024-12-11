@@ -1,6 +1,5 @@
 "use client";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
-import React, { useEffect } from "react";
 import TabsRecap from "./components/TabsRecap";
 import { User } from "../models/user.model";
 import ButtonsUI from "@/app/components/ui/ButtonsUI";
@@ -18,10 +17,6 @@ const page = () => {
       console.error("Erreur lors de la conversion de l'utilisateur :", error);
     }
   }
-
-  useEffect(() => {
-    console.log("🚀 ~ useEffect ~ user :", user);
-  }, []);
 
   return (
     <>
