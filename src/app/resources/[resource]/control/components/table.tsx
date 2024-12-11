@@ -41,7 +41,6 @@ const TableNotes = ({
 }) => {
   const [notes, setNotes] = useState<{ numEtu: string; note?: number }[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [selectedOption, setSelectedOption] = useState<string>("DONE");
 
   const statut = useDataStore((state) => state.statut);
   const controlName = useDataStore((state) => state.controlName);

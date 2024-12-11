@@ -13,7 +13,6 @@ import {
 import { toSlug } from "@/app/utils/textToSlug";
 import { useRouter } from "next/navigation";
 import AccordionControl from "./components/accordionControl";
-import { getResourceMatrix } from "./getResourceMatrix";
 
 const Resource = () => {
   const searchParams = useSearchParams();
@@ -23,14 +22,12 @@ const Resource = () => {
   const titlePathname: string = toSlug(title);
   const router = useRouter();
 
-  const getMatrix = async () => {
-    getResourceMatrix(
-      parsedData.promo,
-      parsedData.semester,
-      parsedData.ueName,
-      parsedData.name
+  const getMatrix = () => {
+    router.push(
+      `${process.env.NEXT_PUBLIC_API_PATH}/export/modules?promo=${parsedData.promo}&semester=${parsedData.semester}&ueName=${parsedData.ueName}&moduleName=${parsedData.name}`
     );
   };
+
   return (
     <>
       <TitleHeaderUI label={title} />
