@@ -52,8 +52,10 @@ function Page() {
     myData.access = Permissions.TEACHER;
     createUser(myData).then((user) => {
       setLoading(false);
+      console.log(user)
       if (!user) return;
-      router.push("/users");
+      localStorage.setItem("user", JSON.stringify(user));
+      router.push("/users/users-recap");
     });
   };
   return (

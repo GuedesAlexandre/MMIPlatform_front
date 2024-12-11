@@ -11,8 +11,9 @@ const HeaderUserDashboard: React.FC<HeaderUserDashboardProps> = ({
   firstName,
 }) => {
   const initial: string =
-    firstName?.slice(0, 1).toLocaleUpperCase() +
-    lastName?.slice(0, 1).toLocaleUpperCase();
+  (firstName?.slice(0, 1) ?? '').toLocaleUpperCase() +
+  (lastName?.slice(0, 1) ?? '').toLocaleUpperCase();
+
   return (
     <>
       <div className="flex w-full p-8 rounded-sm justify-between items-center bg-primary-blue">
