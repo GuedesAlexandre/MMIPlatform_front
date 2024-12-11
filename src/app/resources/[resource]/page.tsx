@@ -1,7 +1,6 @@
 "use client";
 
 import { UserModules } from "@/app/auth/models/User";
-import AccordionResource from "@/app/components/accordionResource";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { ChevronRight } from "lucide-react";
 import { useSearchParams } from "next/navigation";
@@ -9,10 +8,14 @@ import {
   CheckboxIcon,
   ArrowLeftIcon,
   PinBottomIcon,
+  PersonIcon,
+  ReaderIcon,
 } from "@radix-ui/react-icons";
 import { toSlug } from "@/app/utils/textToSlug";
 import { useRouter } from "next/navigation";
-import AccordionControl from "./components/accordionControl";
+import Accordion from "@/app/components/accordion";
+import AccordionResourceTable from "@/app/components/ui/accordionResourceTable";
+import AccordionControlTable from "./components/accordionControlTable";
 
 const Resource = () => {
   const searchParams = useSearchParams();
@@ -48,15 +51,31 @@ const Resource = () => {
             <p className="ml-2">Télécharger l&apos;excel du module</p>
           </div>
         </div>
-        <AccordionResource module={parsedData} />
-        <AccordionControl moduleName={parsedData.name} />
+        <Accordion
+          icon={<PersonIcon />}
+          nom={"Liste des étudiants"}
+          open={false}
+          data={
+            <AccordionResourceTable
+              promo={parsedData.promo}
+              ueName={parsedData.ueName}
+              ressourceName={parsedData.name}
+            />
+          }
+        />
+        <Accordion
+          icon={<ReaderIcon />}
+          nom={"Liste des contrôles"}
+          open={false}
+          data={<AccordionControlTable />}
+        />
         <div
           onClick={() => {
             router.push(
               `${titlePathname}/control?name=${parsedData.name}&promo=${parsedData.promo}`
             );
           }}
-          className="flex flex-row justify-between border border-placeholder-color rounded-md px-4 py-5 mt-5 cursor-pointer"
+          className="flex flex-row justify-between border border-placeholder-color rounded-md px-4 py-5 cursor-pointer"
         >
           <div className="flex flex-row items-center">
             <CheckboxIcon className="mr-1" />
