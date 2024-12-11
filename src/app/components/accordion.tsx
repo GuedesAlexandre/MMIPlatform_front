@@ -3,12 +3,12 @@ import { ReactNode, useState } from "react";
 
 interface Accordion {
   icon: ReactNode;
-  nom: string;
+  name: string;
   data: ReactNode;
   open: boolean;
 }
 
-const Accordion = ({ icon, nom, data, open }: Accordion) => {
+const Accordion = ({ icon, name, data, open }: Accordion) => {
   const [isOpen, setIsOpen] = useState<boolean>(open);
   return (
     <div className="border-placeholder-color border rounded-md mb-5">
@@ -18,7 +18,7 @@ const Accordion = ({ icon, nom, data, open }: Accordion) => {
       >
         <div className="flex flex-row items-center">
           {icon}
-          <p className="w-fit select-none ml-2">{nom}</p>
+          <p className="w-fit select-none ml-2">{name}</p>
         </div>
         {isOpen ? (
           <ChevronDown onClick={() => setIsOpen(!isOpen)} />

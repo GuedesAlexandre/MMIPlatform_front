@@ -80,7 +80,7 @@ function Page() {
                 trigger={trigger}
               />
             }
-            nom={"Informations personnelles"}
+            name={"Informations personnelles"}
             icon={<PersonIcon />}
           />
           <Accordion
@@ -92,14 +92,14 @@ function Page() {
                 trigger={trigger}
               />
             }
-            nom={"Sécurité"}
+            name={"Sécurité"}
             icon={<LockClosedIcon />}
           />
           {allModuleToDataTable && (
             <Accordion
               open={true}
               data={<DataTable columns={columns} data={allModuleToDataTable} />}
-              nom={"Ressources du professeur"}
+              name={"Ressources du professeur"}
               icon={<GridIcon />}
             />
           )}

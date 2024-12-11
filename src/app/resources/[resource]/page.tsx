@@ -53,7 +53,7 @@ const Resource = () => {
         </div>
         <Accordion
           icon={<PersonIcon />}
-          nom={"Liste des étudiants"}
+          name={"Liste des étudiants"}
           open={false}
           data={
             <AccordionResourceTable
@@ -65,7 +65,7 @@ const Resource = () => {
         />
         <Accordion
           icon={<ReaderIcon />}
-          nom={"Liste des contrôles"}
+          name={"Liste des contrôles"}
           open={false}
           data={<AccordionControlTable />}
         />
