@@ -1,5 +1,5 @@
-import { SkeletonItem } from "../models/SkeletonItem.model";
-import { UserSessionJWT } from "../../models/UserSessionJWT";
+import { SkeletonItem } from "@/app/dashboard/models/SkeletonItem.model";
+import { UserSessionJWT } from "@/app/models/UserSessionJWT";
 
 const itemsForAdmin: SkeletonItem[] = [
   {
