@@ -1,8 +1,8 @@
-import { defineMenuSidebar } from "../utils/sidebarMenu";
+import { defineMenuSidebar } from "@/app/utils/sidebarMenu";
 import { MMI_Image } from "@/public/assets/svg";
 import { MMI_Image_mini } from "@/public/assets/svg";
-import AvatarInitialIcon from "./ui/AvatarInitialIcon";
-import { useSidebarState } from "../store/SidebarState";
+import AvatarInitialIcon from "@/app/components/ui/AvatarInitialIcon";
+import { useSidebarState } from "@/app/store/SidebarState.store";
 import {
   Sidebar,
   SidebarContent,
@@ -22,9 +22,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import Link from "next/link";
-import TextAvatarIcon from "./ui/TextAvatarIcon";
-import { useAuthStore } from "../store/AuthRepository";
-import LogOut from "./ui/LogOut";
+import TextAvatarIcon from "@/app/components/ui/TextAvatarIcon";
+import { useAuthStore } from "@/app/store/AuthRepository.store";
+import LogOut from "@/app/components/ui/LogOut";
 import { ChevronUp } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 

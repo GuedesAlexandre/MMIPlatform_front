@@ -1,11 +1,11 @@
 "use client";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
-import TabsRecap from "./components/TabsRecap";
-import { User } from "../models/user.model";
+import TabsRecap from "@/app/users/users-recap/components/TabsRecap";
+import { User } from "@/app/users/models/user.model";
 import ButtonsUI from "@/app/components/ui/ButtonsUI";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const userString = localStorage.getItem("user");
   let user: User | undefined = undefined;
   const router = useRouter();
@@ -39,4 +39,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

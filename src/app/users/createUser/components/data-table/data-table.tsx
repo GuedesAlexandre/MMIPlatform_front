@@ -4,7 +4,6 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -17,8 +16,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useEffect, useState } from "react";
-import { ModuleTable } from "./columns";
-import { ModuleCheckedStore } from "@/app/store/ModuleTableStore";
+import { ModuleTable } from "@/app/users/createUser/components/data-table/columns";
+import { ModuleCheckedStore } from "@/app/store/ModuleTable.store";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

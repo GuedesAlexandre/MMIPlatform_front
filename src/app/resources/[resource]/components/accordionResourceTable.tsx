@@ -1,8 +1,8 @@
 import { StudentsTableAccordion } from "@/app/models/ui/studentsTableAccordion.model";
-import { useStudentsByPromo } from "@/app/store/useStudentsByPromo";
+import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 import { transformToStudentTable } from "@/app/resources/helper/studentsToStudentsTable";
 import { columns } from "@/app/resources/[resource]/studentsResourceColumn";
-import { DataTable } from "@/app/components/ui/resourceStudentDataTable";
+import { DataTable } from "@/app/resources/[resource]/components/resourceStudentDataTable";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 

@@ -1,7 +1,7 @@
 import { InputTooltipUIProps } from "@/app/models/ui/input.tooltip.model";
 import classNames from "classnames";
 import { ReactNode, useState } from "react";
-import TooltipUI from "./TooltipUI";
+import TooltipUI from "@/app/components/ui/TooltipUI";
 
 function InputToolTipUI({
   type,

@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { CreateUserStore } from "../users/createUser/components/data-table/models/data-table.model";
-import { User } from "../users/models/user.model";
+import { CreateUserStore } from "@/app/users/createUser/components/data-table/models/data-table.model";
+import { User } from "@/app/users/models/user.model";
 import axios from "axios";
 import Cookies from "js-cookie";
 

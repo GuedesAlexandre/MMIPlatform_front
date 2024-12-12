@@ -1,4 +1,3 @@
-import { PermissionsEnum } from "./enums/PermissionsEnum";
 export interface UserSessionJWT {
   user: UserJWTtoModel;
   sub: string;

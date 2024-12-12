@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
-import { useDataStore } from "@/app/store/useDataControlStore";
+import { useDataStore } from "@/app/store/useDataControl.store";
 import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";

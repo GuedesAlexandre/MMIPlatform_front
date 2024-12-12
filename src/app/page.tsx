@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import ConnectionForm from "./components/ConnectionForm";
-import { useAuthStore } from "./store/AuthRepository";
+import ConnectionForm from "@/app/components/ConnectionForm"
+import { useAuthStore } from "@/app/store/AuthRepository.store";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 

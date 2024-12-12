@@ -11,7 +11,7 @@ const itemsForAdmin: SkeletonItem[] = [
     color: "yellow",
     category: "Matrices",
     url: new URL(
-      "../../public/assets/dashboard/excel.png",
+      "../../../public/assets/dashboard/excel.png",
       import.meta.url
     ).toString(),
   },
@@ -24,7 +24,7 @@ const itemsForAdmin: SkeletonItem[] = [
     color: "green",
     category: "Utilisateurs",
     url: new URL(
-      "../../public/assets/dashboard/user.png",
+      "../../../public/assets/dashboard/user.png",
       import.meta.url
     ).toString(),
     link: "/users",
@@ -38,7 +38,7 @@ const itemsForAdmin: SkeletonItem[] = [
     color: "blue",
     category: "Modules",
     url: new URL(
-      "../../public/assets/dashboard/modules.jpg",
+      "../../../public/assets/dashboard/modules.jpg",
       import.meta.url
     ).toString(),
     link: "/resources",
@@ -52,7 +52,7 @@ const itemsForAdmin: SkeletonItem[] = [
     color: "purple",
     category: "Visualisation 3D",
     url: new URL(
-      "../../public/assets/dashboard/3D.png",
+      "../../../public/assets/dashboard/3D.png",
       import.meta.url
     ).toString(),
   },
@@ -67,7 +67,7 @@ const itemsForScolarity: SkeletonItem[] = [
     color: "yellow",
     category: "Utilisateurs",
     url: new URL(
-      "../../public/assets/dashboard/user.png",
+      "../../../public/assets/dashboard/user.png",
       import.meta.url
     ).toString(),
   },
@@ -80,7 +80,7 @@ const itemsForScolarity: SkeletonItem[] = [
     color: "purple",
     category: "Scolarité",
     url: new URL(
-      "../../public/assets/dashboard/missing.png",
+      "../../../public/assets/dashboard/missing.png",
       import.meta.url
     ).toString(),
   },
@@ -93,7 +93,7 @@ const itemsForScolarity: SkeletonItem[] = [
     color: "orange",
     category: "Visualisation 3D",
     url: new URL(
-      "../../public/assets/dashboard/3D.png",
+      "../../../public/assets/dashboard/3D.png",
       import.meta.url
     ).toString(),
   },
@@ -109,7 +109,7 @@ const itemsForTeacher: SkeletonItem[] = [
     color: "green",
     category: "Matrices",
     url: new URL(
-      "../../public/assets/dashboard/excel.png",
+      "../../../public/assets/dashboard/excel.png",
       import.meta.url
     ).toString(),
   },
@@ -122,7 +122,7 @@ const itemsForTeacher: SkeletonItem[] = [
     color: "purple",
     category: "Scolarité",
     url: new URL(
-      "../../public/assets/dashboard/user.png",
+      "../../../public/assets/dashboard/user.png",
       import.meta.url
     ).toString(),
   },
@@ -135,7 +135,7 @@ const itemsForTeacher: SkeletonItem[] = [
     color: "blue",
     category: "Modules",
     url: new URL(
-      "../../public/assets/dashboard/modules.jpg",
+      "../../../public/assets/dashboard/modules.jpg",
       import.meta.url
     ).toString(),
     link: "/resources",
@@ -149,7 +149,7 @@ const itemsForTeacher: SkeletonItem[] = [
     color: "orange",
     category: "Visualisation 3D",
     url: new URL(
-      "../../public/assets/dashboard/3D.png",
+      "../../../public/assets/dashboard/3D.png",
       import.meta.url
     ).toString(),
   },

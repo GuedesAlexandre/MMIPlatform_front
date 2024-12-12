@@ -6,7 +6,7 @@ import {
   Box,
   UserPen,
 } from "lucide-react";
-import { UserSessionJWT } from "../models/UserSessionJWT";
+import { UserSessionJWT } from "@/app/models/UserSessionJWT";
 
 const menuForAdmin = [
   {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from "js-cookie";
-import { useAuthStore } from '@/app/store/AuthRepository';
+import { useAuthStore } from '@/app/store/AuthRepository.store';
 import { ExitIcon } from '@radix-ui/react-icons';
 
 interface LogOutProps {

@@ -5,22 +5,22 @@ import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import Link from "next/link";
-import { getModuleStore } from "@/app/store/getAllModules";
-import { User, Module } from "../models/user.model";
+import { getModuleStore } from "@/app/store/getAllModules.store";
+import { User, Module } from "@/app/users/models/user.model";
 import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
 import { useRouter } from "next/navigation";
 import {
   DataModuleTableToDataAPIModule,
   moduleDataTable,
 } from "@/app/users/helper/ModulesTableHelper";
-import { ModuleCheckedStore } from "@/app/store/ModuleTableStore";
+import { ModuleCheckedStore } from "@/app/store/ModuleTable.store";
 import { CreateUser } from "@/app/store/CreateUser.store";
 import Accordion from "@/app/components/accordion";
-import FormPersonalInfo from "./components/formPersonalInfo";
+import FormPersonalInfo from "@/app/users/createUser/components/formPersonalInfo";
 import { PersonIcon, LockClosedIcon, GridIcon } from "@radix-ui/react-icons";
-import FormSecurity from "./components/formSecurity";
-import { DataTable } from "./components/data-table/data-table";
-import { columns } from "./components/data-table/columns";
+import FormSecurity from "@/app/users/createUser/components/formSecurity";
+import { DataTable } from "@/app/users/createUser/components/data-table/data-table";
+import { columns } from "@/app/users/createUser/components/data-table/columns";
 
 function Page() {
   const {

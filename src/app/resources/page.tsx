@@ -1,29 +1,34 @@
 "use client";
 
 import ResourceCard from "@/app/components/resourcesCard";
-import { useAuthStore } from "@/app/store/AuthRepository";
+import { useAuthStore } from "@/app/store/AuthRepository.store";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getModuleByEmailStore } from "@/app/store/getResourcesByEmail.store";
 
 const Resources = () => {
   const { user } = useAuthStore();
-  const moduleNumber = user?.user.moduleDaos.length;
+  const { moduleByEmail, fetchModuleByEmail } = getModuleByEmailStore();
+
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemPerPage, setItemPerPage] = useState<number>(6);
 
+  useEffect(() => {
+    fetchModuleByEmail(String(user?.user.email));
+  }, []);
+
   const lastItemIndex = currentPage * itemPerPage;
   const firstItemIndex = lastItemIndex - itemPerPage;
-  const currentItems = user?.user.moduleDaos;
-
+  const moduleNumber = moduleByEmail?.length;
+  const currentItems = moduleByEmail;
   return (
     <div>
       <TitleHeaderUI label="Mes Ressources" />
@@ -73,7 +78,10 @@ export const PaginationSection = ({
     <Pagination className="py-12">
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious className="cursor-pointer" onClick={handlePrevPage}>
+          <PaginationPrevious
+            className="cursor-pointer"
+            onClick={handlePrevPage}
+          >
             Précédent
           </PaginationPrevious>
         </PaginationItem>
@@ -91,7 +99,9 @@ export const PaginationSection = ({
         ))}
 
         <PaginationItem>
-          <PaginationNext className="cursor-pointer" onClick={handleNextPage}>Suivant</PaginationNext>
+          <PaginationNext className="cursor-pointer" onClick={handleNextPage}>
+            Suivant
+          </PaginationNext>
         </PaginationItem>
       </PaginationContent>
     </Pagination>

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { storeUsers, UserSessionJWT } from "../models/UserSessionJWT";
+import { storeUsers, UserSessionJWT } from "@/app/models/UserSessionJWT";
 import axios from "axios";
 import Cookies from "js-cookie";
 

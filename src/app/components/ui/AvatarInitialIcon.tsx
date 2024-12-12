@@ -1,4 +1,4 @@
-import { useSidebarState } from "@/app/store/SidebarState";
+import { useSidebarState } from "@/app/store/SidebarState.store";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useIsMobile } from "@/hooks/use-mobile";
 export default function AvatarInitialIcon({

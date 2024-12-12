@@ -1,11 +1,11 @@
-import { UserModules } from "@/app/models/UserSessionJWT";
 import { useRouter } from "next/navigation";
 import { toSlug } from "@/app/utils/textToSlug";
 import { PersonIcon, Pencil1Icon } from "@radix-ui/react-icons";
-import { useStudentsByPromo } from "../store/useStudentsByPromo";
+import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 import { useEffect } from "react";
+import { Module } from "@/app/resources/models/modules.model";
 
-const ResourceCard = ({ module }: { module: UserModules }) => {
+const ResourceCard = ({ module }: { module: Module }) => {
   const router = useRouter();
   const slugName = toSlug(module.name);
   const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();

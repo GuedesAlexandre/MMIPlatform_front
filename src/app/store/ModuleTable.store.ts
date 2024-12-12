@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { ModuleTable } from "../users/createUser/components/data-table/columns";
+import { ModuleTable } from "@/app/users/createUser/components/data-table/columns";
 
 interface storeModule {
   lessons: ModuleTable[] | undefined;

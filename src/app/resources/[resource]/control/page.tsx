@@ -2,10 +2,10 @@
 
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useSearchParams } from "next/navigation";
-import { useStudentsByPromo } from "@/app/store/useStudentsByPromo";
+import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 import { useEffect } from "react";
 import { studentsToStudentsControl } from "@/app/resources/helper/studentsToStudentsControl";
-import TableNotes from "./components/table";
+import TableNotes from "@/app/resources/[resource]/control/components/table";
 
 const Control = () => {
   const searchParams = useSearchParams();
