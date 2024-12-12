@@ -7,12 +7,12 @@ import { FieldValues, useForm } from "react-hook-form";
 import Link from "next/link";
 import { getModuleStore } from "@/app/store/getAllModules";
 import { User, Module } from "../models/user.model";
-import { Permissions } from "@/app/auth/models/enums/PermissionsEnum";
+import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
 import { useRouter } from "next/navigation";
 import {
   DataModuleTableToDataAPIModule,
   moduleDataTable,
-} from "@/app/utils/ModulesTableHelper";
+} from "@/app/users/helper/ModulesTableHelper";
 import { ModuleCheckedStore } from "@/app/store/ModuleTableStore";
 import { CreateUser } from "@/app/store/CreateUser.store";
 import Accordion from "@/app/components/accordion";
@@ -59,7 +59,7 @@ function Page() {
       );
 
     myData.modules = DataModuleTableToDataAPIModule(moduleToCreateUser);
-    myData.access = Permissions.TEACHER;
+    myData.access = PermissionsEnum.TEACHER;
     createUser(myData).then((user) => {
       setLoading(false);
       if (!user) return;

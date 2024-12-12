@@ -1,5 +1,5 @@
-import { SkeletonItem } from "./models/ui/SkeletonItem";
-import { User } from "./models/User";
+import { SkeletonItem } from "../models/SkeletonItem.model";
+import { UserSessionJWT } from "../../models/UserSessionJWT";
 
 const itemsForAdmin: SkeletonItem[] = [
   {
@@ -41,7 +41,7 @@ const itemsForAdmin: SkeletonItem[] = [
       "../../public/assets/dashboard/modules.jpg",
       import.meta.url
     ).toString(),
-    link: "/resources"
+    link: "/resources",
   },
   {
     title: "Visualiser votre établissement",
@@ -108,7 +108,10 @@ const itemsForTeacher: SkeletonItem[] = [
     access: "TEACHER",
     color: "green",
     category: "Matrices",
-    url : new URL("../../public/assets/dashboard/excel.png", import.meta.url).toString()
+    url: new URL(
+      "../../public/assets/dashboard/excel.png",
+      import.meta.url
+    ).toString(),
   },
   {
     title: "Gérer les absences et les rattrapages",
@@ -135,7 +138,7 @@ const itemsForTeacher: SkeletonItem[] = [
       "../../public/assets/dashboard/modules.jpg",
       import.meta.url
     ).toString(),
-    link: "/resources"
+    link: "/resources",
   },
   {
     title: "Visualiser l’établissement",
@@ -152,7 +155,7 @@ const itemsForTeacher: SkeletonItem[] = [
   },
 ];
 
-export const defineDashboardActions = (user: User | undefined) => {
+export const defineDashboardActions = (user: UserSessionJWT | undefined) => {
   if (user === undefined) {
     return [];
   }

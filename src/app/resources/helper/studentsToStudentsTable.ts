@@ -1,4 +1,4 @@
-import { Student } from "@/app/models/student.model";
+import { Student } from "@/app/resources/models/student.model";
 
 export const transformToStudentTable = (
   data: Student[] | undefined,

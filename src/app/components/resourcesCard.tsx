@@ -1,21 +1,17 @@
-import { UserModules } from "@/app/auth/models/User";
+import { UserModules } from "@/app/models/UserSessionJWT";
 import { useRouter } from "next/navigation";
 import { toSlug } from "@/app/utils/textToSlug";
 import { PersonIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import { useStudentsByPromo } from "../store/useStudentsByPromo";
 import { useEffect } from "react";
 
-const ResourceCard = ({
-  module,
-}: {
-  module: UserModules;
-}) => {
+const ResourceCard = ({ module }: { module: UserModules }) => {
   const router = useRouter();
   const slugName = toSlug(module.name);
-  const {studentsByPromo, setStudentByPromo} = useStudentsByPromo()
-  useEffect(()=>{
-    setStudentByPromo(module.promo)
-  },[])
+  const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
+  useEffect(() => {
+    setStudentByPromo(module.promo);
+  }, []);
   const handleClickNavigation = () => {
     router.push(
       `/resources/${slugName}?data=${encodeURIComponent(
@@ -25,9 +21,7 @@ const ResourceCard = ({
   };
 
   return (
-    <div
-      className="mt-5 w-full mx-auto border border-placeholder-color rounded-md"
-    >
+    <div className="mt-5 w-full mx-auto border border-placeholder-color rounded-md">
       <div
         className={
           module.promo === "MMI01"

@@ -1,14 +1,14 @@
-import { Permissions } from "@/app/auth/models/enums/PermissionsEnum";
+import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
 
 export function translateAccess(access: string) {
   switch (access) {
-    case Permissions.ADMIN:
+    case PermissionsEnum.ADMIN:
       return "Admin";
-    case Permissions.SCOLARITY:
+    case PermissionsEnum.SCOLARITY:
       return "Scolarité";
-    case Permissions.TEACHER:
+    case PermissionsEnum.TEACHER:
       return "Professeur";
-    case Permissions.SUPPORT:
+    case PermissionsEnum.SUPPORT:
       return "Support";
     default:
       return "Non renseigné";

@@ -1,5 +1,12 @@
-import { Home, LayoutGrid, Frame, BadgeAlert, Box, UserPen } from "lucide-react";
-import { User } from "../auth/models/User";
+import {
+  Home,
+  LayoutGrid,
+  Frame,
+  BadgeAlert,
+  Box,
+  UserPen,
+} from "lucide-react";
+import { UserSessionJWT } from "../models/UserSessionJWT";
 
 const menuForAdmin = [
   {
@@ -79,7 +86,7 @@ const menuForTeacher = [
     icon: Box,
   },
 ];
-export const defineMenuSidebar = (user: User | undefined) => {
+export const defineMenuSidebar = (user: UserSessionJWT | undefined) => {
   if (user === undefined) {
     return [];
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import { UserModules } from "@/app/auth/models/User";
+import { UserModules } from "@/app/models/UserSessionJWT";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { ChevronRight } from "lucide-react";
 import { useSearchParams } from "next/navigation";

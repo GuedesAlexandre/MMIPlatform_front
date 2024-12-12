@@ -4,7 +4,7 @@ import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useSearchParams } from "next/navigation";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo";
 import { useEffect } from "react";
-import { studentsToStudentsControl } from "@/app/utils/studentsToStudentsControl";
+import { studentsToStudentsControl } from "@/app/resources/helper/studentsToStudentsControl";
 import TableNotes from "./components/table";
 
 const Control = () => {

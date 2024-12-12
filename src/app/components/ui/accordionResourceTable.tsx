@@ -1,6 +1,6 @@
 import { StudentsTableAccordion } from "@/app/models/ui/studentsTableAccordion.model";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo";
-import { transformToStudentTable } from "@/app/utils/studentsToStudentsTable";
+import { transformToStudentTable } from "@/app/resources/helper/studentsToStudentsTable";
 import { columns } from "@/app/resources/[resource]/studentsResourceColumn";
 import { DataTable } from "@/app/components/ui/resourceStudentDataTable";
 import { Input } from "@/components/ui/input";

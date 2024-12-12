@@ -2,7 +2,7 @@ import axios from "axios";
 import { create } from "zustand";
 import Cookies from "js-cookie";
 import { storeUsers, User } from "../users/models/user.model";
-import { Permissions } from "../auth/models/enums/PermissionsEnum";
+import { PermissionsEnum } from "../models/enums/PermissionsEnum";
 
 export const UserStore = create<storeUsers>((set) => ({
   all_user: undefined,
@@ -18,7 +18,7 @@ export const UserStore = create<storeUsers>((set) => ({
         }
       );
       const data = response.data.filter(
-        (data: User) => data.access !== Permissions.ADMIN
+        (data: User) => data.access !== PermissionsEnum.ADMIN
       );
       set({ all_user: data });
     } catch (error) {
