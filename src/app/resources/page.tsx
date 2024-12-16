@@ -28,14 +28,14 @@ const Resources = () => {
   const lastItemIndex = currentPage * itemPerPage;
   const firstItemIndex = lastItemIndex - itemPerPage;
   const moduleNumber = moduleByEmail?.length;
-  const currentItems = moduleByEmail;
+
   return (
     <div>
       <TitleHeaderUI label="Mes Ressources" />
       <div className="px-10 grid grid-cols-3 mx-auto gap-10 flex-wrap">
         {user &&
-          currentItems?.slice(firstItemIndex, lastItemIndex).map((module) => {
-            return <ResourceCard key={module.id} module={module} />;
+          moduleByEmail?.slice(firstItemIndex, lastItemIndex).map((module) => {
+            return <ResourceCard key={module.name} module={module} />;
           })}
       </div>
       <PaginationSection

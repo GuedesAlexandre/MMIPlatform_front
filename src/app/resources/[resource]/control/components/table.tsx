@@ -183,11 +183,16 @@ const TableNotes = ({
                   placeholder="Note"
                   disabled={
                     statut.find((item) => item.numEtu === student.numEtu)
-                      ?.status === "ABS"
+                      ?.status === "ABS" ||
+                    statut.find((item) => item.numEtu === student.numEtu)
+                      ?.status === "DEF"
                   }
                   value={
                     statut.find((item) => item.numEtu === student.numEtu)
                       ?.status === "ABS"
+                      ? 0
+                      : statut.find((item) => item.numEtu === student.numEtu)
+                          ?.status === "DEF"
                       ? 0
                       : notes.find((item) => item.numEtu === student.numEtu)
                           ?.note ?? ""
@@ -211,7 +216,7 @@ const TableNotes = ({
                   }
                   onValueChange={(value) => {
                     updateStatut(student.numEtu, value);
-                    if (value === "ABS") {
+                    if (value === "ABS" || value === "DEF") {
                       updateNote(student.numEtu, 0);
                     }
                   }}
@@ -221,7 +226,7 @@ const TableNotes = ({
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="DONE">Valide</SelectItem>
-                    <SelectItem value="DEF">Rattrapage</SelectItem>
+                    <SelectItem value="DEF">Défaillant</SelectItem>
                     <SelectItem value="ABS">Absent</SelectItem>
                   </SelectContent>
                 </Select>
