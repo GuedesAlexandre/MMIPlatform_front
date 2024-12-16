@@ -26,7 +26,7 @@ const menuForAdmin = [
   },
   {
     title: "Matrices",
-    url: "/dashboard",
+    url: "/matrix",
     icon: Frame,
   },
   {

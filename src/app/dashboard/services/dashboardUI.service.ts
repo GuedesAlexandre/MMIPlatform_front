@@ -14,6 +14,7 @@ const itemsForAdmin: SkeletonItem[] = [
       "../../../public/assets/dashboard/excel.png",
       import.meta.url
     ).toString(),
+    link: "/matrix",
   },
   {
     title: "Gérer vos intervenants",
@@ -112,6 +113,7 @@ const itemsForTeacher: SkeletonItem[] = [
       "../../../public/assets/dashboard/excel.png",
       import.meta.url
     ).toString(),
+    link: "/matrix",
   },
   {
     title: "Gérer les absences et les rattrapages",
