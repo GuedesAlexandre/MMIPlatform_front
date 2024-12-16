@@ -196,7 +196,7 @@ export const replaceStatut = (statut: string | undefined) => {
     case "ABS":
       return "Absent";
     case "DEF":
-      return "Rattrapage";
+      return "Défaillant";
     case "DONE":
       return "Valide";
     default:
