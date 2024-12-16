@@ -48,7 +48,7 @@ const Resource = () => {
             onClick={getMatrix}
           >
             <PinBottomIcon />
-            <p className="ml-2">Télécharger l&apos;excel du module</p>
+            <p className="ml-2">Exporter votre matrice</p>
           </div>
         </div>
         <Accordion
