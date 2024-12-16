@@ -1,8 +1,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import Cookies from "js-cookie";
-import { storeUsers, User } from "@/app/users/models/user.model";
-import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
+import { storeUsers } from "@/app/users/models/user.model";
 
 export const UserStore = create<storeUsers>((set) => ({
   all_user: undefined,
@@ -17,10 +16,9 @@ export const UserStore = create<storeUsers>((set) => ({
           },
         }
       );
-      const data = response.data.filter(
-        (data: User) => data.access !== PermissionsEnum.ADMIN
-      );
+      const data = response.data;
       set({ all_user: data });
+      return data;
     } catch (error) {
       console.error("Erreur lors de la récupération des utilisateurs :", error);
     }

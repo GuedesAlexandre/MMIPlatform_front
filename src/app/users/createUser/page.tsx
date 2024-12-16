@@ -21,6 +21,7 @@ import { PersonIcon, LockClosedIcon, GridIcon } from "@radix-ui/react-icons";
 import FormSecurity from "@/app/users/createUser/components/formSecurity";
 import { DataTable } from "@/app/users/createUser/components/data-table/data-table";
 import { columns } from "@/app/users/createUser/components/data-table/columns";
+import { UserStore } from "@/app/store/Users.store";
 
 function Page() {
   const {
@@ -32,8 +33,10 @@ function Page() {
   const { lessons } = ModuleCheckedStore();
   const { createUser } = CreateUser();
   const { all_module, fetchModule } = getModuleStore();
+  const { fetchUsers } = UserStore();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [userHaveSameMail, setUserHaveSameMail] = useState(false);
   useEffect(() => {
     fetchModule();
   }, []);
@@ -57,14 +60,21 @@ function Page() {
         (value, index, self) =>
           index === self.findIndex((t) => t.name === value.name)
       );
-
-    myData.modules = DataModuleTableToDataAPIModule(moduleToCreateUser);
-    myData.access = PermissionsEnum.TEACHER;
-    createUser(myData).then((user) => {
-      setLoading(false);
+    fetchUsers().then((user) => {
       if (!user) return;
-      localStorage.setItem("user", JSON.stringify(user));
-      router.push("/users/users-recap");
+      if (user && user.find((user) => user.email === myData.email)) {
+        setUserHaveSameMail(true);
+        setLoading(false);
+        return;
+      }
+      myData.modules = DataModuleTableToDataAPIModule(moduleToCreateUser);
+      myData.access = PermissionsEnum.TEACHER;
+      createUser(myData).then((user) => {
+        setLoading(false);
+        if (!user) return;
+        localStorage.setItem("user", JSON.stringify(user));
+        router.push("/users/users-recap");
+      });
     });
   };
   return (
@@ -103,6 +113,11 @@ function Page() {
               name={"Ressources du professeur"}
               icon={<GridIcon />}
             />
+          )}
+          {userHaveSameMail && (
+            <div className="text-danger text-center">
+              Cette adresse email est déjà utilisée.
+            </div>
           )}
           <div className="justify-end flex mt-5">
             <Link href="/users">

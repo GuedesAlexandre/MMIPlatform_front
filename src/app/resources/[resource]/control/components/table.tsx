@@ -41,6 +41,7 @@ const TableNotes = ({
 }) => {
   const [notes, setNotes] = useState<{ numEtu: string; note?: number }[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [haveNotControleNames, setHaveNotControleNames] = useState(false);
 
   const statut = useDataStore((state) => state.statut);
   const controlName = useDataStore((state) => state.controlName);
@@ -90,6 +91,7 @@ const TableNotes = ({
   const areAllNotesFilled = notes.every((item) => item.note !== undefined);
 
   const logNotes = () => {
+    if (controlName === "") setHaveNotControleNames(true);
     if (areAllNotesFilled && controlName !== "") {
       const filledNotes = notes.map((item) => ({
         numEtu: item.numEtu,
@@ -131,9 +133,17 @@ const TableNotes = ({
             type="text"
             placeholder="Nom du contrôle"
             value={controlName}
-            onChange={(e) => setControlName(e.target.value)}
+            onChange={(e) => {
+              setControlName(e.target.value);
+              setHaveNotControleNames(e.target.value === "");
+            }}
             className="mt-2"
           />
+          {haveNotControleNames && (
+            <p className="text-danger text-sm mt-2">
+              Vous devez renseigner le nom du contrôle.
+            </p>
+          )}
         </div>
         <div className="flex flex-col w-1/4">
           <Label htmlFor="coefficient">Coefficient</Label>

@@ -1,6 +1,6 @@
 export interface storeUsers {
   all_user: User[] | undefined;
-  fetchUsers: () => Promise<void>;
+  fetchUsers: () => Promise<User[] | undefined>;
 }
 export interface User {
   email: string;
