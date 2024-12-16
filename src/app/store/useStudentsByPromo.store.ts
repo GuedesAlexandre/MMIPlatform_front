@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { StudentsStore } from "@/app/models/student.model";
+import { StudentsStore } from "@/app/resources/models/student.model";
 import Cookies from "js-cookie";
 import axios from "axios";
 

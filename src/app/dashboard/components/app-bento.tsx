@@ -1,8 +1,8 @@
 import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { defineDashboardActions } from "../auth/AuthenticationService";
-import { useAuthStore } from "../store/AuthRepository";
-import Tag from "./ui/Tag";
+import { defineDashboardActions } from "@/app/dashboard/services/dashboardUI.service";
+import { useAuthStore } from "@/app/store/AuthRepository.store";
+import Tag from "@/app/components/ui/Tag";
 
 export default function AppBento() {
   const { user } = useAuthStore();

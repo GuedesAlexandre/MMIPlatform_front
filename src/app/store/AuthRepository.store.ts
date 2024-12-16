@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { storeUsers, User } from "../auth/models/User";
+import { storeUsers, UserSessionJWT } from "@/app/models/UserSessionJWT";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -32,7 +32,7 @@ export const useAuthStore = create(
           const dataUser = jwt.verify(
             token,
             process.env.NEXT_PUBLIC_SECRET_KEY
-          ) as User;
+          ) as UserSessionJWT;
 
           set({ user: dataUser });
           return dataUser;

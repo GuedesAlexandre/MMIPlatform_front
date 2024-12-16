@@ -1,10 +1,10 @@
 import { useState } from "react";
-import InputUI from "./ui/InputUI";
+import InputUI from "@/app/components/ui/InputUI";
 import { EnvelopeClosedIcon, LockClosedIcon } from "@radix-ui/react-icons";
-import ButtonsUI from "./ui/ButtonsUI";
+import ButtonsUI from "@/app/components/ui/ButtonsUI";
 import { FieldValues, useForm } from "react-hook-form";
-import { useAuthStore } from "../store/AuthRepository";
-import LoaderUi from "./ui/LoaderUi";
+import { useAuthStore } from "@/app/store/AuthRepository.store";
+import LoaderUi from "@/app/components/ui/LoaderUi";
 
 interface FormData {
   password: string;

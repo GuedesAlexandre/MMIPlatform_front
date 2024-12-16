@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { SidebarState } from "../models/ui/sidebarState.model";
+import { SidebarState } from "@/app/models/ui/sidebarState.model";
 
 export const useSidebarState = create<SidebarState>((set) => ({
   isOpen: false,

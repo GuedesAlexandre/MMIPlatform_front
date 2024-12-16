@@ -1,8 +1,8 @@
 "use client";
 
-import AppBento from "../components/app-bento";
-import HeaderUserDashboard from "../components/ui/HeaderUserDashboard";
-import { useAuthStore } from "../store/AuthRepository";
+import AppBento from "@/app/dashboard/components/app-bento";
+import HeaderUserDashboard from "@/app/dashboard/components/HeaderUserDashboard";
+import { useAuthStore } from "@/app/store/AuthRepository.store";
 
 export default function Dashboard() {
   const { user } = useAuthStore();

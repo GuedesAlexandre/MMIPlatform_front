@@ -8,18 +8,22 @@ import {
 } from "@/components/ui/table";
 import { useEffect, useState } from "react";
 import { QuestionMarkCircledIcon, TrashIcon } from "@radix-ui/react-icons";
-import { UserStore } from "@/app/store/UsersStore";
+import { UserStore } from "@/app/store/Users.store";
 import { translateAccess } from "@/app/utils/translateAccess";
 import TooltipUI from "@/app/components/ui/TooltipUI";
 import LoaderUi from "@/app/components/ui/LoaderUi";
-import { deleteUserByMail } from "../services/delete-user.service";
+import { deleteUserByMail } from "@/app/users/services/delete-user.service";
+import { User } from "@/app/users/models/user.model";
+import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
 
 function AppTableUser() {
   const { all_user, fetchUsers } = UserStore();
   const [load, setLoad] = useState(true);
   useEffect(() => {
     fetchUsers().then(() => setLoad(false));
+    if (!all_user) return;
   }, []);
+
   return (
     <>
       <Table className="w-5/6 mb-10 mx-auto border-2 border-gray-100">
@@ -69,12 +73,14 @@ function AppTableUser() {
                   />
                 </TableCell>
                 <TableCell>
-                  <button
-                    onClick={() => deleteUserByMail(user.email, fetchUsers)}
-                    className="text-danger border-danger border p-1 rounded-[5px] hover:text-white hover:bg-danger transition-all"
-                  >
-                    <TrashIcon />
-                  </button>
+                  {user.access !== PermissionsEnum.ADMIN && (
+                    <button
+                      onClick={() => deleteUserByMail(user.email, fetchUsers)}
+                      className="text-danger border-danger border p-1 rounded-[5px] hover:text-white hover:bg-danger transition-all"
+                    >
+                      <TrashIcon />
+                    </button>
+                  )}
                 </TableCell>
               </TableRow>
             ))

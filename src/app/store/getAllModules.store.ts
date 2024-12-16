@@ -1,7 +1,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import Cookies from "js-cookie";
-import { storeModule } from "../users/createUser/components/data-table/models/data-table.model";
+import { storeModule } from "@/app/users/createUser/components/data-table/models/data-table.model";
 
 export const getModuleStore = create<storeModule>((set) => ({
   all_module: undefined,

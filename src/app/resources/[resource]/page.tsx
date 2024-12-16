@@ -1,6 +1,5 @@
 "use client";
 
-import { UserModules } from "@/app/auth/models/User";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { ChevronRight } from "lucide-react";
 import { useSearchParams } from "next/navigation";
@@ -14,13 +13,14 @@ import {
 import { toSlug } from "@/app/utils/textToSlug";
 import { useRouter } from "next/navigation";
 import Accordion from "@/app/components/accordion";
-import AccordionResourceTable from "@/app/components/ui/accordionResourceTable";
-import AccordionControlTable from "./components/accordionControlTable";
+import AccordionResourceTable from "@/app/resources/[resource]/components/accordionResourceTable";
+import AccordionControlTable from "@/app/resources/[resource]/components/accordionControlTable";
+import { Module } from "@/app/resources/models/modules.model";
 
 const Resource = () => {
   const searchParams = useSearchParams();
   const data = searchParams.get("data");
-  const parsedData: UserModules = data ? JSON.parse(data) : null;
+  const parsedData: Module = data ? JSON.parse(data) : null;
   const title: string | undefined = parsedData?.name;
   const titlePathname: string = toSlug(title);
   const router = useRouter();

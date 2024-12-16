@@ -5,22 +5,23 @@ import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import Link from "next/link";
-import { getModuleStore } from "@/app/store/getAllModules";
-import { User, Module } from "../models/user.model";
-import { Permissions } from "@/app/auth/models/enums/PermissionsEnum";
+import { getModuleStore } from "@/app/store/getAllModules.store";
+import { User, Module } from "@/app/users/models/user.model";
+import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
 import { useRouter } from "next/navigation";
 import {
   DataModuleTableToDataAPIModule,
   moduleDataTable,
-} from "@/app/utils/ModulesTableHelper";
-import { ModuleCheckedStore } from "@/app/store/ModuleTableStore";
+} from "@/app/users/helper/ModulesTableHelper";
+import { ModuleCheckedStore } from "@/app/store/ModuleTable.store";
 import { CreateUser } from "@/app/store/CreateUser.store";
 import Accordion from "@/app/components/accordion";
-import FormPersonalInfo from "./components/formPersonalInfo";
+import FormPersonalInfo from "@/app/users/createUser/components/formPersonalInfo";
 import { PersonIcon, LockClosedIcon, GridIcon } from "@radix-ui/react-icons";
-import FormSecurity from "./components/formSecurity";
-import { DataTable } from "./components/data-table/data-table";
-import { columns } from "./components/data-table/columns";
+import FormSecurity from "@/app/users/createUser/components/formSecurity";
+import { DataTable } from "@/app/users/createUser/components/data-table/data-table";
+import { columns } from "@/app/users/createUser/components/data-table/columns";
+import { UserStore } from "@/app/store/Users.store";
 
 function Page() {
   const {
@@ -32,8 +33,10 @@ function Page() {
   const { lessons } = ModuleCheckedStore();
   const { createUser } = CreateUser();
   const { all_module, fetchModule } = getModuleStore();
+  const { fetchUsers } = UserStore();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [userHaveSameMail, setUserHaveSameMail] = useState(false);
   useEffect(() => {
     fetchModule();
   }, []);
@@ -57,14 +60,21 @@ function Page() {
         (value, index, self) =>
           index === self.findIndex((t) => t.name === value.name)
       );
-
-    myData.modules = DataModuleTableToDataAPIModule(moduleToCreateUser);
-    myData.access = Permissions.TEACHER;
-    createUser(myData).then((user) => {
-      setLoading(false);
+    fetchUsers().then((user) => {
       if (!user) return;
-      localStorage.setItem("user", JSON.stringify(user));
-      router.push("/users/users-recap");
+      if (user && user.find((user) => user.email === myData.email)) {
+        setUserHaveSameMail(true);
+        setLoading(false);
+        return;
+      }
+      myData.modules = DataModuleTableToDataAPIModule(moduleToCreateUser);
+      myData.access = PermissionsEnum.TEACHER;
+      createUser(myData).then((user) => {
+        setLoading(false);
+        if (!user) return;
+        localStorage.setItem("user", JSON.stringify(user));
+        router.push("/users/users-recap");
+      });
     });
   };
   return (
@@ -103,6 +113,11 @@ function Page() {
               name={"Ressources du professeur"}
               icon={<GridIcon />}
             />
+          )}
+          {userHaveSameMail && (
+            <div className="text-danger text-center">
+              Cette adresse email est déjà utilisée.
+            </div>
           )}
           <div className="justify-end flex mt-5">
             <Link href="/users">

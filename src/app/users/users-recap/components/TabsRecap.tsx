@@ -47,7 +47,7 @@ const TabsRecap: React.FC<TabsRecapProps> = ({ user: TabsRecapProps }) => {
       <div>{TabsRecapProps?.firstName}</div>
     </div>
     <div>
-      <div className="font-bold">Nom d'utilisateur</div>
+      <div className="font-bold">Nom d&apos;utilisateur</div>
       <div>{TabsRecapProps?.username}</div>
     </div>
     <div>

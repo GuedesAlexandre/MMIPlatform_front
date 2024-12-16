@@ -1,10 +1,10 @@
 "use client";
 
-import { useDataStore } from "@/app/store/useDataControlStore";
-import { postStudentGrade } from "./postStudentsGrades";
+import { useDataStore } from "@/app/store/useDataControl.store";
+import { postStudentGrade } from "@/app/resources/[resource]/control/summary/postStudentsGrades";
 import { useRouter } from "next/navigation";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
-import { useStudentsByPromo } from "@/app/store/useStudentsByPromo";
+import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 import { Button } from "@/components/ui/button";
 import {
   Table,

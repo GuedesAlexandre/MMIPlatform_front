@@ -1,9 +1,10 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { User } from "@/app/users/models/user.model";
 
 export const deleteUserByMail = async (
   email: string,
-  fetchUsers: () => Promise<void>
+  fetchUsers: () => Promise<User[] | undefined>
 ) => {
   const bearer = Cookies.get("bearer");
   try {

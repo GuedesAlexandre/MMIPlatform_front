@@ -1,5 +1,5 @@
-import { ModuleTable } from "../users/createUser/components/data-table/columns";
-import { Module } from "../users/models/user.model";
+import { ModuleTable } from "@/app/users/createUser/components/data-table/columns";
+import { Module } from "@/app/users/models/user.model";
 
 export function moduleDataTable(
   modules: Module[] | undefined
