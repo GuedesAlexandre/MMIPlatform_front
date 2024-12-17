@@ -7,9 +7,6 @@ export const groupeUtilsInformation = (
   ue: ueModule
 ) => {
   const studentsFiltredBySemester = getStudentBySemester(students, semester);
-  console.log(studentsFiltredBySemester);
-  console.log(semester);
-  console.log(ue);
 };
 
 const getStudentBySemester = (
@@ -17,8 +14,10 @@ const getStudentBySemester = (
   semester: string
 ) => {
   if (!students) return [];
-  const temp2 = students.filter((student) => student.notes.length !== 0);
-  return temp2.filter((student) => {
-    return student.notes.filter((note) => note.module.semester === semester);
-  });
+  const studentWithNote = students.filter(
+    (student) => student.notes.length !== 0
+  );
+  return studentWithNote.filter((student) =>
+    student.notes.find((note) => note.module.semester === semester)
+  );
 };
