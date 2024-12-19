@@ -51,6 +51,7 @@ const itemsForAdmin: SkeletonItem[] = [
     access: "ADMIN",
     color: "purple",
     category: "Visualisation 3D",
+    link: "/3Dpages",
     url: new URL(
       "../../../public/assets/dashboard/3D.png",
       import.meta.url
@@ -91,6 +92,7 @@ const itemsForScolarity: SkeletonItem[] = [
     className: "md:col-span-1",
     access: "SCOLARITY",
     color: "orange",
+    link: "/3Dpages",
     category: "Visualisation 3D",
     url: new URL(
       "../../../public/assets/dashboard/3D.png",
