@@ -84,6 +84,7 @@ const itemsForScolarity: SkeletonItem[] = [
       "../../../public/assets/dashboard/missing.png",
       import.meta.url
     ).toString(),
+    link: "/Scolarity",
   },
   {
     title: "Visualiser l’établissement",
@@ -127,6 +128,7 @@ const itemsForTeacher: SkeletonItem[] = [
       "../../../public/assets/dashboard/user.png",
       import.meta.url
     ).toString(),
+    link: "/scolarity",
   },
   {
     title: "Gérer vos modules et évalutations",
