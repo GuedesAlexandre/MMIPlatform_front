@@ -36,7 +36,7 @@ const menuForAdmin = [
   },
   {
     title: "Salles",
-    url: "/dashboard",
+    url: "/3Dpages",
     icon: Box,
   },
 ];
@@ -54,7 +54,7 @@ const menuForScolarity = [
   },
   {
     title: "Salles",
-    url: "/dashboard",
+    url: "/3Dpages",
     icon: Box,
   },
 ];
@@ -82,7 +82,7 @@ const menuForTeacher = [
   },
   {
     title: "Salles",
-    url: "/dashboard",
+    url: "/3Dpages",
     icon: Box,
   },
 ];
