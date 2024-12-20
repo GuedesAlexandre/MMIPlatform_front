@@ -6,7 +6,6 @@ import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 import PromoCard from "./components/PromoCard";
 
 export default function page() {
-  const user = "user";
   const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
   const [CountMMI01, setCountMMI01] = useState<number | undefined>(undefined);
   const [CountMMI02, setCountMMI02] = useState<number | undefined>(undefined);
@@ -21,15 +20,15 @@ export default function page() {
     setStudentByPromo("MMI03");
     setCountMMI03(studentsByPromo?.length);
   }, []);
-
+  console.log(CountMMI01);
   return (
     <>
-      <div className="p-6">
-        <TitleHeaderUI
-          label={"Gestion de la scolarité et des absences"}
-        ></TitleHeaderUI>
+      <TitleHeaderUI
+        label={"Gestion de la scolarité et des absences"}
+      ></TitleHeaderUI>
+      <div className="px-10">
         <div className="flex justify-center items-center">
-            <h3>Séléctionnez une promotion</h3>
+          <h3>Séléctionnez une promotion</h3>
         </div>
         <div className="flex justify-center gap-8">
           <PromoCard title="MMI01" number={CountMMI01} color="red"></PromoCard>
