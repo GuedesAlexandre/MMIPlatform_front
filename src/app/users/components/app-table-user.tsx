@@ -15,6 +15,19 @@ import LoaderUi from "@/app/components/ui/LoaderUi";
 import { deleteUserByMail } from "@/app/users/services/delete-user.service";
 import { User } from "@/app/users/models/user.model";
 import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@radix-ui/react-alert-dialog";
+import {
+  AlertDialogFooter,
+  AlertDialogHeader,
+} from "@/components/ui/alert-dialog";
 
 function AppTableUser() {
   const { all_user, fetchUsers } = UserStore();
@@ -77,15 +90,47 @@ function AppTableUser() {
                   )}
                 </TableCell>
                 <TableCell>
-                  {user.access !== PermissionsEnum.ADMIN &&
-                    user.access !== PermissionsEnum.SCOLARITY && (
-                      <button
-                        onClick={() => deleteUserByMail(user.email, fetchUsers)}
-                        className="text-danger border-danger border p-1 rounded-[5px] hover:text-white hover:bg-danger transition-all"
-                      >
-                        <TrashIcon />
-                      </button>
-                    )}
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      {user.access !== PermissionsEnum.ADMIN &&
+                        user.access !== PermissionsEnum.SCOLARITY && (
+                          <button className="text-danger border border-danger p-2 rounded-md hover:text-white hover:bg-danger transition duration-200">
+                            <TrashIcon />
+                          </button>
+                        )}
+                    </AlertDialogTrigger>
+                    <AlertDialogContent className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                      <div className="bg-white rounded-lg shadow-lg w-full max-w-xl">
+                        <div className="p-6">
+                          <AlertDialogHeader>
+                            <AlertDialogTitle className="text-lg font-semibold text-gray-800">
+                              Êtes-vous sûr de vouloir supprimer cet utilisateur
+                              ?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription className="mt-2 text-sm text-gray-600">
+                              Une fois supprimé, cet utilisateur ne pourra plus
+                              accéder au système et ses données pourraient être
+                              définitivement perdues.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+
+                          <AlertDialogFooter className="mt-6 flex justify-end space-x-3">
+                            <AlertDialogCancel className="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition">
+                              Non, annuler
+                            </AlertDialogCancel>
+                            <AlertDialogAction
+                              className="px-4 py-2 text-white bg-danger rounded-md hover:bg-red-700 transition"
+                              onClick={() =>
+                                deleteUserByMail(user.email, fetchUsers)
+                              }
+                            >
+                              Oui, supprimer
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </div>
+                      </div>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </TableCell>
               </TableRow>
             ))
