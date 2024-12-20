@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useEffect } from "react";
-import { studentsControlTable } from "../../helper/studentsControlsTable";
+import { studentsControlTable } from "@/app/resources/helper/studentsControlsTable";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { toSlug } from "@/app/utils/textToSlug";

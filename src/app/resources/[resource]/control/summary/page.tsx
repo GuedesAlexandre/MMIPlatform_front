@@ -69,23 +69,7 @@ const Summary = () => {
             );
           });
         } else {
-          // notes.map((note) => {
-          //   const statutNote = String(
-          //     statut.find((item) => item.numEtu === note.numEtu)?.status
-          //   );
-          //   putStudentGrade(
-          //     {
-          //       coeff: coefficient,
-          //       note: note.note,
-          //       name: controlName,
-          //       status: statutNote,
-          //     },
-          //     note.numEtu,
-          //     resource,
-          //     lastName
-          //   );
-          // });
-          const limit = pLimit(5);
+          const limit = pLimit(3);
 
           try {
             await Promise.all(
