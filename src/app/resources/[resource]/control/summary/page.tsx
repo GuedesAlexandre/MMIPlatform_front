@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/table";
 import { useState } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+import { putStudentGrade } from "./putStudentGrades";
+import pLimit from "p-limit";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -25,6 +27,8 @@ const Summary = () => {
   const controlName = useDataStore((state) => state.controlName);
   const coefficient = useDataStore((state) => state.coefficient);
   const resource = useDataStore((state) => state.resource);
+  const method = useDataStore((state) => state.method);
+  const lastName = useDataStore((state) => state.lastName);
   const { studentsByPromo } = useStudentsByPromo();
   const router = useRouter();
 
@@ -48,17 +52,52 @@ const Summary = () => {
   const sendNotes = async () => {
     try {
       if (resource) {
-        notes.map((note) => {
-          const statutNote = String(statut.find((item) => item.numEtu === note.numEtu)?.status);
-          postStudentGrade(
-            { coeff: coefficient, note: note.note, name: controlName, status: statutNote},
-            note.numEtu,
-            resource
-          )
+        if (method === "POST") {
+          notes.map((note) => {
+            const statutNote = String(
+              statut.find((item) => item.numEtu === note.numEtu)?.status
+            );
+            postStudentGrade(
+              {
+                coeff: coefficient,
+                note: note.note,
+                name: controlName,
+                status: statutNote,
+              },
+              note.numEtu,
+              resource
+            );
+          });
+        } else {
+          const limit = pLimit(3);
+
+          try {
+            await Promise.all(
+              notes.map((note) =>
+                limit(async () => {
+                  const statutNote =
+                    statut.find((item) => item.numEtu === note.numEtu)
+                      ?.status ?? "DONE";
+                  await putStudentGrade(
+                    {
+                      coeff: coefficient,
+                      note: note.note,
+                      name: controlName,
+                      status: statutNote,
+                    },
+                    note.numEtu,
+                    resource,
+                    lastName
+                  );
+                })
+              )
+            );
+          } catch (error) {
+            console.error("Error processing notes:", error);
+          }
         }
-        );
-        router.push("/resources");
       }
+      router.push("/resources");
     } catch (err) {
       console.error("Erreur lors de l'envoi des notes", err);
     }
@@ -78,7 +117,14 @@ const Summary = () => {
 
   return (
     <>
-      <TitleHeaderUI label={`Récapitulatif du contrôle : ${controlName}`} />
+      {method === "PUT" ? (
+        <TitleHeaderUI
+          label={`Récapitulatif de la modification du contrôle : ${controlName}`}
+        />
+      ) : (
+        <TitleHeaderUI label={`Récapitulatif du contrôle : ${controlName}`} />
+      )}
+
       <div className="px-10">
         <p>
           <strong>Nom du contrôle : </strong>
@@ -181,9 +227,17 @@ const Summary = () => {
               </div>
             </>
           ) : (
-            <p className="text-gray-500">
-              Aucune note n&apos;a été enregistrée.
-            </p>
+            <>
+              <p className="text-gray-500">
+                Aucune note n&apos;a été enregistrée.
+              </p>
+              <Button
+                className="px-10 py-4 bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color rounded"
+                onClick={() => router.push("/resources")}
+              >
+                Revenir à mes ressources
+              </Button>
+            </>
           )}
         </div>
       </div>
