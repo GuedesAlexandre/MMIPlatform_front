@@ -25,7 +25,7 @@ const getStudentBySemester = (
   modules: Module[] | undefined,
   ue: string
 ): dataMatrix[] => {
-  if (!modules || modules.length === 0) return []; // Retourner un tableau vide si modules est invalide
+  if (!modules || modules.length === 0) return [];
 
   const studentsWithNotes = students.filter((student) =>
     student.notes.some(
