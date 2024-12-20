@@ -217,7 +217,7 @@ const Summary = () => {
                   Annuler
                 </Button>
                 <Button
-                  className="px-10 py-4 bg-[#00936E] hover:bg-[#006d51] text-background-color hover:text-background-color rounded"
+                  className="px-10 py-4 bg-success hover:bg-success-hover text-background-color hover:text-background-color rounded"
                   onClick={sendNotes}
                   variant={"outline"}
                   size={"lg"}

@@ -340,7 +340,7 @@ const TableNotes = ({
           size={"lg"}
           onClick={postNotes}
           disabled={!areAllNotesFilled}
-          className="bg-[#00936E] hover:bg-[#006d51] text-background-color hover:text-background-color px-16"
+          className="bg-success hover:bg-success-hover text-background-color hover:text-background-color px-16"
         >
           Valider
         </Button>

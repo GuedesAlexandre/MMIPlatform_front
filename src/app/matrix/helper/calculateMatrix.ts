@@ -51,7 +51,6 @@ const calculNoteAverage = (
   modules: Module[],
   semester: string
 ) => {
-  // const all_notes = student.notes.flat();
   const all_notes = student.notes.filter(
     (note) => note.module.semester === semester
   );

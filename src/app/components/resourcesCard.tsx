@@ -25,7 +25,7 @@ const ResourceCard = ({ module }: { module: Module }) => {
       <div
         className={
           module.promo === "MMI01"
-            ? "bg-[#00936E] text-background-color flex flex-row justify-between pt-44 px-5"
+            ? "bg-success text-background-color flex flex-row justify-between pt-44 px-5"
             : module.promo === "MMI02"
             ? "bg-[#E83583] text-background-color flex flex-row justify-between pt-44 px-5"
             : "bg-[#8B4A97] text-background-color flex flex-row justify-between pt-44 px-5"

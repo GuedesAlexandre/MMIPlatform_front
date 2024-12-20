@@ -84,7 +84,7 @@ const TableMatrix = ({
                 <TableCell 
                 key={module.name} 
                 className={
-                  note.notes[module.name] > 5 ? "text-[#00936E]" : "text-danger"
+                  note.notes[module.name] > 5 ? "text-success" : "text-danger"
                 }>
                   {note.notes[module.name] !== undefined
                     ? note.notes[module.name]
