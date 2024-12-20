@@ -25,7 +25,7 @@ const FormPersonalInfo = ({
         rules={{
           required: "Veuillez remplir ce champ.",
           pattern: {
-            value: /^[A-Za-zÀ-ÿéèàêëôùïçÇ-]+$/,
+            value: /^[A-Za-zÀ-ÿéèàêëôùïçÇ\s-]+$/,
             message: "Veuillez indiquer un prénom valide.",
           },
         }}
@@ -41,7 +41,7 @@ const FormPersonalInfo = ({
         rules={{
           required: "Veuillez remplir ce champ.",
           pattern: {
-            value: /^[A-Za-zÀ-ÿéèàêëôùïçÇ-]+$/,
+            value: /^[A-Za-zÀ-ÿéèàêëôùïçÇ\s-]+$/,
             message: "Veuillez indiquer un nom valide.",
           },
         }}
