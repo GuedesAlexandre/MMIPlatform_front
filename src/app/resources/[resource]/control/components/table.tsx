@@ -21,23 +21,29 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-interface Student {
+import { Note } from "@/app/resources/models/student.model";
+
+const ITEMS_PER_PAGE = 5;
+
+interface Control {
   numEtu: string;
   lastName: string;
   firstName: string;
   promo: string;
   group: string;
-  note?: number;
+  notes: number | Note[];
+  coeff?: number;
+  statut?: "ABS" | "DEF" | "DONE";
 }
-
-const ITEMS_PER_PAGE = 5;
 
 const TableNotes = ({
   data,
   resource,
+  modifyControlName,
 }: {
-  data: Student[];
+  data: Control[];
   resource: string | null;
+  modifyControlName?: string | null;
 }) => {
   const [notes, setNotes] = useState<{ numEtu: string; note?: number }[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -46,28 +52,51 @@ const TableNotes = ({
   const statut = useDataStore((state) => state.statut);
   const controlName = useDataStore((state) => state.controlName);
   const coefficient = useDataStore((state) => state.coefficient);
+  const setMethod = useDataStore((state) => state.setMethod);
   const setStatut = useDataStore((state) => state.setStatut);
   const setControlName = useDataStore((state) => state.setControlName);
   const setCoefficient = useDataStore((state) => state.setCoefficient);
   const setNotesStore = useDataStore((state) => state.setNotes);
   const setResource = useDataStore((state) => state.setResource);
+  const setLastName = useDataStore((state) => state.setLastName);
 
   const router = useRouter();
-
   useEffect(() => {
-    setNotes(
-      data.map((student) => ({ numEtu: student.numEtu, note: undefined }))
-    );
     setResource(resource);
-    setControlName("");
-    setCoefficient(1);
-  }, [data, resource, setResource, setCoefficient, setControlName]);
-
-  useEffect(() => {
-    setStatut(
-      data.map((student) => ({ numEtu: student.numEtu, status: "DONE" }))
-    );
-  }, [data, setStatut]);
+    if (modifyControlName === null) {
+      setControlName("");
+      setNotes(
+        data.map((student) => ({ numEtu: student.numEtu, note: undefined }))
+      );
+      setStatut(
+        data.map((student) => ({ numEtu: student.numEtu, status: "DONE" }))
+      );
+      setCoefficient(1);
+      setMethod("POST");
+      setLastName(null);
+    } else if (modifyControlName !== null){
+      setControlName(String(modifyControlName));
+      setLastName(String(modifyControlName));
+      setNotes(
+        data.map((student) => ({
+          numEtu: student.numEtu,
+          note: Number(student.notes),
+        }))
+      );
+      setStatut(
+        data.map((student) => ({
+          numEtu: student.numEtu,
+          status: String(student.statut),
+        }))
+      );
+      if (data.length > 0) {
+        setCoefficient(Number(data[0].coeff));
+      } else {
+        setCoefficient(1);
+      }
+      setMethod("PUT");
+    }
+  }, [data, resource, modifyControlName]);
 
   const updateNote = (numEtu: string, newNote?: number) => {
     setNotes((prevNotes) =>
@@ -90,7 +119,7 @@ const TableNotes = ({
 
   const areAllNotesFilled = notes.every((item) => item.note !== undefined);
 
-  const logNotes = () => {
+  const postNotes = () => {
     if (controlName === "") setHaveNotControleNames(true);
     if (areAllNotesFilled && controlName !== "") {
       const filledNotes = notes.map((item) => ({
@@ -277,7 +306,7 @@ const TableNotes = ({
         <Button
           variant={"outline"}
           size={"lg"}
-          onClick={logNotes}
+          onClick={postNotes}
           disabled={!areAllNotesFilled}
           className="bg-[#00936E] hover:bg-[#006d51] text-background-color hover:text-background-color px-16"
         >
