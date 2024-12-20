@@ -22,7 +22,7 @@ interface Note {
   student: null;
 }
 
-interface Module {
+export interface Module {
   name: string;
   promo: string;
   semester: string;
