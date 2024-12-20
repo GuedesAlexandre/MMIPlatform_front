@@ -13,7 +13,6 @@ import { translateAccess } from "@/app/utils/translateAccess";
 import TooltipUI from "@/app/components/ui/TooltipUI";
 import LoaderUi from "@/app/components/ui/LoaderUi";
 import { deleteUserByMail } from "@/app/users/services/delete-user.service";
-import { User } from "@/app/users/models/user.model";
 import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
 import {
   AlertDialog,
