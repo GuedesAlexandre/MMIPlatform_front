@@ -48,39 +48,44 @@ function AppTableUser() {
                   {[
                     ...new Set(user.modules.map((module) => module.promo)),
                   ].join(" | ")}
+                  {user.access === PermissionsEnum.SCOLARITY &&
+                    "MMI01 | MMI02 | MMI03"}
                 </TableCell>
                 <TableCell>{translateAccess(user.access)}</TableCell>
                 <TableCell className="text-center">
-                  <TooltipUI
-                    icon={<QuestionMarkCircledIcon />}
-                    message={
-                      <div className="ml-3 bg-blue-50 border border-blue-200 p-3 rounded-xl shadow-md">
-                        <h4 className="text-sm font-semibold text-blue-600 mb-2">
-                          Modules :
-                        </h4>
-                        <ul className="text-start space-y-1">
-                          {user.modules.map((module) => (
-                            <li
-                              key={module.name}
-                              className="text-sm text-gray-800"
-                            >
-                              {module.name}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    }
-                  />
+                  {user.access !== PermissionsEnum.SCOLARITY && (
+                    <TooltipUI
+                      icon={<QuestionMarkCircledIcon />}
+                      message={
+                        <div className="ml-3 bg-blue-50 border border-blue-200 p-3 rounded-xl shadow-md">
+                          <h4 className="text-sm font-semibold text-blue-600 mb-2">
+                            Modules :
+                          </h4>
+                          <ul className="text-start space-y-1">
+                            {user.modules.map((module) => (
+                              <li
+                                key={module.name}
+                                className="text-sm text-gray-800"
+                              >
+                                {module.name}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      }
+                    />
+                  )}
                 </TableCell>
                 <TableCell>
-                  {user.access !== PermissionsEnum.ADMIN && (
-                    <button
-                      onClick={() => deleteUserByMail(user.email, fetchUsers)}
-                      className="text-danger border-danger border p-1 rounded-[5px] hover:text-white hover:bg-danger transition-all"
-                    >
-                      <TrashIcon />
-                    </button>
-                  )}
+                  {user.access !== PermissionsEnum.ADMIN &&
+                    user.access !== PermissionsEnum.SCOLARITY && (
+                      <button
+                        onClick={() => deleteUserByMail(user.email, fetchUsers)}
+                        className="text-danger border-danger border p-1 rounded-[5px] hover:text-white hover:bg-danger transition-all"
+                      >
+                        <TrashIcon />
+                      </button>
+                    )}
                 </TableCell>
               </TableRow>
             ))

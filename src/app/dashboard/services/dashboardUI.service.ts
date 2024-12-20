@@ -61,22 +61,10 @@ const itemsForAdmin: SkeletonItem[] = [
 
 const itemsForScolarity: SkeletonItem[] = [
   {
-    title: "Gérer les étudiants et intervenants",
-    description: "Gérer les étudiants ainsi que les intervenants.",
-    className: "md:col-span-2",
-    access: "SCOLARITY",
-    color: "yellow",
-    category: "Utilisateurs",
-    url: new URL(
-      "../../../public/assets/dashboard/user.png",
-      import.meta.url
-    ).toString(),
-  },
-  {
     title: "Gérer les absences et les rattrapages",
     description:
       "Gérer les absences dans les ressources et définissez des éventuels rattrapages",
-    className: "md:col-span-1",
+    className: "md:col-span-3",
     access: "SCOLARITY",
     color: "purple",
     category: "Scolarité",
@@ -85,6 +73,20 @@ const itemsForScolarity: SkeletonItem[] = [
       import.meta.url
     ).toString(),
   },
+  {
+    title: "Gérer votre matrice",
+    description:
+      "Votre matrice vous permet de suivre en temps réel l’avancé de chaque ressources dans le semestre",
+    className: "md:col-span-2",
+    access: "ADMIN",
+    color: "yellow",
+    category: "Matrices",
+    url: new URL(
+      "../../../public/assets/dashboard/excel.png",
+      import.meta.url
+    ).toString(),
+  },
+
   {
     title: "Visualiser l’établissement",
     description:
