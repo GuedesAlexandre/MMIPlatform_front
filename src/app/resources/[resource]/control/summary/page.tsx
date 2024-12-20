@@ -105,17 +105,6 @@ const Summary = () => {
                     resource,
                     lastName
                   );
-                  console.log(
-                    {
-                      coeff: coefficient,
-                      note: note.note,
-                      name: controlName,
-                      status: statutNote,
-                    },
-                    note.numEtu,
-                    resource,
-                    lastName
-                  );
                 })
               )
             );

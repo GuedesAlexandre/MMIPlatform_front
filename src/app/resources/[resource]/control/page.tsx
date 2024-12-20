@@ -21,7 +21,7 @@ const Control = () => {
     <>
       {name && <TitleHeaderUI label={name} />}
       <div className="px-10">
-        <TableNotes data={data} resource={name} modifyControlName={control} />
+        <TableNotes data={data} resource={name} modifyControlName={control} promo={String(promo)}/>
       </div>
     </>
   );

@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/select";
 
 import { Note } from "@/app/resources/models/student.model";
+import { studentsControlTable } from "@/app/resources/helper/studentsControlsTable";
+import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -40,18 +42,27 @@ const TableNotes = ({
   data,
   resource,
   modifyControlName,
+  promo,
 }: {
   data: Control[];
   resource: string | null;
   modifyControlName?: string | null;
+  promo: string;
 }) => {
   const [notes, setNotes] = useState<{ numEtu: string; note?: number }[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [haveNotControleNames, setHaveNotControleNames] = useState(false);
+  const [haveNotControleNamesList, setHaveNotControleNamesList] =
+    useState(false);
+  const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
 
+  const controlsNameList = useDataStore((state) => state.controlsNameList);
   const statut = useDataStore((state) => state.statut);
   const controlName = useDataStore((state) => state.controlName);
   const coefficient = useDataStore((state) => state.coefficient);
+  const setControlsNameList = useDataStore(
+    (state) => state.setControlsNameList
+  );
   const setMethod = useDataStore((state) => state.setMethod);
   const setStatut = useDataStore((state) => state.setStatut);
   const setControlName = useDataStore((state) => state.setControlName);
@@ -61,6 +72,13 @@ const TableNotes = ({
   const setLastName = useDataStore((state) => state.setLastName);
 
   const router = useRouter();
+
+  useEffect(() => {
+    setStudentByPromo(promo);
+    const controls = studentsControlTable(studentsByPromo, String(resource));
+    setControlsNameList(controls.map((control) => control.name));
+  }, [promo]);
+
   useEffect(() => {
     setResource(resource);
     if (modifyControlName === null) {
@@ -74,7 +92,7 @@ const TableNotes = ({
       setCoefficient(1);
       setMethod("POST");
       setLastName(null);
-    } else if (modifyControlName !== null){
+    } else if (modifyControlName !== null) {
       setControlName(String(modifyControlName));
       setLastName(String(modifyControlName));
       setNotes(
@@ -121,7 +139,11 @@ const TableNotes = ({
 
   const postNotes = () => {
     if (controlName === "") setHaveNotControleNames(true);
-    if (areAllNotesFilled && controlName !== "") {
+    if (
+      areAllNotesFilled &&
+      controlName !== "" &&
+      haveNotControleNamesList !== true
+    ) {
       const filledNotes = notes.map((item) => ({
         numEtu: item.numEtu,
         note: item.note as number,
@@ -164,6 +186,11 @@ const TableNotes = ({
             value={controlName}
             onChange={(e) => {
               setControlName(e.target.value);
+              if (controlsNameList.includes(e.target.value)) {
+                setHaveNotControleNamesList(true);
+              } else {
+                setHaveNotControleNamesList(false);
+              }
               setHaveNotControleNames(e.target.value === "");
             }}
             className="mt-2"
@@ -171,6 +198,11 @@ const TableNotes = ({
           {haveNotControleNames && (
             <p className="text-danger text-sm mt-2">
               Vous devez renseigner le nom du contrôle.
+            </p>
+          )}
+          {haveNotControleNamesList && (
+            <p className="text-danger text-sm mt-2">
+              Ce nom de contrôle est déjà pris.
             </p>
           )}
         </div>

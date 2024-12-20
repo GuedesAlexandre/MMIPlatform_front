@@ -8,6 +8,8 @@ interface DataStore {
   resource: string | null;
   method: "PUT" | "POST";
   lastName: string | null;
+  controlsNameList: string[];
+  setControlsNameList: (controlsNameList: string[]) => void;
   setLastName: (lastName: string | null) => void;
   setMethod: (method: "PUT" | "POST") => void;
   setStatut: (statut: { numEtu: string; status: string }[]) => void;
@@ -25,6 +27,8 @@ export const useDataStore = create<DataStore>((set) => ({
   resource: null,
   method: "POST",
   lastName: null,
+  controlsNameList: [],
+  setControlsNameList: (controlsNameList) => set({ controlsNameList }),
   setLastName: (lastName) => set({ lastName }),
   setMethod: (method) => set({ method }),
   setStatut: (statut) => set({ statut }),
