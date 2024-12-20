@@ -11,19 +11,38 @@ import {
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { PinBottomIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
-import { ueModule } from "@/app/matrix/model/ueModule.model";
+import { useEffect, useState } from "react";
+import { ueModule } from "@/app/matrix/models/ueModule.model";
 import { exportMatrixByPromo } from "@/app/matrix/helper/exportMatrixByPromo";
+import { studentsStore } from "@/app/store/student.store";
+import { groupeUtilsInformation } from "./helper/calculateMatrix";
 
 const Page = () => {
+  const { students, setStudentsData } = studentsStore();
   const [semester, setSemester] = useState<string>("1");
   const [ueSelect, setUeSelect] = useState<ueModule>("synthese");
+  const updateUE = (UE: ueModule) => {
+    setUeSelect(UE);
+    groupeUtilsInformation(students, semester, UE);
+  };
+  useEffect(() => {
+    setStudentsData().then((students) =>
+      groupeUtilsInformation(students, semester, ueSelect)
+    );
+  }, []);
+
   return (
     <div>
       <TitleHeaderUI label="Visualisation des matrices MMI" />
       <div className="w-3/12 pl-10">
         <Label>Semestre :</Label>
-        <Select value={semester} onValueChange={(value) => setSemester(value)}>
+        <Select
+          value={semester}
+          onValueChange={(value) => {
+            setSemester(value);
+            groupeUtilsInformation(students, value, ueSelect);
+          }}
+        >
           <SelectTrigger>
             <SelectValue placeholder="Semestre" />
           </SelectTrigger>
@@ -42,42 +61,44 @@ const Page = () => {
           <Button
             variant={"outline"}
             className="bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-            onClick={() => setUeSelect("synthese")}
+            onClick={() => {
+              updateUE("synthese");
+            }}
           >
             Synthèse
           </Button>
           <Button
             variant={"outline"}
             className="bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-            onClick={() => setUeSelect("UE_COMPRENDRE")}
+            onClick={() => updateUE("UE_COMPRENDRE")}
           >
             UE Comprendre
           </Button>
           <Button
             variant={"outline"}
             className="bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-            onClick={() => setUeSelect("UE_CONCEVOIR")}
+            onClick={() => updateUE("UE_CONCEVOIR")}
           >
             UE Concevoir
           </Button>
           <Button
             variant={"outline"}
             className="bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-            onClick={() => setUeSelect("UE_EXPRIMER")}
+            onClick={() => updateUE("UE_EXPRIMER")}
           >
             UE Exprimer
           </Button>
           <Button
             variant={"outline"}
             className="bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-            onClick={() => setUeSelect("UE_DEVELOPPER")}
+            onClick={() => updateUE("UE_DEVELOPPER")}
           >
             UE Développer
           </Button>
           <Button
             variant={"outline"}
             className="bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color"
-            onClick={() => setUeSelect("UE_ENTREPRENDRE")}
+            onClick={() => updateUE("UE_ENTREPRENDRE")}
           >
             UE Entreprendre
           </Button>
