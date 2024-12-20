@@ -34,7 +34,7 @@ const getStudentBySemester = (
   );
 
   return studentsWithNotes.map((student) => {
-    const studentNotes = calculNoteAverage(student, modules);
+    const studentNotes = calculNoteAverage(student, modules, semester);
     const studentAverage = calculStudentAverage(modules, studentNotes);
     return {
       name: `${student.firstName} ${student.lastName}`,
@@ -46,9 +46,15 @@ const getStudentBySemester = (
   });
 };
 
-const calculNoteAverage = (student: Student, modules: Module[]) => {
-  const all_notes = student.notes.flat();
-
+const calculNoteAverage = (
+  student: Student,
+  modules: Module[],
+  semester: string
+) => {
+  // const all_notes = student.notes.flat();
+  const all_notes = student.notes.filter(
+    (note) => note.module.semester === semester
+  );
   const moduleMap: Record<string, { total: number; coeff: number }> = {};
 
   all_notes.forEach((note) => {
