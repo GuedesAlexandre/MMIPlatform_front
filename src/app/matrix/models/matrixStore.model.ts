@@ -6,13 +6,9 @@ export interface storeMatrix {
 export interface dataMatrix {
   name: string;
   group: string;
-  IdStudent: number;
-  notes: Note[];
+  IdStudent: string;
+  notes: Note;
   average: number;
-  results: any;
 }
 
-interface Note {
-  name: string;
-  average: number;
-}
+type Note = Record<string, number>;

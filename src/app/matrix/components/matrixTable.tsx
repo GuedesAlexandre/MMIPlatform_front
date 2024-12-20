@@ -30,8 +30,13 @@ const TableMatrix = ({
     (module) => module.semester === semester && module.ueName === ueName
   );
 
-  const notes = groupeUtilsInformation(students, semester, ueName);
-  console.log(notes)
+  const notes = groupeUtilsInformation(
+    students,
+    semester,
+    moduleBySemester,
+    ueName
+  );
+  console.log(notes);
   return (
     <>
       <TableHeader>
