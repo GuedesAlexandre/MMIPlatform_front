@@ -31,7 +31,7 @@ const itemsForAdmin: SkeletonItem[] = [
     link: "/users",
   },
   {
-    title: "Gérer vos modules et évalutations",
+    title: "Gérer vos Ressources et évalutations",
     description:
       "Gérer vos ressources enseignées et créer des notes pour vos étudiants jusqu’à la fusion dans la matrice principale.",
     className: "md:col-span-2",
@@ -47,7 +47,7 @@ const itemsForAdmin: SkeletonItem[] = [
   {
     title: "Visualiser votre établissement",
     description:
-      "Visualiser votre établissement grâce à notre module de visualisation dans l’espace.",
+      "Visualiser votre établissement grâce à notre ressource de visualisation dans l’espace.",
     className: "md:col-span-1",
     access: "ADMIN",
     color: "purple",
@@ -149,7 +149,7 @@ const itemsForTeacher: SkeletonItem[] = [
   {
     title: "Visualiser l’établissement",
     description:
-      "Visualiser votre établissement grâce à notre module de visualisation dans l’espace.",
+      "Visualiser votre établissement grâce à notre ressource de visualisation dans l’espace.",
     className: "md:col-span-2",
     access: "TEACHER",
     color: "orange",
