@@ -23,7 +23,6 @@ Cette application vise à centraliser et simplifier la gestion académique et ad
 1. **Cloner le projet**
    ```bash
    git clone https://github.com/GuedesAlexandre/MMIPlatform_front.git
-   cd mmiplatform
    ```
 
 2. **Installer les dépendances**
