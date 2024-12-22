@@ -62,6 +62,21 @@ Cette application vise à centraliser et simplifier la gestion académique et ad
   ```bash
   PORT=4000 npm run dev
   ```
+---
+
+## Librairies utilisées
+
+### **Zustand**
+
+Nous utilisons **Zustand** comme librairie de gestion de store. Elle offre une API simple et performante pour gérer l'état global de l'application sans la complexité de solutions plus lourdes comme Redux.
+
+Pour en savoir plus : [Zustand Documentation](https://zustand-demo.pmnd.rs/).
+
+### **shadcn**
+
+**shadcn** est la librairie choisie pour les composants UI. Elle propose des composants modernes, réactifs et facilement personnalisables, permettant un développement rapide et cohérent de l'interface utilisateur.
+
+Pour en savoir plus : [shadcn Documentation](https://shadcn.dev/).
 
 ---
 
@@ -69,4 +84,3 @@ Cette application vise à centraliser et simplifier la gestion académique et ad
 
 - [Documentation officielle Next.js](https://nextjs.org/docs)
 - [Node.js](https://nodejs.org/)
-- [MMI Platform GitHub](https://github.com/votre-repository/mmiplatform)
