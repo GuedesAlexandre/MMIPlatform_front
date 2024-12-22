@@ -76,7 +76,7 @@ Pour en savoir plus : [Zustand Documentation](https://zustand-demo.pmnd.rs/).
 
 **shadcn** est la librairie choisie pour les composants UI. Elle propose des composants modernes, réactifs et facilement personnalisables, permettant un développement rapide et cohérent de l'interface utilisateur.
 
-Pour en savoir plus : [shadcn Documentation](https://shadcn.dev/).
+Pour en savoir plus :[[shadcn Documentation]([https://shadcn.dev/](https://ui.shadcn.com/))](https://ui.shadcn.com/).
 
 ---
 
