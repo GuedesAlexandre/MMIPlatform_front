@@ -68,7 +68,7 @@ Cette application vise à centraliser et simplifier la gestion académique et ad
    mot de passe : MMIPl@tform24!
    <br/>
 
-   **Identifiant Mme. Boucetta**
+   **Identifiant Mme. Jean-louis**
    mail : chantal.jean-louis@univ-eiffel.fr
    mot de passe : MMIPl@tform24!
 
