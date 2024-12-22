@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MMIPlatform : Gestion Académique et Administrative
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+L'université de Meaux ne dispose actuellement d'aucune application pour gérer efficacement les notes, les justificatifs d'absence et la disponibilité des salles. En réponse à ce besoin, le projet **MMI Platform** a été initié par notre équipe d'étudiants en MMI 3ème année.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Cette application vise à centraliser et simplifier la gestion académique et administrative grâce à des outils modernes, notamment :
+- Une vue interactive 3D des salles,
+- Une gestion avancée des matrices Excel liés à une gestion des notes pour vos étudiants.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tutoriel : Installation et utilisation de l'application Next.js
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Pré-requis
+1. **Node.js** : Assurez-vous d'avoir installé [Node.js](https://nodejs.org/) (version LTS recommandée).
+2. **npm** : Inclus avec Node.js pour gérer les dépendances.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### Étapes d'installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Cloner le projet**
+   ```bash
+   git clone https://github.com/votre-repository/mmiplatform.git
+   cd mmiplatform
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Installer les dépendances**
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Configurer l'environnement**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   À la racine du projet, créez un fichier nommé **`.env.local`** :
+   ```bash
+   touch .env.local
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   Ajoutez-y les variables d'environnement suivantes :  
+   ```env
+   NEXT_PUBLIC_API_PATH=http://localhost:8080/mmiplatform/api/v1
+   NEXT_PUBLIC_SECRET_KEY=f1sQXsbE07j7qvWXayFN0p80hMnkeL7RvnRO+GnjclJzFkXao+S722PQHZTXhLoqMQEV+1VZnYIbeSHGFl1CStG5+h74Rbp9hoOYGi8kLj8nwbM3+9ZApWbFyc4SV2c76WkYFE/8MBvplUFFVIgM/PDp37VwA89RfDIoVYZDxbQ7oIlrNCT0he+OLf8tR8M7VIO4G/uk1hgRH821caLJaHZXZnx6TGgtjjloXnqfShvVrCpx8/qRuPJ5LlYOlVRoy0/RYr0gThhWoUbyxaVRNVK8gJugwtufSb2+Wgo1umQi2aMO0otkSBkJnqIpoJ9vqbUD37ka6yofSZ/SA7QUNg==
+   ```
+
+4. **Lancer le serveur de développement**
+   ```bash
+   npm run dev
+   ```
+   Par défaut, l'application sera accessible sur [http://localhost:3000](http://localhost:3000).
+
+---
+
+### Résolution des problèmes
+
+- **Erreur : "Module not found"**
+  Assurez-vous d'avoir exécuté `npm install` pour installer toutes les dépendances.
+
+- **Port occupé**
+  Si le port 3000 est déjà utilisé, vous pouvez démarrer le serveur sur un autre port avec la commande :
+  ```bash
+  PORT=4000 npm run dev
+  ```
+
+---
+
+## Ressources supplémentaires
+
+- [Documentation officielle Next.js](https://nextjs.org/docs)
+- [Node.js](https://nodejs.org/)
+- [MMI Platform GitHub](https://github.com/votre-repository/mmiplatform)
