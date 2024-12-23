@@ -12,7 +12,6 @@ function FormSecurity({
   // eslint-disable-next-line no-unused-vars
   trigger: (field: string) => Promise<boolean>;
 }) {
-
   return (
     <div className="pb-10 px-10 grid lg:grid-cols-2 lg:gap-x-10 gap-y-5 gap-10 lg:pr-60">
       <InputToolTipUI
@@ -24,7 +23,7 @@ function FormSecurity({
         message={
           <div className="ml-3 bg-blue-50 border border-blue-200 p-3 rounded-xl shadow-md">
             <h4 className="text-sm font-semibold text-blue-600 mb-2">
-              Votre Mots de passe
+              Votre mot de passe
             </h4>
             <ul>
               <li>Le mot de passe doit contenir au moins 8 caractères.</li>
