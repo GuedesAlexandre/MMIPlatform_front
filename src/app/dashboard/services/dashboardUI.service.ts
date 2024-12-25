@@ -87,6 +87,7 @@ const itemsForScolarity: SkeletonItem[] = [
       "../../../public/assets/dashboard/excel.png",
       import.meta.url
     ).toString(),
+    link: "/matrix",
   },
 
   {

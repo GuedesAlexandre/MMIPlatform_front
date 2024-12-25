@@ -62,8 +62,8 @@ const Page = () => {
           )}
         </div>
         <hr></hr>
-        <h4 className="py-4 font-bold">Liste des étudiants général</h4>
-        <div className="lg:grid lg:grid-cols-4 p-6 md:grid md:grid-cols-3 flex  flex-col gap-3">
+        <h4 className="py-4 font-bold">Liste des étudiants général sans absences ni rattrapage en cours</h4>
+        <div className="lg:grid lg:grid-cols-4 p-6 md:grid md:grid-cols-3 flex flex-col gap-3">
           {studentsByPromo &&
             studentsByPromo.map((student) => (
               <a>
