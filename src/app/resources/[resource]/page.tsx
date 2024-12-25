@@ -24,7 +24,6 @@ const Resource = () => {
   const title: string | undefined = parsedData?.name;
   const titlePathname: string = toSlug(title);
   const router = useRouter();
-
   const getMatrix = () => {
     router.push(
       `${process.env.NEXT_PUBLIC_API_PATH}/export/modules?promo=${parsedData.promo}&semester=${parsedData.semester}&ueName=${parsedData.ueName}&moduleName=${parsedData.name}`
@@ -67,7 +66,12 @@ const Resource = () => {
           icon={<ReaderIcon />}
           name={"Liste des contrôles"}
           open={false}
-          data={<AccordionControlTable />}
+          data={
+            <AccordionControlTable
+              promo={parsedData.promo}
+              resourceName={parsedData.name}
+            />
+          }
         />
         <div
           onClick={() => {

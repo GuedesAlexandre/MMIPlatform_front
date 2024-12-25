@@ -86,6 +86,8 @@ const config = {
         "text-color-black": "#242424",
         "secondary-text-color": "#959595",
         "placeholder-color": "#939393",
+        "success": "#00936E",
+        "success-hover": "#006d51",
         sidebar: {
           DEFAULT: "var(--sidebar-background)",
           foreground: "var(--sidebar-foreground)",

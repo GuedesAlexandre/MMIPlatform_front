@@ -12,6 +12,7 @@ export interface Note {
   name: string;
   note: number;
   module: ModuleNote;
+  status: "ABS" | "DEF" | "DONE";
 }
 
 export interface ModuleNote {

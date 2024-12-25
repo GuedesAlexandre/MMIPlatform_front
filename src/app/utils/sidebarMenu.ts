@@ -30,13 +30,8 @@ const menuForAdmin = [
     icon: Frame,
   },
   {
-    title: "Absences",
-    url: "/dashboard",
-    icon: BadgeAlert,
-  },
-  {
     title: "Salles",
-    url: "/dashboard",
+    url: "/3Dpages",
     icon: Box,
   },
 ];
@@ -53,8 +48,13 @@ const menuForScolarity = [
     icon: BadgeAlert,
   },
   {
+    title: "Matrices",
+    url: "/matrix",
+    icon: Frame,
+  },
+  {
     title: "Salles",
-    url: "/dashboard",
+    url: "/3Dpages",
     icon: Box,
   },
 ];
@@ -72,17 +72,12 @@ const menuForTeacher = [
   },
   {
     title: "Matrices",
-    url: "/dashboard",
+    url: "/matrix",
     icon: Frame,
   },
   {
-    title: "Absences",
-    url: "/dashboard",
-    icon: BadgeAlert,
-  },
-  {
     title: "Salles",
-    url: "/dashboard",
+    url: "/3Dpages",
     icon: Box,
   },
 ];
