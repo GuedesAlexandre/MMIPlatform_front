@@ -12,7 +12,7 @@ export interface Note {
   name: string;
   note: number;
   module: ModuleNote;
-  status: "ABS" | "DEF" | "DONE";
+  status: Status;
 }
 
 export interface ModuleNote {
@@ -22,7 +22,12 @@ export interface ModuleNote {
   coeff: number;
   ueName: string;
 }
-
+enum Status {
+  ABS = "ABS",
+  DEF = "DEF",
+  DONE = "DONE",
+  MAKEUP = "MAKEUP",
+}
 export interface StudentsStore {
   studentsByPromo: Student[] | undefined;
   setStudentByPromo: (promo: string) => void;

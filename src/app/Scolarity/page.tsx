@@ -20,7 +20,6 @@ export default function page() {
     setStudentByPromo("MMI03");
     setCountMMI03(studentsByPromo?.length);
   }, []);
-  console.log(CountMMI01);
   return (
     <>
       <TitleHeaderUI

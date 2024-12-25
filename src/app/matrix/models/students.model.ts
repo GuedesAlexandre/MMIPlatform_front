@@ -4,7 +4,7 @@ export interface storeStudent {
 }
 
 export interface Student {
-  id: null;
+  id?: null;
   lastName: string;
   firstName: string;
   promo: string;
@@ -17,7 +17,7 @@ interface Note {
   coeff: number;
   name: string;
   note: number;
-  status: string;
+  status: Status;
   module: Module;
   student: null;
 }
@@ -29,4 +29,11 @@ export interface Module {
   coeff: number;
   ueName: string;
   sumNote: number;
+}
+
+enum Status {
+  ABS = "ABS",
+  DEF = "DEF",
+  DONE = "DONE",
+  MAKEUP = "MAKEUP",
 }
