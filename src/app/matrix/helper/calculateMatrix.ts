@@ -9,6 +9,8 @@ export const groupeUtilsInformation = (
   modules: Module[] | undefined,
   ue: ueModule
 ) => {
+  if (ue === "synthese")
+    return getStudentSyntheseBySemester(modules, students, semester);
   if (!students) return [];
   const studentsFiltredBySemester = getStudentBySemester(
     students,
@@ -17,6 +19,57 @@ export const groupeUtilsInformation = (
     ue
   );
   return studentsFiltredBySemester;
+};
+
+const getStudentSyntheseBySemester = (
+  modules: Module[] | undefined,
+  students: Student[] | undefined,
+  semester: string
+) => {
+  if (!modules || modules.length === 0 || !students) return [];
+
+  const ueGroups: Record<string, Module[]> = modules.reduce((acc, module) => {
+    if (!acc[module.ueName]) {
+      acc[module.ueName] = [];
+    }
+    acc[module.ueName].push(module);
+    return acc;
+  }, {} as Record<string, Module[]>);
+
+  const studentsWithNotes = students.filter((student) =>
+    student.notes.some(
+      (note) =>
+        note.module.semester === semester &&
+        modules.some((module) => module.name === note.module.name)
+    )
+  );
+
+  return studentsWithNotes.map((student) => {
+    const ueNotes: Record<string, number> = {};
+    let totalNotes = 0;
+    let totalCoef = 0;
+    for (const [ueName, ueModules] of Object.entries(ueGroups)) {
+      const averageForUE = calculStudentAverage(
+        ueModules,
+        calculNoteAverage(student, ueModules, semester)
+      );
+
+      ueNotes[ueName] = averageForUE;
+
+      const ueCoef = ueModules.reduce((sum, module) => sum + module.coeff, 0);
+      totalNotes += averageForUE * ueCoef;
+      totalCoef += ueCoef;
+    }
+
+    const studentAverage = totalCoef > 0 ? totalNotes / totalCoef : 0;
+    return {
+      name: `${student.firstName} ${student.lastName}`,
+      group: student.group,
+      IdStudent: student.numEtu,
+      notes: ueNotes,
+      average: studentAverage,
+    };
+  });
 };
 
 const getStudentBySemester = (
@@ -32,7 +85,6 @@ const getStudentBySemester = (
       (note) => note.module.semester === semester && note.module.ueName === ue
     )
   );
-
   return studentsWithNotes.map((student) => {
     const studentNotes = calculNoteAverage(student, modules, semester);
     const studentAverage = calculStudentAverage(modules, studentNotes);
