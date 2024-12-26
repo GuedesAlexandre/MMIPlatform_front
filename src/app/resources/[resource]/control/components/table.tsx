@@ -289,6 +289,7 @@ const TableNotes = ({
                     <SelectItem value="DONE">Valide</SelectItem>
                     <SelectItem value="DEF">Défaillant</SelectItem>
                     <SelectItem value="ABS">Absent</SelectItem>
+                    <SelectItem value="MAKEUP">Rattrapage</SelectItem>
                   </SelectContent>
                 </Select>
               </TableCell>

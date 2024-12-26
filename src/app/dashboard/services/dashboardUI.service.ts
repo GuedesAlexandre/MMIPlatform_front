@@ -73,6 +73,7 @@ const itemsForScolarity: SkeletonItem[] = [
       "../../../public/assets/dashboard/missing.png",
       import.meta.url
     ).toString(),
+    link: "/Scolarity",
   },
   {
     title: "Gérer votre matrice",
@@ -86,6 +87,7 @@ const itemsForScolarity: SkeletonItem[] = [
       "../../../public/assets/dashboard/excel.png",
       import.meta.url
     ).toString(),
+    link: "/matrix",
   },
 
   {
@@ -131,6 +133,7 @@ const itemsForTeacher: SkeletonItem[] = [
       "../../../public/assets/dashboard/user.png",
       import.meta.url
     ).toString(),
+    link: "/scolarity",
   },
   {
     title: "Gérer vos modules et évalutations",
