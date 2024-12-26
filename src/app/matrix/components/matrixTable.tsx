@@ -11,7 +11,7 @@ import {
   Table,
 } from "@/components/ui/table";
 import { useEffect, useState } from "react";
-import { groupeUtilsInformation } from "../helper/calculateMatrix";
+import { groupeUtilsInformation } from "@/app/matrix/helper/calculateMatrix";
 import { ueModule } from "@/app/matrix/models/ueModule.model";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { Module } from "@/app/users/models/user.model";
