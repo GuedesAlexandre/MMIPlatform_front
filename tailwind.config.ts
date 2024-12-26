@@ -78,6 +78,9 @@ const config = {
     },
     extend: {
       colors: {
+        "MMI01": "#00936E",
+        "MMI02": "#E83583",
+        "MMI03": "#8B4A97",
         "primary-blue": "#2F2A85",
         "primary-blue-hover": "#0F273B",
         "primary-blue-disbled": "#49677f",

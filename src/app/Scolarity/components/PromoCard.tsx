@@ -27,10 +27,10 @@ const PromoCard: React.FC<PromoCardProps> = ({
         <div
           className={
             title === "MMI01"
-              ? "bg-[#00936E] text-background-color flex flex-row justify-between pt-44 px-5"
+              ? "bg-MMI01 text-background-color flex flex-row justify-between pt-44 px-5"
               : title === "MMI02"
-              ? "bg-[#E83583] text-background-color flex flex-row justify-between pt-44 px-5"
-              : "bg-[#8B4A97] text-background-color flex flex-row justify-between pt-44 px-5"
+              ? "bg-MMI02 text-background-color flex flex-row justify-between pt-44 px-5"
+              : "bg-MMI03 text-background-color flex flex-row justify-between pt-44 px-5"
           }
         >
           <p className="pb-3">{title}</p>

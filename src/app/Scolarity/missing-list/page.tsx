@@ -4,9 +4,8 @@ import { Student } from "@/app/matrix/models/students.model";
 import { studentsStore } from "@/app/store/student.store";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import MissingListTable from "./components/MissingListTable";
+import MissingListTable from "@/app/Scolarity/missing-list/components/MissingListTable";
 import { Note } from "@/app/resources/models/student.model";
-import { set } from "react-hook-form";
 
 const MissingList = () => {
   const searchParm = useSearchParams();

@@ -3,9 +3,9 @@
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useEffect, useState } from "react";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
-import PromoCard from "./components/PromoCard";
+import PromoCard from "@/app/Scolarity/components/PromoCard";
 
-export default function page() {
+export default function Page() {
   const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
   const [CountMMI01, setCountMMI01] = useState<number | undefined>(undefined);
   const [CountMMI02, setCountMMI02] = useState<number | undefined>(undefined);

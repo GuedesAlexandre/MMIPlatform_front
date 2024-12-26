@@ -2,7 +2,7 @@
 
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useRouter, useSearchParams } from "next/navigation";
-import StudentCard from "./components/studentCard";
+import StudentCard from "@/app/Scolarity/list-absent/components/studentCard";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 import { useEffect, useState } from "react";
 import { Student } from "@/app/resources/models/student.model";
@@ -66,9 +66,8 @@ const Page = () => {
         <div className="lg:grid lg:grid-cols-4 p-6 md:grid md:grid-cols-3 flex flex-col gap-3">
           {studentsByPromo &&
             studentsByPromo.map((student) => (
-              <a>
+              <a key={student.numEtu}>
                 <StudentCard
-                  key={student.numEtu}
                   lastName={student.lastName}
                   firstName={student.firstName}
                   group={student.group}

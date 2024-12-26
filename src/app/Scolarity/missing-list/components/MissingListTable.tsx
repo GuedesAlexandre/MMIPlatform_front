@@ -19,9 +19,6 @@ interface MissingListTableProps {
   lastName?: string;
 }
 
-
-
-
 const MissingListTable: React.FC<MissingListTableProps> = ({
   notes,
   numEtu,
@@ -47,7 +44,7 @@ const handlePutStudentGrade = (
   return (
     <>
       <Alert className="my-4 border-green-400">
-        <Info className="h-4 w-4" />
+        <Info className="size-4" />
         <AlertTitle>Informations sur les status</AlertTitle>
         <AlertDescription>
           Chaque note possède un statut qui peut être :
@@ -57,15 +54,15 @@ const handlePutStudentGrade = (
           <br />
           <span>
             Vous pouvez valider un rattrapage en cliquant sur le bouton
-            "Valider". A partir de ce moment l'étudiant peut bénéficier d'une
-            nouvelle note pour l'évalutation lors d'une session de rattrapage
+            &quot;Valider&quot;. A partir de ce moment l&apos;étudiant peut bénéficier d&apos;une
+            nouvelle note pour l&apos;évalutation lors d&apos;une session de rattrapage
           </span>
         </AlertDescription>
       </Alert>
 
       {errorHandler && (
         <Alert className="my-4 border-red-400">
-          <Info className="h-4 w-4" />
+          <Info className="size-4" />
           <AlertTitle>Erreur</AlertTitle>
           <AlertDescription>
             Une erreur est survenue lors de la validation du rattrapage
@@ -76,7 +73,7 @@ const handlePutStudentGrade = (
       <Table className="table-auto min-w-full border">
         <TableHeader>
           <TableRow className="overflow-scroll">
-            <TableHead className="min-w-32">Nom de l'évaluation</TableHead>
+            <TableHead className="min-w-32">Nom de l&apos;évaluation</TableHead>
             <TableHead className="min-w-32">Module</TableHead>
             <TableHead className="min-w-32">Note obtenue</TableHead>
             <TableHead className="min-w-32">Coefficient</TableHead>
