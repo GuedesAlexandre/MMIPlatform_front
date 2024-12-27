@@ -33,10 +33,7 @@ const Resource = () => {
 
   return (
     <>
-      <div className="flex flex-row items-center">
-        <TitleHeaderUI label={title} />
-        <TooltipResource/>
-      </div>
+      <TitleHeaderUI label={title} />
       <div
         onClick={() => router.back()}
         className="flex flex-row items-center ml-10 cursor-pointer hover:underline w-fit"
@@ -45,7 +42,11 @@ const Resource = () => {
         <p>Retour</p>
       </div>
       <div className="p-10 mx-auto">
-        <div className="mb-5 grid justify-end">
+        <div className="mb-5 flex justify-between">
+        <TooltipResource
+          promo={parsedData.promo}
+          resourceName={parsedData.name}
+        />
           <div
             className="flex flex-row items-center cursor-pointer hover:underline"
             onClick={getMatrix}

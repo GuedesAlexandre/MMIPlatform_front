@@ -3,7 +3,7 @@ import { PermissionsEnum } from "@/app/models/enums/PermissionsEnum";
 export function translateAccess(access: string) {
   switch (access) {
     case PermissionsEnum.ADMIN:
-      return "Admin";
+      return "Référent";
     case PermissionsEnum.SCOLARITY:
       return "Scolarité";
     case PermissionsEnum.TEACHER:
