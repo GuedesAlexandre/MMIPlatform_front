@@ -8,12 +8,13 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  Table
+  Table,
 } from "@/components/ui/table";
 import { useEffect, useState } from "react";
-import { groupeUtilsInformation } from "../helper/calculateMatrix";
+import { groupeUtilsInformation } from "@/app/matrix/helper/calculateMatrix";
 import { ueModule } from "@/app/matrix/models/ueModule.model";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+import { Module } from "@/app/users/models/user.model";
 
 const TableMatrix = ({
   semester,
@@ -28,14 +29,27 @@ const TableMatrix = ({
 
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(7);
+  const [moduleBySemester, setModuleBySemester] = useState<
+    Module[] | undefined
+  >([]);
 
   useEffect(() => {
     fetchModule();
   }, []);
 
-  const moduleBySemester = all_module?.filter(
-    (module) => module.semester === semester && module.ueName === ueName
-  );
+  useEffect(() => {
+    if (ueName === "synthese") {
+      setModuleBySemester(
+        all_module?.filter((module) => module.semester === semester)
+      );
+    } else {
+      setModuleBySemester(
+        all_module?.filter(
+          (module) => module.semester === semester && module.ueName === ueName
+        )
+      );
+    }
+  }, [ueName, semester, students]);
 
   const notes = groupeUtilsInformation(
     students,
@@ -57,20 +71,40 @@ const TableMatrix = ({
       setCurrentPage(page);
     }
   };
-
   return (
     <>
       <Table className="table-auto min-w-full border">
         <TableHeader>
           <TableRow className="overflow-scroll">
-            <TableHead className="min-w-32">Nom Prénom</TableHead>
+            <TableHead className="min-w-48">Nom Prénom</TableHead>
             <TableHead className="min-w-32">Groupe</TableHead>
             <TableHead className="min-w-32">N°Étudiant</TableHead>
-            {moduleBySemester?.map((module) => (
-              <TableHead className="py-2 min-w-32" key={module.name}>
-                {module.name}
-              </TableHead>
-            ))}
+            {ueName === "synthese" ? (
+              <>
+                <TableHead className="py-2 min-w-40">UE Entreprendre</TableHead>
+                <TableHead className="py-2 min-w-40">UE Développer</TableHead>
+                {!(semester === "5" || semester === "6") && (
+                  <>
+                    <TableHead className="py-2 min-w-40">
+                      UE Comprendre
+                    </TableHead>
+                    <TableHead className="py-2 min-w-40">
+                      UE Concevoir
+                    </TableHead>
+                    <TableHead className="py-2 min-w-40">UE Exprimer</TableHead>
+                  </>
+                )}
+              </>
+            ) : (
+              moduleBySemester?.map((module, key) => (
+                <TableHead
+                  className="py-2 min-w-32"
+                  key={`${module.name} - ${key}`}
+                >
+                  {module.name}
+                </TableHead>
+              ))
+            )}
             <TableHead className="min-w-32">Moyenne</TableHead>
           </TableRow>
         </TableHeader>
@@ -80,17 +114,78 @@ const TableMatrix = ({
               <TableCell>{note.name}</TableCell>
               <TableCell>{note.group}</TableCell>
               <TableCell>{note.IdStudent}</TableCell>
-              {moduleBySemester?.map((module) => (
-                <TableCell 
-                key={module.name} 
-                className={
-                  note.notes[module.name] > 5 ? "text-success" : "text-danger"
-                }>
-                  {note.notes[module.name] !== undefined
-                    ? note.notes[module.name].toFixed(2)
-                    : "-"}
-                </TableCell>
-              ))}
+              {ueName === "synthese" ? (
+                <>
+                  <TableCell
+                    className={
+                      note.notes["UE_ENTREPRENDRE"] >= 7
+                        ? "text-success"
+                        : "text-danger"
+                    }
+                  >
+                    {note.notes["UE_ENTREPRENDRE"] !== undefined
+                      ? note.notes["UE_ENTREPRENDRE"].toFixed(2)
+                      : 0}
+                  </TableCell>
+                  <TableCell
+                    className={
+                      note.notes["UE_DEVELOPPER"] >= 7
+                        ? "text-success"
+                        : "text-danger"
+                    }
+                  >
+                    {note.notes["UE_DEVELOPPER"] !== undefined
+                      ? note.notes["UE_DEVELOPPER"].toFixed(2)
+                      : 0}
+                  </TableCell>
+                  {!(semester === "5" || semester === "6") && (
+                    <>
+                      <TableCell
+                        className={
+                          note.notes["UE_COMPRENDRE"] >= 7
+                            ? "text-success"
+                            : "text-danger"
+                        }
+                      >
+                        {note.notes["UE_COMPRENDRE"].toFixed(2)}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          note.notes["UE_CONCEVOIR"] >= 7
+                            ? "text-success"
+                            : "text-danger"
+                        }
+                      >
+                        {note.notes["UE_CONCEVOIR"].toFixed(2)}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          note.notes["UE_EXPRIMER"] >= 7
+                            ? "text-success"
+                            : "text-danger"
+                        }
+                      >
+                        {note.notes["UE_EXPRIMER"].toFixed(2)}
+                      </TableCell>
+                    </>
+                  )}
+                </>
+              ) : (
+                moduleBySemester?.map((module, key) => (
+                  <TableCell
+                    key={`${module.name} - ${key}`}
+                    className={
+                      note.notes[module.name] >= 7
+                        ? "text-success"
+                        : "text-danger"
+                    }
+                  >
+                    {note.notes[module.name] !== undefined
+                      ? note.notes[module.name].toFixed(2)
+                      : "-"}
+                  </TableCell>
+                ))
+              )}
               <TableCell>{note.average.toFixed(2)}</TableCell>
             </TableRow>
           ))}

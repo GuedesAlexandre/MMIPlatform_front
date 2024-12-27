@@ -10,7 +10,7 @@ import { UserSessionJWT } from "@/app/models/UserSessionJWT";
 
 const menuForAdmin = [
   {
-    title: "Home",
+    title: "Accueil",
     url: "/dashboard",
     icon: Home,
   },
@@ -38,7 +38,7 @@ const menuForAdmin = [
 
 const menuForScolarity = [
   {
-    title: "Home",
+    title: "Accueil",
     url: "/dashboard",
     icon: Home,
   },
@@ -61,7 +61,7 @@ const menuForScolarity = [
 
 const menuForTeacher = [
   {
-    title: "Home",
+    title: "Accueil",
     url: "/dashboard",
     icon: Home,
   },
