@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import Accordion from "@/app/components/accordion";
 import AccordionResourceTable from "@/app/resources/[resource]/components/accordionResourceTable";
 import AccordionControlTable from "@/app/resources/[resource]/components/accordionControlTable";
+import TooltipResource from "@/app/resources/[resource]/components/tooltipResource";
 import { Module } from "@/app/resources/models/modules.model";
 
 const Resource = () => {
@@ -32,7 +33,10 @@ const Resource = () => {
 
   return (
     <>
-      <TitleHeaderUI label={title} />
+      <div className="flex flex-row items-center">
+        <TitleHeaderUI label={title} />
+        <TooltipResource/>
+      </div>
       <div
         onClick={() => router.back()}
         className="flex flex-row items-center ml-10 cursor-pointer hover:underline w-fit"

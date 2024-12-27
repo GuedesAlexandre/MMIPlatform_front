@@ -73,7 +73,7 @@ const itemsForScolarity: SkeletonItem[] = [
       "../../../public/assets/dashboard/missing.png",
       import.meta.url
     ).toString(),
-    link: "/Scolarity",
+    link: "/scolarity",
   },
   {
     title: "Gérer votre matrice",
@@ -161,6 +161,7 @@ const itemsForTeacher: SkeletonItem[] = [
       "../../../public/assets/dashboard/3D.png",
       import.meta.url
     ).toString(),
+    link: "/3Dpages",
   },
 ];
 

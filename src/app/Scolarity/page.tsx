@@ -3,7 +3,7 @@
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useEffect, useState } from "react";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
-import PromoCard from "@/app/Scolarity/components/PromoCard";
+import PromoCard from "@/app/scolarity/components/PromoCard";
 
 export default function Page() {
   const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();

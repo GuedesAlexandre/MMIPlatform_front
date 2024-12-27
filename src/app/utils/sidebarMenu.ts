@@ -44,7 +44,7 @@ const menuForScolarity = [
   },
   {
     title: "Absences",
-    url: "/dashboard",
+    url: "/scolarity",
     icon: BadgeAlert,
   },
   {

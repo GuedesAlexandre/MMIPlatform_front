@@ -18,7 +18,7 @@ const PromoCard: React.FC<PromoCardProps> = ({
 }: PromoCardProps) => {
   const router = useRouter();
   const handleClickChoosePromo = (promo: string) => {
-    router.push(`Scolarity/list-absent?promo=${promo}`);
+    router.push(`scolarity/list-absent?promo=${promo}`);
   };
 
   return (
