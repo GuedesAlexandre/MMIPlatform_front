@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import Accordion from "@/app/components/accordion";
 import AccordionResourceTable from "@/app/resources/[resource]/components/accordionResourceTable";
 import AccordionControlTable from "@/app/resources/[resource]/components/accordionControlTable";
+import TooltipResource from "@/app/resources/[resource]/components/tooltipResource";
 import { Module } from "@/app/resources/models/modules.model";
 
 const Resource = () => {
@@ -41,7 +42,11 @@ const Resource = () => {
         <p>Retour</p>
       </div>
       <div className="p-10 mx-auto">
-        <div className="mb-5 grid justify-end">
+        <div className="mb-5 flex justify-between">
+        <TooltipResource
+          promo={parsedData.promo}
+          resourceName={parsedData.name}
+        />
           <div
             className="flex flex-row items-center cursor-pointer hover:underline"
             onClick={getMatrix}

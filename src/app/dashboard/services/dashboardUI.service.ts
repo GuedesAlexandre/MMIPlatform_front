@@ -39,7 +39,7 @@ const itemsForAdmin: SkeletonItem[] = [
     color: "blue",
     category: "Modules",
     url: new URL(
-      "../../../public/assets/dashboard/modules.jpg",
+      "../../../public/assets/dashboard/modules2.jpg",
       import.meta.url
     ).toString(),
     link: "/resources",
@@ -73,7 +73,7 @@ const itemsForScolarity: SkeletonItem[] = [
       "../../../public/assets/dashboard/missing.png",
       import.meta.url
     ).toString(),
-    link: "/Scolarity",
+    link: "/scolarity",
   },
   {
     title: "Gérer votre matrice",
@@ -108,6 +108,20 @@ const itemsForScolarity: SkeletonItem[] = [
 
 const itemsForTeacher: SkeletonItem[] = [
   {
+    title: "Gérer vos modules et évalutations",
+    description:
+      "Gérer vos ressources enseignées et créer des notes pour vos étudiants jusqu’à la fusion dans la matrice principale.",
+    className: "md:col-span-3",
+    access: "TEACHER",
+    color: "blue",
+    category: "Modules",
+    url: new URL(
+      "../../../public/assets/dashboard/modules2.jpg",
+      import.meta.url
+    ).toString(),
+    link: "/resources",
+  },
+  {
     title: "Visualisez votre matrice",
     description:
       "Votre matrice vous permet de suivre en temps réel l’avancé de chaque ressources dans le semestre.",
@@ -122,34 +136,6 @@ const itemsForTeacher: SkeletonItem[] = [
     link: "/matrix",
   },
   {
-    title: "Gérer les absences et les rattrapages",
-    description:
-      "Gérer les absences dans les ressources et définissez des éventuels rattrapages.",
-    className: "md:col-span-2",
-    access: "TEACHER",
-    color: "purple",
-    category: "Scolarité",
-    url: new URL(
-      "../../../public/assets/dashboard/user.png",
-      import.meta.url
-    ).toString(),
-    link: "/scolarity",
-  },
-  {
-    title: "Gérer vos modules et évalutations",
-    description:
-      "Gérer vos ressources enseignées et créer des notes pour vos étudiants jusqu’à la fusion dans la matrice principale.",
-    className: "md:col-span-1",
-    access: "TEACHER",
-    color: "blue",
-    category: "Modules",
-    url: new URL(
-      "../../../public/assets/dashboard/modules.jpg",
-      import.meta.url
-    ).toString(),
-    link: "/resources",
-  },
-  {
     title: "Visualiser l’établissement",
     description:
       "Visualiser votre établissement grâce à notre ressource de visualisation dans l’espace.",
@@ -161,6 +147,7 @@ const itemsForTeacher: SkeletonItem[] = [
       "../../../public/assets/dashboard/3D.png",
       import.meta.url
     ).toString(),
+    link: "/3Dpages",
   },
 ];
 

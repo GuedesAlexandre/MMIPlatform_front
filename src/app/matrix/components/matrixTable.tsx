@@ -147,7 +147,9 @@ const TableMatrix = ({
                             : "text-danger"
                         }
                       >
-                        {note.notes["UE_COMPRENDRE"].toFixed(2)}
+                        {note.notes["UE_COMPRENDRE"] !== undefined
+                          ? note.notes["UE_COMPRENDRE"].toFixed(2)
+                          : 0}
                       </TableCell>
                       <TableCell
                         className={
@@ -156,7 +158,9 @@ const TableMatrix = ({
                             : "text-danger"
                         }
                       >
-                        {note.notes["UE_CONCEVOIR"].toFixed(2)}
+                        {note.notes["UE_CONCEVOIR"] !== undefined
+                          ? note.notes["UE_CONCEVOIR"].toFixed(2)
+                          : 0}
                       </TableCell>
                       <TableCell
                         className={
@@ -165,7 +169,9 @@ const TableMatrix = ({
                             : "text-danger"
                         }
                       >
-                        {note.notes["UE_EXPRIMER"].toFixed(2)}
+                        {note.notes["UE_EXPRIMER"] !== undefined
+                          ? note.notes["UE_EXPRIMER"].toFixed(2)
+                          : 0}
                       </TableCell>
                     </>
                   )}
