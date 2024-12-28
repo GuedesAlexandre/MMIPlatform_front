@@ -23,6 +23,9 @@ const Page = () => {
   useEffect(() => {
     if (!promo) return;
     setStudentByPromo(promo);
+  }, [promo, setStudentByPromo]);
+
+  useEffect(() => {
     setAbsentStudents(
       studentsByPromo?.filter((student) => {
         return student.notes.some(
@@ -30,8 +33,7 @@ const Page = () => {
         );
       })
     );
-  }, [promo, setStudentByPromo, studentsByPromo]);
-
+  }, [studentsByPromo]);
   return (
     <>
       <TitleHeaderUI

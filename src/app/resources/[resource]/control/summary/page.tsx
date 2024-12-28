@@ -253,6 +253,8 @@ export const replaceStatut = (statut: string | undefined) => {
       return "Défaillant";
     case "DONE":
       return "Valide";
+    case "MAKEUP":
+      return "Rattrapage";
     default:
       return statut;
   }

@@ -23,7 +23,6 @@ const TooltipResource = ({
     setStudentByPromo(promo);
   }, []);
   const controls = studentsControlTable(studentsByPromo, resourceName);
-  console.log(controls);
   return (
     <div className="flex flex-row items-center">
       {controls.length >= 2 ? (
