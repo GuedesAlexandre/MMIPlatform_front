@@ -19,7 +19,7 @@ export default function Page() {
     setCountMMI02(studentsByPromo?.length);
     setStudentByPromo("MMI03");
     setCountMMI03(studentsByPromo?.length);
-  }, []);
+  }, [setStudentByPromo]);
   return (
     <>
       <TitleHeaderUI
