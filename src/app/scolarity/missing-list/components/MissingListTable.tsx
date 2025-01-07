@@ -24,23 +24,40 @@ const MissingListTable: React.FC<MissingListTableProps> = ({
   numEtu,
   lastName,
 }) => {
-const [errorHandler, setErrorHandler] = useState<boolean>(false);
-const handlePutStudentGrade = (
-  data: { coeff: number; note: number; name: string; status: string },
-  numEtu: string,
-  resource: string,
-  lastname: string | null
-) => {
-  try{
-  putStudentGrade(data, numEtu, resource, lastname).then(() => {
-    window.location.reload();
-  });
-  }
-  catch(error){
-    console.error(error);
-    setErrorHandler(true);
-  }
-};
+  const [errorHandler, setErrorHandler] = useState<boolean>(false);
+  const handlePutStudentGrade = (
+    data: { coeff: number; note: number; name: string; status: string },
+    numEtu: string,
+    resource: string,
+    lastname: string | null
+  ) => {
+    try {
+      putStudentGrade(data, numEtu, resource, lastname).then(() => {
+        window.location.reload();
+      });
+    } catch (error) {
+      console.error(error);
+      setErrorHandler(true);
+    }
+  };
+
+  const seen = new Set<string>();
+  const uniqueNotes = notes
+    ?.filter(
+      (note) =>
+        note.status === "ABS" ||
+        note.status === "MAKEUP" ||
+        note.status === "DEF"
+    )
+    .filter((note) => {
+      const key = `${note.name}-${note.module.name}`;
+      if (seen.has(key)) {
+        return false;
+      } else {
+        seen.add(key);
+        return true;
+      }
+    });
   return (
     <>
       <Alert className="my-4 border-green-400">
@@ -54,8 +71,9 @@ const handlePutStudentGrade = (
           <br />
           <span>
             Vous pouvez valider un rattrapage en cliquant sur le bouton
-            &quot;Valider&quot;. A partir de ce moment l&apos;étudiant peut bénéficier d&apos;une
-            nouvelle note pour l&apos;évalutation lors d&apos;une session de rattrapage
+            &quot;Valider&quot;. A partir de ce moment l&apos;étudiant peut
+            bénéficier d&apos;une nouvelle note pour l&apos;évalutation lors
+            d&apos;une session de rattrapage
           </span>
         </AlertDescription>
       </Alert>
@@ -66,9 +84,9 @@ const handlePutStudentGrade = (
           <AlertTitle>Erreur</AlertTitle>
           <AlertDescription>
             Une erreur est survenue lors de la validation du rattrapage
-            </AlertDescription>
-            </Alert>
-            )}
+          </AlertDescription>
+        </Alert>
+      )}
 
       <Table className="table-auto min-w-full border">
         <TableHeader>
@@ -82,7 +100,7 @@ const handlePutStudentGrade = (
           </TableRow>
         </TableHeader>
         <TableBody>
-          {notes
+          {/* {notes
             ?.filter(
               (note) =>
                 note.status === "ABS" ||
@@ -121,7 +139,40 @@ const handlePutStudentGrade = (
                   )}
                 </TableCell>
               </TableRow>
-            ))}
+            ))} */}
+          {uniqueNotes?.map((note) => (
+            <TableRow key={note.name}>
+              <TableCell>{note.name}</TableCell>
+              <TableCell>{note.module.name}</TableCell>
+              <TableCell>{note.note}</TableCell>
+              <TableCell>{note.coeff}</TableCell>
+              <TableCell>{note.status}</TableCell>
+              <TableCell>
+                {note.status === "MAKEUP" ? (
+                  <span>Rattrapage en cours</span>
+                ) : (
+                  <button
+                    className="bg-green-500 text-white rounded-md p-2"
+                    onClick={() =>
+                      handlePutStudentGrade(
+                        {
+                          coeff: note.coeff,
+                          note: note.note,
+                          name: note.name,
+                          status: "MAKEUP",
+                        },
+                        numEtu as string,
+                        note.module.name,
+                        note.name as string
+                      )
+                    }
+                  >
+                    Valider
+                  </button>
+                )}
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </>
