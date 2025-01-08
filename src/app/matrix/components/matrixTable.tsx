@@ -118,7 +118,7 @@ const TableMatrix = ({
                 <>
                   <TableCell
                     className={
-                      note.notes["UE_ENTREPRENDRE"] >= 7
+                      note.notes["UE_ENTREPRENDRE"] >= 10
                         ? "text-success"
                         : "text-danger"
                     }
@@ -129,7 +129,7 @@ const TableMatrix = ({
                   </TableCell>
                   <TableCell
                     className={
-                      note.notes["UE_DEVELOPPER"] >= 7
+                      note.notes["UE_DEVELOPPER"] >= 10
                         ? "text-success"
                         : "text-danger"
                     }
@@ -142,7 +142,7 @@ const TableMatrix = ({
                     <>
                       <TableCell
                         className={
-                          note.notes["UE_COMPRENDRE"] >= 7
+                          note.notes["UE_COMPRENDRE"] >= 10
                             ? "text-success"
                             : "text-danger"
                         }
@@ -153,7 +153,7 @@ const TableMatrix = ({
                       </TableCell>
                       <TableCell
                         className={
-                          note.notes["UE_CONCEVOIR"] >= 7
+                          note.notes["UE_CONCEVOIR"] >= 10
                             ? "text-success"
                             : "text-danger"
                         }
@@ -164,7 +164,7 @@ const TableMatrix = ({
                       </TableCell>
                       <TableCell
                         className={
-                          note.notes["UE_EXPRIMER"] >= 7
+                          note.notes["UE_EXPRIMER"] >= 10
                             ? "text-success"
                             : "text-danger"
                         }
@@ -181,7 +181,7 @@ const TableMatrix = ({
                   <TableCell
                     key={`${module.name} - ${key}`}
                     className={
-                      note.notes[module.name] >= 7
+                      note.notes[module.name] >= 10
                         ? "text-success"
                         : "text-danger"
                     }
