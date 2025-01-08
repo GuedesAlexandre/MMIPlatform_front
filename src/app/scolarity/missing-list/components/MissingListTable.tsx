@@ -43,11 +43,7 @@ const MissingListTable: React.FC<MissingListTableProps> = ({
 
   const seen = new Set<string>();
   const uniqueNotes = notes
-    ?.filter(
-      (note) =>
-        note.status === "ABS" ||
-        note.status === "MAKEUP"
-    )
+    ?.filter((note) => note.status === "ABS" || note.status === "MAKEUP")
     .filter((note) => {
       const key = `${note.name}-${note.module.name}`;
       if (seen.has(key)) {
@@ -99,46 +95,6 @@ const MissingListTable: React.FC<MissingListTableProps> = ({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {/* {notes
-            ?.filter(
-              (note) =>
-                note.status === "ABS" ||
-                note.status === "MAKEUP" ||
-                note.status === "DEF"
-            )
-            .map((note) => (
-              <TableRow key={note.name}>
-                <TableCell>{note.name}</TableCell>
-                <TableCell>{note.module.name}</TableCell>
-                <TableCell>{note.note}</TableCell>
-                <TableCell>{note.coeff}</TableCell>
-                <TableCell>{note.status}</TableCell>
-                <TableCell>
-                  {note.status === "MAKEUP" ? (
-                    <span>Rattrapage en cours</span>
-                  ) : (
-                    <button
-                      className="bg-green-500 text-white rounded-md p-2"
-                      onClick={() =>
-                        handlePutStudentGrade(
-                          {
-                            coeff: note.coeff,
-                            note: note.note,
-                            name: note.name,
-                            status: "MAKEUP",
-                          },
-                          numEtu as string,
-                          note.module.name,
-                          note.name as string
-                        )
-                      }
-                    >
-                      Valider
-                    </button>
-                  )}
-                </TableCell>
-              </TableRow>
-            ))} */}
           {uniqueNotes?.map((note) => (
             <TableRow key={note.name}>
               <TableCell>{note.name}</TableCell>
