@@ -46,8 +46,7 @@ const MissingListTable: React.FC<MissingListTableProps> = ({
     ?.filter(
       (note) =>
         note.status === "ABS" ||
-        note.status === "MAKEUP" ||
-        note.status === "DEF"
+        note.status === "MAKEUP"
     )
     .filter((note) => {
       const key = `${note.name}-${note.module.name}`;

@@ -41,7 +41,10 @@ const PromoCard: React.FC<PromoCardProps> = ({
         </div>
         <div className="px-4 flex flex-row justify-between items-center py-5">
           <div className="flex justify-end">
-            <Button onClick={() => handleClickChoosePromo(String(title))}>
+            <Button 
+            onClick={() => handleClickChoosePromo(String(title))}
+            className="bg-primary-blue hover:bg-primary-blue-hover"
+            >
               Voir la promotion <ArrowRightIcon />
             </Button>
           </div>

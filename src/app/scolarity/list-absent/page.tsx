@@ -32,7 +32,7 @@ const Page = () => {
     setAbsentStudents(
       studentsByPromo?.filter((student) => {
         return student.notes.some(
-          (note) => note.status === "ABS" || note.status === "MAKEUP" || note.status === "DEF"
+          (note) => note.status === "ABS" || note.status === "MAKEUP"
         );
       })
     );
@@ -86,7 +86,7 @@ const Page = () => {
         )}
         <hr></hr>
         <h4 className="py-4 font-bold">
-          Liste des étudiants général sans absences ni rattrapage en cours
+          Liste des étudiants sans absences ni rattrapage en cours.
         </h4>
         <div className="lg:grid-cols-4 p-6 md:grid-cols-2 sm:grid-cols-1 grid gap-3">
           {studentsWithoutAbsent &&
