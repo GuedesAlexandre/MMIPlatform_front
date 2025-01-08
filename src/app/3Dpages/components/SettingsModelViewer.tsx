@@ -1,9 +1,11 @@
 "use client";
+import { WallStore } from "@/app/store/3DWalls.store";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 function SettingsModelViewer() {
   const [isClicked, setIsClicked] = useState(true);
+  const { showWalls, setShowWalls } = WallStore();
   return (
     <div className="w-full">
       <div
@@ -17,7 +19,16 @@ function SettingsModelViewer() {
           isClicked ? "max-h-0 opacity-0 py-0" : "max-h-screen opacity-100 py-4"
         }`}
         style={{ overflow: "hidden" }}
-      ></div>
+      >
+        <label className="flex items-center space-x-2 justify-center">
+          <input
+            type="checkbox"
+            checked={showWalls}
+            onChange={(e) => setShowWalls(e.target.checked)}
+          />
+          <span>Afficher les murs</span>
+        </label>
+      </div>
     </div>
   );
 }
