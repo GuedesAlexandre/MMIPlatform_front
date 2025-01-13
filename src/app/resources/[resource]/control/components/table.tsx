@@ -35,7 +35,7 @@ interface Control {
   group: string;
   notes: number | Note[];
   coeff?: number;
-  statut?: "ABS" | "DEF" | "DONE" | "MAKEUP";
+  statut?: "ABS" | "DEF" | "DONE" | "MAKEUP" | string;
 }
 
 const TableNotes = ({

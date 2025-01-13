@@ -6,7 +6,7 @@ export interface StudentTable {
   firstName: string;
   promo: string;
   group: string;
-  average: number;
+  average: string | number;
 }
 
 export const columns: ColumnDef<StudentTable>[] = [

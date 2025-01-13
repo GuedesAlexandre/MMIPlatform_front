@@ -22,7 +22,7 @@ export interface ModuleNote {
   coeff: number;
   ueName: string;
 }
-enum Status {
+export enum Status {
   ABS = "ABS",
   DEF = "DEF",
   DONE = "DONE",
