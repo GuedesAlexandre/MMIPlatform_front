@@ -16,8 +16,9 @@ import {
 } from "@/components/ui/table";
 import { useState } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
-import { putStudentGrade } from "./putStudentGrades";
+import { putStudentGrade } from "@/app/resources/[resource]/control/summary/putStudentGrades";
 import pLimit from "p-limit";
+import { replaceStatut } from "@/app/resources/[resource]/control/summary/helper/replaceStatut";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -243,21 +244,6 @@ const Summary = () => {
       </div>
     </>
   );
-};
-
-export const replaceStatut = (statut: string | undefined) => {
-  switch (statut) {
-    case "ABS":
-      return "Absent";
-    case "DEF":
-      return "Défaillant";
-    case "DONE":
-      return "Valide";
-    case "MAKEUP":
-      return "Rattrapage";
-    default:
-      return statut;
-  }
 };
 
 export default Summary;

@@ -6,6 +6,15 @@ import { DataTable } from "@/app/resources/[resource]/components/resourceStudent
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 
+interface StudentData {
+  NumEtu: string;
+    lastName: string;
+    firstName: string;
+    promo: string;
+    group: string;
+    average: string;
+}
+
 const AccordionResourceTable = ({
   promo,
   ressourceName,
@@ -18,7 +27,7 @@ const AccordionResourceTable = ({
     setStudentByPromo(promo);
   }, []);
 
-  const studentsTableData = transformToStudentTable(
+  const studentsTableData: StudentData[] = transformToStudentTable(
     studentsByPromo,
     ressourceName,
     ueName

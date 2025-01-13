@@ -45,7 +45,7 @@ export function DataTable<TData, TValue>({
 
   useEffect(() => {
     const selectedRows = Object.keys(rowSelection).map((row: string) => {
-      const index = row;
+      const index = parseInt(row, 10);
       return allRow.rows[index].original;
     }) as ModuleTable[];
 
