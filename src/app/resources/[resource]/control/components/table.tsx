@@ -54,6 +54,8 @@ const TableNotes = ({
   const [haveNotControleNames, setHaveNotControleNames] = useState(false);
   const [haveNotControleNamesList, setHaveNotControleNamesList] =
     useState(false);
+  const [haveNotCoefficient, setHaveNotCoefficient] = useState(false);
+
   const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
 
   const controlsNameList = useDataStore((state) => state.controlsNameList);
@@ -142,7 +144,8 @@ const TableNotes = ({
     if (
       areAllNotesFilled &&
       controlName !== "" &&
-      haveNotControleNamesList !== true
+      haveNotControleNamesList !== true &&
+      haveNotCoefficient !== true
     ) {
       const filledNotes = notes.map((item) => ({
         numEtu: item.numEtu,
@@ -212,10 +215,23 @@ const TableNotes = ({
             id="coefficient"
             type="number"
             placeholder="Coefficient"
-            value={coefficient}
-            onChange={(e) => setCoefficient(Number(e.target.value))}
+            value={coefficient ?? ""}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value === "") {
+                setCoefficient(null);
+              } else {
+                setCoefficient(Number(value) > 0 ? Number(value) : null);
+              }
+              setHaveNotCoefficient(value === "");
+            }}
             className="mt-2"
           />
+          {haveNotCoefficient && (
+            <p className="text-danger text-sm mt-2">
+              Vous devez renseigner un coefficient.
+            </p>
+          )}
         </div>
       </div>
       <Table className="border">
