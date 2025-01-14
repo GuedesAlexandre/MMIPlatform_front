@@ -4,7 +4,7 @@ interface DataStore {
   notes: { numEtu: string; note: number }[];
   statut: { numEtu: string; status: string }[];
   controlName: string;
-  coefficient: number;
+  coefficient: number | null;
   resource: string | null;
   method: "PUT" | "POST";
   lastName: string | null;
@@ -15,7 +15,7 @@ interface DataStore {
   setStatut: (statut: { numEtu: string; status: string }[]) => void;
   setNotes: (notes: { numEtu: string; note: number }[]) => void;
   setControlName: (name: string) => void;
-  setCoefficient: (coefficient: number) => void;
+  setCoefficient: (coefficient: number | null) => void;
   setResource: (resource: string | null) => void;
 }
 
@@ -23,7 +23,7 @@ export const useDataStore = create<DataStore>((set) => ({
   notes: [],
   statut: [],
   controlName: "",
-  coefficient: 1,
+  coefficient: null,
   resource: null,
   method: "POST",
   lastName: null,
