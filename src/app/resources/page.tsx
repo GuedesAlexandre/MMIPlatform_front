@@ -26,7 +26,7 @@ const Resources = () => {
   return (
     <div>
       <TitleHeaderUI label="Mes Ressources" />
-      <div className="px-10 grid grid-cols-3 mx-auto gap-10 flex-wrap">
+      <div className="px-2 sm:px-10 grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 mx-auto gap-10 flex-wrap">
         {user &&
           moduleByEmail?.slice(firstItemIndex, lastItemIndex).map((module) => {
             return <ResourceCard key={module.name} module={module} />;
