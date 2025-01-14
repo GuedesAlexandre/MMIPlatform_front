@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import SettingsModelViewer from "@/app/3Dpages/components/SettingsModelViewer";
-import withAuth from "@/app/HOC";
 
 function Pages() {
   const ModelViewer = dynamic(
@@ -23,4 +22,4 @@ function Pages() {
   );
 }
 
-export default withAuth(Pages);
+export default Pages;
