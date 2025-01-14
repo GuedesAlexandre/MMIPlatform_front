@@ -16,6 +16,7 @@ import { ueModule } from "@/app/matrix/models/ueModule.model";
 import { exportMatrixByPromo } from "@/app/matrix/helper/exportMatrixByPromo";
 import { studentsStore } from "@/app/store/student.store";
 import TableMatrix from "@/app/matrix/components/matrixTable";
+import withAuth from "@/app/HOC";
 
 const Page = () => {
   const { students, setStudentsData } = studentsStore();
@@ -140,7 +141,7 @@ const Page = () => {
         </div>
       </div>
       <div className="px-10">
-        <div className="max-w-full overflow-x-auto block pb-10">
+        <div className="w-[80vw] overflow-x-auto block pb-10">
           <TableMatrix
             semester={semester}
             ueName={ueSelect}
@@ -152,4 +153,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default withAuth(Page);

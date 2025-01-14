@@ -3,8 +3,9 @@
 import AppBento from "@/app/dashboard/components/app-bento";
 import HeaderUserDashboard from "@/app/dashboard/components/HeaderUserDashboard";
 import { useAuthStore } from "@/app/store/AuthRepository.store";
+import withAuth from "@/app/HOC";
 
-export default function Dashboard() {
+function Dashboard() {
   const { user } = useAuthStore();
   return (
     <div className="p-10">
@@ -20,3 +21,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+export default withAuth(Dashboard);
