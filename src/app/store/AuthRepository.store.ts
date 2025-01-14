@@ -43,7 +43,25 @@ export const useAuthStore = create(
           );
         }
       },
-      removeUserSession: () => set({ user: undefined }),
+      removeUserSession: () => {
+        Cookies.remove("bearer");
+        Cookies.remove("token");
+        set({ user: undefined });
+      },
+      checkSessionExpiration: () => {
+        set((state) => {
+          if (state.user?.exp) {
+            const isExpired = Date.now() > state.user.exp * 1000;
+            if (isExpired) {
+              Cookies.remove("bearer");
+              Cookies.remove("token");
+              return { user: undefined };
+            }
+          }
+
+          return state;
+        });
+      },
     }),
     {
       name: "auth-storage",

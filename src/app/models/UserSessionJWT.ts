@@ -3,6 +3,7 @@ export interface UserSessionJWT {
   sub: string;
   iat: number;
   exp: number;
+  expirationTime?: number;
 }
 
 interface UserJWTtoModel {
@@ -20,4 +21,5 @@ export interface storeUsers {
     password: string
   ) => Promise<UserSessionJWT | undefined>;
   removeUserSession: () => void;
+  checkSessionExpiration: () => void;
 }

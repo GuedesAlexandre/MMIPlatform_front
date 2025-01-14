@@ -6,6 +6,7 @@ import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useEffect, useState } from "react";
 import { getModuleByEmailStore } from "@/app/store/getResourcesByEmail.store";
 import { PaginationSection } from "@/app/resources/components/paginationSection";
+import withAuth from "@/app/HOC";
 
 const Resources = () => {
   const { user } = useAuthStore();
@@ -40,4 +41,4 @@ const Resources = () => {
     </div>
   );
 };
-export default Resources;
+export default withAuth(Resources);

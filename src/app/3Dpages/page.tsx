@@ -1,8 +1,9 @@
 import dynamic from "next/dynamic";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import SettingsModelViewer from "@/app/3Dpages/components/SettingsModelViewer";
+import withAuth from "@/app/HOC";
 
-export default function Pages() {
+function Pages() {
   const ModelViewer = dynamic(
     () => import("../3Dpages/components/ModelViewer"),
     { ssr: false }
@@ -21,3 +22,5 @@ export default function Pages() {
     </div>
   );
 }
+
+export default withAuth(Pages);

@@ -4,8 +4,9 @@ import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useEffect, useState } from "react";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 import PromoCard from "@/app/scolarity/components/PromoCard";
+import withAuth from "@/app/HOC";
 
-export default function Page() {
+function Page() {
   const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
   const [CountMMI01, setCountMMI01] = useState<number | undefined>(undefined);
   const [CountMMI02, setCountMMI02] = useState<number | undefined>(undefined);
@@ -38,3 +39,5 @@ export default function Page() {
     </>
   );
 }
+
+export default withAuth(Page);
