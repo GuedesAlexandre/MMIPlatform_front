@@ -34,8 +34,8 @@ const Page = () => {
       <div>
         <div>
           <TitleHeaderUI label="Visualisation des matrices MMI" />
-          <div className="pl-10 flex flex-row items-center w-1/2">
-            <div className="w-1/3">
+          <div className="px-10 lg:flex flex-row items-center ms:pr-0 lg:w-1/2">
+            <div className="lg:w-1/3">
               <Label>Semestre :</Label>
               <Select
                 value={semester}
@@ -57,86 +57,84 @@ const Page = () => {
               </Select>
             </div>
             <div
-              className="flex flex-row items-center cursor-pointer hover:underline pt-5 ml-10"
+              className="flex flex-row items-center cursor-pointer hover:underline pt-5 lg:ml-10"
               onClick={() => exportMatrixByPromo(semester)}
             >
               <PinBottomIcon />
               <p className="ml-2">Exporter votre matrice</p>
             </div>
           </div>
-          <div className="px-10 py-5 flex flex-row flex-wrap w-10/12">
-            <div>
-              <Button
-                variant={"outline"}
-                className={
-                  ueSelect === "UE_DEVELOPPER"
-                    ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
-                    : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-                }
-                onClick={() => updateUE("UE_DEVELOPPER")}
-              >
-                UE Développer
-              </Button>
-              <Button
-                variant={"outline"}
-                className={
-                  ueSelect === "UE_ENTREPRENDRE"
-                    ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
-                    : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-                }
-                onClick={() => updateUE("UE_ENTREPRENDRE")}
-              >
-                UE Entreprendre
-              </Button>
-              {!(semester === "5" || semester === "6") && (
-                <>
-                  <Button
-                    variant={"outline"}
-                    className={
-                      ueSelect === "UE_COMPRENDRE"
-                        ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
-                        : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-                    }
-                    onClick={() => updateUE("UE_COMPRENDRE")}
-                  >
-                    UE Comprendre
-                  </Button>
-                  <Button
-                    variant={"outline"}
-                    className={
-                      ueSelect === "UE_CONCEVOIR"
-                        ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
-                        : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-                    }
-                    onClick={() => updateUE("UE_CONCEVOIR")}
-                  >
-                    UE Concevoir
-                  </Button>
-                  <Button
-                    variant={"outline"}
-                    className={
-                      ueSelect === "UE_EXPRIMER"
-                        ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
-                        : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-                    }
-                    onClick={() => updateUE("UE_EXPRIMER")}
-                  >
-                    UE Exprimer
-                  </Button>
-                </>
-              )}
-              <Button
-                variant={"outline"}
-                className={
-                  ueSelect === "synthese"
-                    ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
-                    : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
-                }
-                onClick={() => updateUE("synthese")}
-              >
-                Synthèse
-              </Button>
-            </div>
+          <div className="px-10 py-5 flex md:flex-row flex-wrap md:w-10/12 flex-col">
+            <Button
+              variant={"outline"}
+              className={
+                ueSelect === "UE_DEVELOPPER"
+                  ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
+                  : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
+              }
+              onClick={() => updateUE("UE_DEVELOPPER")}
+            >
+              UE Développer
+            </Button>
+            <Button
+              variant={"outline"}
+              className={
+                ueSelect === "UE_ENTREPRENDRE"
+                  ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
+                  : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
+              }
+              onClick={() => updateUE("UE_ENTREPRENDRE")}
+            >
+              UE Entreprendre
+            </Button>
+            {!(semester === "5" || semester === "6") && (
+              <>
+                <Button
+                  variant={"outline"}
+                  className={
+                    ueSelect === "UE_COMPRENDRE"
+                      ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
+                      : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
+                  }
+                  onClick={() => updateUE("UE_COMPRENDRE")}
+                >
+                  UE Comprendre
+                </Button>
+                <Button
+                  variant={"outline"}
+                  className={
+                    ueSelect === "UE_CONCEVOIR"
+                      ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
+                      : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
+                  }
+                  onClick={() => updateUE("UE_CONCEVOIR")}
+                >
+                  UE Concevoir
+                </Button>
+                <Button
+                  variant={"outline"}
+                  className={
+                    ueSelect === "UE_EXPRIMER"
+                      ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
+                      : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
+                  }
+                  onClick={() => updateUE("UE_EXPRIMER")}
+                >
+                  UE Exprimer
+                </Button>
+              </>
+            )}
+            <Button
+              variant={"outline"}
+              className={
+                ueSelect === "synthese"
+                  ? "bg-primary-blue-hover text-background-color mr-2 hover:bg-primary-blue-hover hover:text-background-color cursor-default"
+                  : "bg-primary-blue hover:bg-primary-blue-hover text-background-color hover:text-background-color mr-2"
+              }
+              onClick={() => updateUE("synthese")}
+            >
+              Synthèse
+            </Button>
           </div>
         </div>
       </div>
