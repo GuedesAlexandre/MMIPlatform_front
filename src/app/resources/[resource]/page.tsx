@@ -70,7 +70,7 @@ const Resource = () => {
         <Accordion
           icon={<ReaderIcon />}
           name={"Liste des contrôles"}
-          open={false}
+          open={true}
           data={
             <AccordionControlTable
               promo={parsedData.promo}
