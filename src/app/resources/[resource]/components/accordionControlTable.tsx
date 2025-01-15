@@ -9,19 +9,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { studentsControlTable } from "@/app/resources/helper/studentsControlsTable";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { toSlug } from "@/app/utils/textToSlug";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { AlertCircleIcon } from "lucide-react";
-import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
+
 
 const AccordionControlTable = ({
   promo,
