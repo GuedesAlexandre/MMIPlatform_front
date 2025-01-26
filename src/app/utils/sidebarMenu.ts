@@ -34,6 +34,11 @@ const menuForAdmin = [
     url: "/3Dpages",
     icon: Box,
   },
+  {
+    title: "Gestion des stages",
+    url: "/internship",
+    icon: UserPen,
+  }
 ];
 
 const menuForScolarity = [
@@ -80,6 +85,11 @@ const menuForTeacher = [
     url: "/3Dpages",
     icon: Box,
   },
+  {
+    title: "Gestion des stages",
+    url: "/internship",
+    icon: UserPen,
+  }
 ];
 export const defineMenuSidebar = (user: UserSessionJWT | undefined) => {
   if (user === undefined) {
