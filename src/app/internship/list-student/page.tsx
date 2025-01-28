@@ -17,6 +17,7 @@ const ListStudent = () => {
     setStudentByPromo(promo);
   }, [promo, setStudentByPromo]);
 
+
   return (
     <>
       <div

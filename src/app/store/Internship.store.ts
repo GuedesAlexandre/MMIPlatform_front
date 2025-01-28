@@ -24,20 +24,20 @@ interface InternshipState {
 export const useInternshipStore = create<InternshipState>((set) => ({
   internships: [],
   fetchInternships: async (promo: string) => {
-    const response = await axios.get(`/api/v1/internship/${promo}`);
+    const response = await axios.get<InternshipStudent[]>(`${process.env.NEXT_PUBLIC_API_PATH}/internship/${promo}`);
     set({ internships: response.data });
   },
 
   addInternship: async (numEtu: string, internship: Internship) => {
     const response = await axios.post(
-      `/api/v1/internship/${numEtu}`,
+      `${process.env.NEXT_PUBLIC_API_PATH}/api/v1/internship/${numEtu}`,
       internship
     );
     set((state) => ({ internships: [...state.internships, response.data] }));
   },
 
   deleteInternship: async (numEtu: string, years: number, title: string) => {
-    await axios.delete(`/api/v1/internship/${numEtu}/${years}/${title}`);
+    await axios.delete(`${process.env.NEXT_PUBLIC_API_PATH}/api/v1/internship/${numEtu}/${years}/${title}`);
     set((state) => ({
       internships: state.internships.filter((internship) =>
         internship.internships.some(
@@ -56,7 +56,7 @@ export const useInternshipStore = create<InternshipState>((set) => ({
     internship: Internship
   ) => {
     const response = await axios.put(
-      `/api/v1/internship/${numEtu}/${years}/${title}`,
+      `${process.env.NEXT_PUBLIC_API_PATH}/api/v1/internship/${numEtu}/${years}/${title}`,
       internship
     );
     set((state) => ({

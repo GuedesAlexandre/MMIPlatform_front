@@ -61,7 +61,7 @@ const menuForScolarity = [
     title: "Salles",
     url: "/3Dpages",
     icon: Box,
-  },
+  }
 ];
 
 const menuForTeacher = [
@@ -85,11 +85,7 @@ const menuForTeacher = [
     url: "/3Dpages",
     icon: Box,
   },
-  {
-    title: "Gestion des stages",
-    url: "/internship",
-    icon: UserPen,
-  }
+  
 ];
 export const defineMenuSidebar = (user: UserSessionJWT | undefined) => {
   if (user === undefined) {
