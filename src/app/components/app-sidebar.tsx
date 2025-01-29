@@ -3,6 +3,7 @@ import { MMI_Image } from "@/public/assets/svg";
 import { MMI_Image_mini } from "@/public/assets/svg";
 import AvatarInitialIcon from "@/app/components/ui/AvatarInitialIcon";
 import { useSidebarState } from "@/app/store/SidebarState.store";
+import { usePathname } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
@@ -33,6 +34,7 @@ export function AppSidebar() {
   const { user } = useAuthStore();
   const sidebarMenu = defineMenuSidebar(user);
   const isMobile = useIsMobile();
+  const pathname = usePathname();
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -54,16 +56,19 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {sidebarMenu.map((item) => (
-                <SidebarMenuItem key={item.title} className="mt-2">
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {sidebarMenu.map((item) => {
+                const isActive = pathname.startsWith(item.url);
+                return (
+                  <SidebarMenuItem key={item.title} className="mt-2">
+                    <SidebarMenuButton asChild isActive={isActive}>
+                      <Link href={item.url}>
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

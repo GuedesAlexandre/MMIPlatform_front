@@ -37,7 +37,7 @@ const itemsForAdmin: SkeletonItem[] = [
     className: "md:col-span-2",
     access: "ADMIN",
     color: "blue",
-    category: "Modules",
+    category: "Ressources",
     url: new URL(
       "../../../public/assets/dashboard/modules2.jpg",
       import.meta.url
@@ -108,13 +108,13 @@ const itemsForScolarity: SkeletonItem[] = [
 
 const itemsForTeacher: SkeletonItem[] = [
   {
-    title: "Gérer vos modules et évalutations",
+    title: "Gérer vos Ressources et évalutations",
     description:
       "Gérer vos ressources enseignées et créer des notes pour vos étudiants jusqu’à la fusion dans la matrice principale.",
     className: "md:col-span-3",
     access: "TEACHER",
     color: "blue",
-    category: "Modules",
+    category: "Ressources",
     url: new URL(
       "../../../public/assets/dashboard/modules2.jpg",
       import.meta.url

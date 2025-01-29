@@ -25,7 +25,7 @@ import { Note } from "@/app/resources/models/student.model";
 import { studentsControlTable } from "@/app/resources/helper/studentsControlsTable";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 10;
 
 interface Control {
   numEtu: string;
