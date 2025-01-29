@@ -24,40 +24,71 @@ interface InternshipState {
 export const useInternshipStore = create<InternshipState>((set) => ({
   internships: [],
   fetchInternships: async (promo: string) => {
-    const response = await axios.get<InternshipStudent[]>(`${process.env.NEXT_PUBLIC_API_PATH}/internship/${promo}`);
+    const bearer = Cookies.get("bearer");
+    const response = await axios.get<InternshipStudent[]>(
+      `${process.env.NEXT_PUBLIC_API_PATH}/internship/${promo}`,
+      {
+        headers: {
+          Authorization: `Bearer ${bearer?.toString()}`,
+        },
+      }
+    );
     set({ internships: response.data });
   },
 
   addInternship: async (numEtu: string, internship: Internship) => {
+    const bearer = Cookies.get("bearer");
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_PATH}/api/v1/internship/${numEtu}`,
-      internship
+      `${process.env.NEXT_PUBLIC_API_PATH}/internship/${numEtu}`,
+      internship,
+      {
+        headers: {
+          Authorization: `Bearer ${bearer?.toString()}`,
+        },
+      }
     );
     set((state) => ({ internships: [...state.internships, response.data] }));
   },
 
   deleteInternship: async (numEtu: string, years: number, title: string) => {
-    await axios.delete(`${process.env.NEXT_PUBLIC_API_PATH}/api/v1/internship/${numEtu}/${years}/${title}`);
+    const bearer = Cookies.get("bearer");
+    await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_PATH}/internship/${numEtu}/${years}/${title}`,
+      {
+        headers: {
+          Authorization: `Bearer ${bearer?.toString()}`,
+        },
+      }
+    );
     set((state) => ({
-      internships: state.internships.filter((internship) =>
-        internship.internships.some(
-          (intern) =>
-            internship.numEtu !== numEtu ||
-            intern.years !== years ||
-            intern.title !== title
-        )
+      internships: state.internships.map((intern) =>
+        intern.numEtu === numEtu
+          ? {
+              ...intern,
+              internships: intern.internships.filter(
+                (int) => int.years !== years || int.title !== title
+              ),
+            }
+          : intern
       ),
     }));
   },
+
   updateInternship: async (
     numEtu: string,
     years: number,
     title: string,
     internship: Internship
   ) => {
+    const bearer = Cookies.get("bearer");
     const response = await axios.put(
       `${process.env.NEXT_PUBLIC_API_PATH}/api/v1/internship/${numEtu}/${years}/${title}`,
-      internship
+      internship,
+      {
+        headers: {
+          Authorization: `Bearer ${bearer?.toString()}`,
+        },
+      }
     );
     set((state) => ({
       internships: state.internships.map((intern) =>

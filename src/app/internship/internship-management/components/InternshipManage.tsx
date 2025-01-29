@@ -14,19 +14,14 @@ const InternshipManage: React.FC<InternshipManageProps> = ({
   return (
     <>
       <div className="rounded-md border">
-        {internship.length > 0 ? (
-          internship.map((internshipItem) =>
-           <InternshipDatatable key={internshipItem.numEtu} studentInterships={internshipItem} />
-          )
-        ) : (
-          <>
-            <p>Aucun stage Pour cette étudiant</p>
-            <a>En ajouter un ?</a>
-          </>
-        )}
+        {internship.map((internshipItem) => (
+          <InternshipDatatable
+            key={internshipItem.numEtu}
+            studentInterships={internshipItem}
+          />
+        ))}
       </div>
     </>
   );
 };
-
 export default InternshipManage;
