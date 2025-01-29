@@ -112,7 +112,7 @@ function LegalPage() {
           Adresse : 17 Rue Jablinot, 77100 Meaux, France
         </p>
         <p className="text-gray-600">
-          Vous pouvez contacter le groupe à l'adresse e-mail suivante :{" "}
+          Vous pouvez contacter le groupe à l'adresse e-mail suivante :
           <strong>glenn.guillard@gmail.com</strong>
         </p>
       </section>
