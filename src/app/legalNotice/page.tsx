@@ -102,7 +102,7 @@ function LegalPage() {
           composé des étudiants suivants :
         </p>
         <ul className="list-disc pl-5 text-gray-600">
-          <li>Alexandre Gueds</li>
+          <li>Alexandre Guedes</li>
           <li>Jérôme Fabre</li>
           <li>Glenn Guillard</li>
           <li>Thomas Henry</li>
