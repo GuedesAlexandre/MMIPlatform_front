@@ -8,11 +8,11 @@ import { useEffect, useState } from "react";
 
 interface StudentData {
   NumEtu: string;
-    lastName: string;
-    firstName: string;
-    promo: string;
-    group: string;
-    average: string;
+  lastName: string;
+  firstName: string;
+  promo: string;
+  group: string;
+  average: string;
 }
 
 const AccordionResourceTable = ({
@@ -31,7 +31,21 @@ const AccordionResourceTable = ({
     studentsByPromo,
     ressourceName,
     ueName
-  );
+  ).sort((a, b) => {
+    if (a.group > b.group) {
+      return 1;
+    }
+    if (a.group < b.group) {
+      return -1;
+    }
+    if (a.lastName < b.lastName) {
+      return -1;
+    }
+    if (a.lastName > b.lastName) {
+      return 1;
+    }
+    return 0;
+  });
   const filteredStudents = studentsTableData?.filter((student) =>
     student.lastName.toLowerCase().includes(inputStudentValue.toLowerCase())
   );
