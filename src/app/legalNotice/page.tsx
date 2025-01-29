@@ -92,6 +92,30 @@ function LegalPage() {
           Numéro de téléphone : 06 43 50 67 04
         </p>
       </section>
+
+      <section>
+        <h2 className="text-xl font-semibold mt-4 text-gray-700">
+          7. Propriétaires du site
+        </h2>
+        <p className="text-gray-600">
+          Le site est la propriété du groupe <strong>MMIPlatform</strong>,
+          composé des étudiants suivants :
+        </p>
+        <ul className="list-disc pl-5 text-gray-600">
+          <li>Alexandre Gueds</li>
+          <li>Jérôme Fabre</li>
+          <li>Glenn Guillard</li>
+          <li>Thomas Henry</li>
+          <li>Morgane Le Normand</li>
+        </ul>
+        <p className="text-gray-600">
+          Adresse : 17 Rue Jablinot, 77100 Meaux, France
+        </p>
+        <p className="text-gray-600">
+          Vous pouvez contacter le groupe à l'adresse e-mail suivante :{" "}
+          <strong>glenn.guillard@gmail.com</strong>
+        </p>
+      </section>
     </div>
   );
 }
