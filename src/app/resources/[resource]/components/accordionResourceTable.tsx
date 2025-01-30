@@ -31,21 +31,11 @@ const AccordionResourceTable = ({
     studentsByPromo,
     ressourceName,
     ueName
-  ).sort((a, b) => {
-    if (a.group > b.group) {
-      return 1;
-    }
-    if (a.group < b.group) {
-      return -1;
-    }
-    if (a.lastName < b.lastName) {
-      return -1;
-    }
-    if (a.lastName > b.lastName) {
-      return 1;
-    }
-    return 0;
-  });
+  ).sort(
+    (a, b) =>
+      a.group.localeCompare(b.group, undefined, { numeric: true }) ||
+      a.lastName.localeCompare(b.lastName)
+  );
   const filteredStudents = studentsTableData?.filter((student) =>
     student.lastName.toLowerCase().includes(inputStudentValue.toLowerCase())
   );

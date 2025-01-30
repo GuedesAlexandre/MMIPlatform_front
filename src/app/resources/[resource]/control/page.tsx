@@ -17,21 +17,9 @@ const Control = () => {
     if (promo) setStudentByPromo(promo);
   }, []);
   const data = studentsToStudentsControl(studentsByPromo, control).sort(
-    (a, b) => {
-      if (a.group > b.group) {
-        return 1;
-      }
-      if (a.group < b.group) {
-        return -1;
-      }
-      if (a.lastName < b.lastName) {
-        return -1;
-      }
-      if (a.lastName > b.lastName) {
-        return 1;
-      }
-      return 0;
-    }
+    (a, b) =>
+      a.group.localeCompare(b.group, undefined, { numeric: true }) ||
+      a.lastName.localeCompare(b.lastName)
   );
   return (
     <>
