@@ -48,13 +48,19 @@ const FormPersonalInfo = ({
       />
       <InputUI
         type="text"
-        name="username"
-        label="Nom d’utilisateur"
-        placeholder="Entrer le nom d’utilisateur"
+        name="email"
+        label="Email"
+        placeholder="Entrer l’adresse mail"
         register={register}
         errors={errors}
         trigger={trigger}
-        rules={{ required: "Veuillez remplir ce champ." }}
+        rules={{
+          required: "Veuillez remplir ce champ.",
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "Veuillez indiquer une adresse e-mail valide.",
+          },
+        }}
       />
       <InputUI
         type="text"
@@ -72,21 +78,16 @@ const FormPersonalInfo = ({
           },
         }}
       />
+
       <InputUI
         type="text"
-        name="email"
-        label="Email"
-        placeholder="Entrer l’adresse mail"
+        name="username"
+        label="Nom d’utilisateur"
+        placeholder="Entrer le nom d’utilisateur"
         register={register}
         errors={errors}
         trigger={trigger}
-        rules={{
-          required: "Veuillez remplir ce champ.",
-          pattern: {
-            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            message: "Veuillez indiquer une adresse e-mail valide.",
-          },
-        }}
+        rules={{ required: "Veuillez remplir ce champ." }}
       />
       <InputUI
         type="text"
