@@ -127,7 +127,7 @@ const TableNotes = ({
   };
 
   const gradeRegexTest = (grade: string) => {
-    const regex = new RegExp("^\d*\.\d+$|^\d+$");
+    const regex = new RegExp("^\\d*\\.\\d+$|^\\d+$");
     return regex.test(grade);
   };
 

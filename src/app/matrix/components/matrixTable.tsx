@@ -209,7 +209,7 @@ const TableMatrix = ({
           <span className="text-sm text-gray-600">
             {`Éléments ${startItemIndex}-${endItemIndex} sur ${notes.length} (Page ${currentPage} sur ${totalPages})`}
           </span>
-          <div className="flex flex-row ml-20">
+          <div className="flex flex-row ml-auto">
             <div
               className={
                 currentPage === 1
