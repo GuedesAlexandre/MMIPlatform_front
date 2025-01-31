@@ -29,7 +29,7 @@ export const useAuthStore = create(
 
           const token = response.data;
           Cookies.set("bearer", token);
-          const dataUser = jwt.verify(
+          const dataUser = jwt.decode(
             token,
             process.env.NEXT_PUBLIC_SECRET_KEY
           ) as UserSessionJWT;
