@@ -126,6 +126,11 @@ const TableNotes = ({
     );
   };
 
+  const gradeRegexTest = (grade: string) => {
+    const regex = new RegExp("^\d*\.\d+$|^\d+$");
+    return regex.test(grade);
+  };
+
   const updateStatut = (numEtu: string, status: string) => {
     const statuses = useDataStore.getState().statut;
     useDataStore
@@ -218,6 +223,7 @@ const TableNotes = ({
             value={coefficient ?? ""}
             onChange={(e) => {
               const value = e.target.value;
+              console.log(gradeRegexTest(value));
               if (value === "") {
                 setCoefficient(null);
               } else {
