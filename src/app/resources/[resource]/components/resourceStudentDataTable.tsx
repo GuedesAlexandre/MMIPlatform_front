@@ -33,7 +33,7 @@ export function DataTable<TData extends { lastName: string }, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
       pagination: {
-        pageSize: 5,
+        pageSize: 10,
       },
     },
   });

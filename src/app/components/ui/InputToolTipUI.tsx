@@ -2,6 +2,8 @@ import { InputTooltipUIProps } from "@/app/models/ui/input.tooltip.model";
 import classNames from "classnames";
 import { ReactNode, useState } from "react";
 import TooltipUI from "@/app/components/ui/TooltipUI";
+import { EyeOpenIcon } from "@radix-ui/react-icons";
+import { EyeClosedIcon } from "@radix-ui/react-icons";
 
 function InputToolTipUI({
   type,
@@ -17,7 +19,12 @@ function InputToolTipUI({
   trigger,
 }: InputTooltipUIProps) {
   const hasError = !!errors?.[name];
+  const [isClose, setIsClose] = useState(false);
   const [focus, setFocus] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsClose(!isClose);
+  };
   const buttonClasses = classNames(
     "border rounded-[5px] p-1 pl-[12px] py-2 flex items-center gap-x-[14px] focus-within:border-text-color-black transition-colors duration-500 font-tahoma",
     {
@@ -38,7 +45,7 @@ function InputToolTipUI({
       <span className={buttonClasses}>
         <input
           className="outline-none w-full text-xs xs:text-base !bg-white h-6"
-          type={type}
+          type={isClose ? type : "text"}
           id={name}
           placeholder={placeholder}
           {...register(name, rules)}
@@ -48,6 +55,17 @@ function InputToolTipUI({
             setFocus(false);
           }}
         />
+        {isClose ? (
+          <EyeOpenIcon
+            onClick={togglePasswordVisibility}
+            className="text-black mr-[14px] cursor-pointer"
+          />
+        ) : (
+          <EyeClosedIcon
+            onClick={togglePasswordVisibility}
+            className="text-black mr-[14px] cursor-pointer"
+          />
+        )}
       </span>
       {hasError && !focus && (
         <span className=" text-sm font-semibold text-danger mt-1">

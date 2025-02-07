@@ -16,17 +16,21 @@ function ConnectionForm() {
   const { register, handleSubmit } = useForm<FieldValues>();
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const onSubmit = (data: FieldValues) => {
     setLoader(true);
     const myData = data as FormData;
     fetchAuthToken(myData.mail, myData.password).then((response) => {
       setLoader(false);
-      if (!response) {
+
+      if (response && "error" in response) {
         setError(true);
-        return;
+        setErrorMessage(response.error);
+      } else {
+        setError(false);
+        setErrorMessage(null);
       }
-      if (response) return;
     });
   };
 
@@ -35,8 +39,8 @@ function ConnectionForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="w-fit py-6 px-8 xs:px-12 xs:py-10 border-primary-blue border rounded-[30px] flex flex-col gap-5 mx-auto mt-40">
           {error && (
-            <div className="text-sm text-center text-danger">
-              Une erreur s&apos;est produite lors de la connexion.
+            <div className="text-sm w-full text-center text-danger">
+              {errorMessage}
             </div>
           )}
           <InputUI
@@ -59,15 +63,17 @@ function ConnectionForm() {
             rules={{ required: true }}
             haveError={error}
           />
-          {loader ? (
-            <ButtonsUI
-              type="submit"
-              icon={<LoaderUi sizeCustome="size-[20px]" />}
-              disbled={true}
-            />
-          ) : (
-            <ButtonsUI type="submit" label="Connexion" />
-          )}
+          <div className="flex justify-center">
+            {loader ? (
+              <ButtonsUI
+                type="submit"
+                icon={<LoaderUi sizeCustome="size-[20px]" />}
+                disbled={true}
+              />
+            ) : (
+              <ButtonsUI type="submit" label="Connexion" />
+            )}
+          </div>
         </div>
       </form>
 

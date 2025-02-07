@@ -126,6 +126,11 @@ const TableNotes = ({
     );
   };
 
+  const gradeRegexTest = (grade: string) => {
+    const regex = new RegExp("^\\d*[.,]?\\d*$");
+    return regex.test(grade);
+  };
+
   const updateStatut = (numEtu: string, status: string) => {
     const statuses = useDataStore.getState().statut;
     useDataStore
@@ -217,19 +222,22 @@ const TableNotes = ({
             placeholder="Coefficient"
             value={coefficient ?? ""}
             onChange={(e) => {
-              const value = e.target.value;
-              if (value === "") {
-                setCoefficient(null);
-              } else {
-                setCoefficient(Number(value) > 0 ? Number(value) : null);
+              let value = e.target.value;
+              value = value.replace(/[^0-9.,]/g, "");
+              if (gradeRegexTest(value) || value === "") {
+                if (value === "") {
+                  setCoefficient(null);
+                } else {
+                  setCoefficient(Number(value) > 0 ? Number(value) : null);
+                }
               }
               setHaveNotCoefficient(value === "");
             }}
             className="mt-2"
           />
           {haveNotCoefficient && (
-            <p className="text-danger text-sm mt-2">
-              Vous devez renseigner un coefficient.
+            <p className="text-danger text-sm mt-2 w-max">
+              Vous devez renseigner un coefficient valide.
             </p>
           )}
         </div>
@@ -356,7 +364,12 @@ const TableNotes = ({
           variant={"outline"}
           size={"lg"}
           onClick={postNotes}
-          disabled={!areAllNotesFilled}
+          disabled={
+            !areAllNotesFilled ||
+            haveNotCoefficient ||
+            haveNotControleNames ||
+            haveNotControleNamesList
+          }
           className="bg-success hover:bg-success-hover text-background-color hover:text-background-color px-16"
         >
           Valider
