@@ -2,7 +2,12 @@
 import Accordion from "@/app/components/accordion";
 import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
-import { ArrowLeftIcon, Cross1Icon, Cross2Icon, PersonIcon } from "@radix-ui/react-icons";
+import {
+  ArrowLeftIcon,
+  Cross1Icon,
+  Cross2Icon,
+  PersonIcon,
+} from "@radix-ui/react-icons";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import InternshipManage from "./components/InternshipManage";
@@ -10,7 +15,7 @@ import { useInternshipStore } from "@/app/store/Internship.store";
 import { Internship, InternshipStudent } from "@/app/models/Internship";
 import { Student } from "@/app/resources/models/student.model";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { Check, Terminal } from "lucide-react";
+import { Check, Info, Terminal } from "lucide-react";
 import {
   TooltipProvider,
   Tooltip,
@@ -55,9 +60,9 @@ const InternshipManagement = () => {
       );
 
       let totalCount = 0;
-      studentWithInternship.forEach((internship : InternshipStudent) => {
-        internship.internships.forEach((i : Internship) => {
-          if (i.type === "internship") {
+      studentWithInternship.forEach((internship: InternshipStudent) => {
+        internship.internships.forEach((i: Internship) => {
+          if (i.type === "ALTERNANCE") {
             setInternshipValidated(true);
           }
           totalCount += i.weekCount;
@@ -70,9 +75,6 @@ const InternshipManagement = () => {
   const router = useRouter();
 
   const [countOfInternship, setCountOfInternship] = useState<number>(0);
-
-
-
 
   return (
     <>
@@ -97,7 +99,9 @@ const InternshipManagement = () => {
             <br></br>
             <div className="flex items-center gap-3">
               {" "}
-              {countOfInternship > 0
+              {internshipValidated
+                ? "L'étudiant a validé son cota par l'alternance"
+                : countOfInternship > 0
                 ? `Nombre total de semaines de stage : ${countOfInternship}`
                 : "Aucune semaine de stage enregistrée"}
               {countOfInternship > 25 ? (
@@ -107,7 +111,7 @@ const InternshipManagement = () => {
                       asChild
                       className="cursor-pointer border border-success rounded-full p-1"
                     >
-                      {<Check className="text-green-500" />}
+                      {<Info className="text-green-500" />}
                     </TooltipTrigger>
                     <TooltipContent
                       side="bottom"
@@ -119,11 +123,30 @@ const InternshipManagement = () => {
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
+              ) : internshipValidated ? (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger
+                      asChild
+                      className="cursor-pointer  border-success rounded-full"
+                    >
+                      {<Info className="text-green-500" />}
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="bottom"
+                      className="bg-green-100 text-green-800 p-3 rounded-md shadow-lg mt-2"
+                    >
+                      {
+                        "L'étudiant a validé son cota par l'alternance en 3ème année"
+                      }
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               ) : (
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger className="cursor-pointer border border-red-500 rounded-full p-1">
-                      {<Cross2Icon className="text-red-500"/>}
+                      {<Cross2Icon className="text-red-500" />}
                     </TooltipTrigger>
                     <TooltipContent
                       side="right"
@@ -137,9 +160,6 @@ const InternshipManagement = () => {
                 </TooltipProvider>
               )}
             </div>
-            {internshipValidated && <br></br>}
-            {internshipValidated &&
-              "Expérience professionnelle validé par de l'alternance en 3ème année"}
           </AlertDescription>
         </Alert>
         <Accordion

@@ -18,6 +18,7 @@ const InternshipManage: React.FC<InternshipManageProps> = ({
           <InternshipDatatable
             key={internshipItem.numEtu}
             studentInterships={internshipItem}
+            promo={student.promo}
           />
         ))}
       </div>

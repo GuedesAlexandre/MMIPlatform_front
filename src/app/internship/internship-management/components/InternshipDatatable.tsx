@@ -13,6 +13,7 @@ import { useState } from "react";
 
 interface DataTableInternshipProps {
   studentInterships: InternshipStudent;
+  promo ?: string;
 }
 
 const InternshipDatatable: React.FC<DataTableInternshipProps> = ({
@@ -25,7 +26,7 @@ const InternshipDatatable: React.FC<DataTableInternshipProps> = ({
   const router = useRouter();
 
   const handleRedirectAddPage = () => {
-    router.push(`../internship/add-internship/?numEtu=${studentInterships.numEtu}`);
+    router.push(`../internship/add-internship/?numEtu=${studentInterships.numEtu}&promo=${studentInterships.promo}`);
   }
 
   const handleDeleteInternship = (
