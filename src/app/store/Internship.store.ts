@@ -82,7 +82,7 @@ export const useInternshipStore = create<InternshipState>((set) => ({
   ) => {
     const bearer = Cookies.get("bearer");
     const response = await axios.put(
-      `${process.env.NEXT_PUBLIC_API_PATH}/api/v1/internship/${numEtu}/${years}/${title}`,
+      `${process.env.NEXT_PUBLIC_API_PATH}/internship/${numEtu}/${years}/${title}`,
       internship,
       {
         headers: {

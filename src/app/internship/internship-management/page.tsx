@@ -25,8 +25,8 @@ import {
 
 const InternshipManagement = () => {
   const searchParm = useSearchParams();
-  const [numEtu, setNumEtu] = useState<string | null>(searchParm.get("numEtu"));
-  const [promo, setPromo] = useState<string | null>(searchParm.get("promo"));
+  const [numEtu] = useState<string | null>(searchParm.get("numEtu"));
+  const [promo] = useState<string | null>(searchParm.get("promo"));
   const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
   const [student, setStudent] = useState<Student>();
   const { internships, fetchInternships } = useInternshipStore();

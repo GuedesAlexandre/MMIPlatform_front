@@ -13,7 +13,7 @@ import { useState } from "react";
 
 interface DataTableInternshipProps {
   studentInterships: InternshipStudent;
-  promo ?: string;
+  promo?: string;
 }
 
 const InternshipDatatable: React.FC<DataTableInternshipProps> = ({
@@ -26,19 +26,21 @@ const InternshipDatatable: React.FC<DataTableInternshipProps> = ({
   const router = useRouter();
 
   const handleRedirectAddPage = () => {
-    router.push(`../internship/add-internship/?numEtu=${studentInterships.numEtu}&promo=${studentInterships.promo}`);
-  }
+    router.push(
+      `../internship/add-internship/?numEtu=${studentInterships.numEtu}&promo=${studentInterships.promo}`
+    );
+  };
 
   const handleDeleteInternship = (
     numEtu: string,
     years: number,
     title: string
   ) => {
-    try{
-      deleteInternship(numEtu, years, title)
+    try {
+      deleteInternship(numEtu, years, title);
     } catch (error) {
-        console.error("Erreur lors de la suppression du stage :", error);
-      }
+      console.error("Erreur lors de la suppression du stage :", error);
+    }
   };
 
   const handlePreviousPage = () => {
@@ -49,7 +51,16 @@ const InternshipDatatable: React.FC<DataTableInternshipProps> = ({
     setCurrentPage((prevPage: number) => Math.min(prevPage + 1, totalPages));
   };
 
-  
+  const handleRedirectPutPage = (
+    numEtu: string,
+    promo: string,
+    years: number,
+    title: string
+  ) => {
+    router.push(
+      `../internship/put-internship/?numEtu=${numEtu}&promo=${promo}&years=${years}&title=${title}`
+    );
+  };
 
   const filteredInternships = studentInterships?.internships.filter(
     (internship) =>
@@ -59,7 +70,10 @@ const InternshipDatatable: React.FC<DataTableInternshipProps> = ({
   return (
     <div className="rounded-md border">
       <div className="flex justify-end px-4 py-3">
-        <button className="px-4 py-2 my-2 bg-primary-blue rounded text-white disabled:opacity-50" onClick={handleRedirectAddPage}>
+        <button
+          className="px-4 py-2 my-2 bg-primary-blue rounded text-white disabled:opacity-50"
+          onClick={handleRedirectAddPage}
+        >
           Déclarer un stage ou une alternance
         </button>
       </div>
@@ -93,7 +107,17 @@ const InternshipDatatable: React.FC<DataTableInternshipProps> = ({
               <TableCell>{student?.comment}</TableCell>
               <TableCell>
                 <div className="flex space-x-4">
-                  <button className="px-4 py-2 bg-primary text-white rounded">
+                  <button
+                    className="px-4 py-2 bg-primary text-white rounded"
+                    onClick={() =>
+                      handleRedirectPutPage(
+                        studentInterships.numEtu,
+                        studentInterships.promo,
+                        student.years,
+                        student.title
+                      )
+                    }
+                  >
                     Modifier
                   </button>
                   <button
