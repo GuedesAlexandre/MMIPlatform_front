@@ -52,7 +52,7 @@ const Summary = () => {
 
   const sendNotes = async () => {
     try {
-      if (resource) {
+      if (resource && coefficient) {
         if (method === "POST") {
           notes.map((note) => {
             const statutNote = String(
