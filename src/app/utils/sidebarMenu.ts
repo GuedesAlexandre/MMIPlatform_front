@@ -62,11 +62,6 @@ const menuForScolarity = [
     url: "/3Dpages",
     icon: Box,
   },
-  {
-    title: "Gestion des stages",
-    url: "/internship",
-    icon: LayoutGrid,
-  }
 ];
 
 const menuForTeacher = [
