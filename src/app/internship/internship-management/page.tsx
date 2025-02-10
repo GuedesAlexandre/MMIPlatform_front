@@ -15,7 +15,7 @@ import { useInternshipStore } from "@/app/store/Internship.store";
 import { Internship, InternshipStudent } from "@/app/models/Internship";
 import { Student } from "@/app/resources/models/student.model";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { Check, Info, Terminal } from "lucide-react";
+import { Info, Terminal } from "lucide-react";
 import {
   TooltipProvider,
   Tooltip,

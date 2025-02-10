@@ -10,7 +10,7 @@ const Internship = () => {
   const { user } = useAuthStore();
   const { moduleByEmail, fetchModuleByEmail } = getModuleByEmailStore();
   const [promoList, setPromoList] = useState<string[]>([]);
-  const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
+  const { studentsByPromo } = useStudentsByPromo();
   useEffect(() => {
     fetchModuleByEmail(String(user?.user.email));
   }, []);

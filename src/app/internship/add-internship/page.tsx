@@ -11,8 +11,8 @@ import { PersonIcon } from "@radix-ui/react-icons";
 
 const PostInternship = () => {
   const param = useSearchParams();
-  const [numEtu, setNumEtu] = useState<string | null>(param.get("numEtu"));
-  const [promo, setPromo]= useState<string | null>(param.get("promo"));
+  const [numEtu] = useState<string | null>(param.get("numEtu"));
+  const [promo]= useState<string | null>(param.get("promo"));
   const { addInternship } = useInternshipStore();
   const router = useRouter();
 
