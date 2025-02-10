@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { storeUsers, UserSessionJWT } from "@/app/models/UserSessionJWT";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Cookies from "js-cookie";
 
 export const useAuthStore = create(
@@ -29,18 +29,28 @@ export const useAuthStore = create(
 
           const token = response.data;
           Cookies.set("bearer", token);
-          const dataUser = jwt.verify(
+          const dataUser = jwt.decode(
             token,
             process.env.NEXT_PUBLIC_SECRET_KEY
           ) as UserSessionJWT;
 
           set({ user: dataUser });
           return dataUser;
-        } catch (error) {
+        } catch (err: unknown) {
+          const error = err as AxiosError;
           console.error(
             "Erreur lors de la récupération du token d'authentification :",
             error
           );
+
+          if (error.response) {
+            if (error.response.status === 400) {
+              return {
+                error: "Votre mot de passe ou votre adresse mail est invalide.",
+              };
+            }
+          }
+          return { error: "Une erreur interne est survenue." };
         }
       },
       removeUserSession: () => {

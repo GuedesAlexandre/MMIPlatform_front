@@ -19,7 +19,7 @@ export interface storeUsers {
   fetchAuthToken: (
     email: string,
     password: string
-  ) => Promise<UserSessionJWT | undefined>;
+  ) => Promise<UserSessionJWT | { error: string } | undefined>;
   removeUserSession: () => void;
   checkSessionExpiration: () => void;
 }

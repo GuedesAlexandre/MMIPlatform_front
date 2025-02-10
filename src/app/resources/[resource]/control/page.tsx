@@ -16,12 +16,21 @@ const Control = () => {
   useEffect(() => {
     if (promo) setStudentByPromo(promo);
   }, []);
-  const data = studentsToStudentsControl(studentsByPromo, control);
+  const data = studentsToStudentsControl(studentsByPromo, control).sort(
+    (a, b) =>
+      a.group.localeCompare(b.group, undefined, { numeric: true }) ||
+      a.lastName.localeCompare(b.lastName)
+  );
   return (
     <>
       {name && <TitleHeaderUI label={name} />}
       <div className="px-10">
-        <TableNotes data={data} resource={name} modifyControlName={control} promo={String(promo)}/>
+        <TableNotes
+          data={data}
+          resource={name}
+          modifyControlName={control}
+          promo={String(promo)}
+        />
       </div>
     </>
   );
