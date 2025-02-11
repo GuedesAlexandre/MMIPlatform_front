@@ -44,6 +44,7 @@ const PutInternship = () => {
 
   return (
     <>
+      <TitleHeaderUI label="Modifier un stage" />
       <div
         onClick={() => router.back()}
         className="flex flex-row items-center ml-10 cursor-pointer hover:underline w-fit pt-10"
@@ -51,12 +52,11 @@ const PutInternship = () => {
         <ArrowLeftIcon className="size-6 mr-1" />
         <p>Retour</p>
       </div>
-      <TitleHeaderUI label="Modifier un stage" />
       <div className="p-10 mx-auto">
         <Accordion
           icon={<PersonIcon />}
           name={`Modifier le stage qui a pour intitulé ${title} et réalisé durant l'année ${years}`}
-          open={false}
+          open={true}
           data={
             <InternshipPutForm
               onSubmit={onSubmit}

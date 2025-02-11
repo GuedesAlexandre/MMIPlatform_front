@@ -82,6 +82,7 @@ const InternshipForm: React.FC<InternshipFormProps> = ({ onSubmit }) => {
                   type="number"
                   placeholder="Nombre de semaines"
                   {...field}
+                  max={30}
                 />
               </FormControl>
               <FormMessage>

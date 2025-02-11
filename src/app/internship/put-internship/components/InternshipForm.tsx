@@ -70,9 +70,9 @@ const InternshipPutForm: React.FC<InternshipPutFormProps> = ({ onSubmit, interns
           render={({ field }) => (
             <FormItem>
               <FormLabel>Nombre de semaines</FormLabel>
-              <FormControl>
-                <Input type="number" placeholder="Nombre de semaines" {...field} />
-              </FormControl>
+                <FormControl>
+                <Input type="number" placeholder="Nombre de semaines" {...field} max={30} />
+                </FormControl>
               <FormMessage>
                 {methods.formState.errors.weekCount && "Ce champ est obligatoire"}
               </FormMessage>

@@ -61,11 +61,11 @@ const InternshipManagement = () => {
 
       let totalCount = 0;
       studentWithInternship.forEach((internship: InternshipStudent) => {
-        internship.internships.forEach((i: Internship) => {
-          if (i.type === "ALTERNANCE") {
+        internship.internships.forEach((internship: Internship) => {
+          if (internship.type === "ALTERNANCE") {
             setInternshipValidated(true);
           }
-          totalCount += i.weekCount;
+          totalCount += internship.weekCount;
         });
       });
       setCountOfInternship(totalCount);
@@ -78,6 +78,9 @@ const InternshipManagement = () => {
 
   return (
     <>
+      <TitleHeaderUI
+        label={`Gestion des stages de ${student?.firstName} ${student?.lastName}`}
+      ></TitleHeaderUI>
       <div
         onClick={() => router.back()}
         className="flex flex-row items-center ml-10 cursor-pointer hover:underline w-fit pt-10"
@@ -85,10 +88,6 @@ const InternshipManagement = () => {
         <ArrowLeftIcon className="size-6 mr-1" />
         <p>Retour</p>
       </div>
-      <TitleHeaderUI
-        label={`Gestion des stages de ${student?.firstName} ${student?.lastName}`}
-      ></TitleHeaderUI>
-
       <div className="px-10">
         <Alert className="p-4 my-4">
           <Terminal className="size-4" />
@@ -102,8 +101,8 @@ const InternshipManagement = () => {
               {internshipValidated
                 ? "L'étudiant a validé son cota par l'alternance"
                 : countOfInternship > 0
-                ? `Nombre total de semaines de stage : ${countOfInternship}`
-                : "Aucune semaine de stage enregistrée"}
+                  ? `Nombre total de semaines de stage : ${countOfInternship}`
+                  : "Aucune semaine de stage enregistrée"}
               {countOfInternship > 25 ? (
                 <TooltipProvider>
                   <Tooltip>
@@ -165,7 +164,7 @@ const InternshipManagement = () => {
         <Accordion
           icon={<PersonIcon />}
           name={"Liste des stages"}
-          open={false}
+          open={true}
           data={
             student && (
               <InternshipManage
