@@ -5,6 +5,7 @@ import {
   BadgeAlert,
   Box,
   UserPen,
+  BriefcaseBusiness,
 } from "lucide-react";
 import { UserSessionJWT } from "@/app/models/UserSessionJWT";
 
@@ -34,6 +35,11 @@ const menuForAdmin = [
     url: "/3Dpages",
     icon: Box,
   },
+  {
+    title: "Gestion des stages",
+    url: "/internship",
+    icon: BriefcaseBusiness,
+  }
 ];
 
 const menuForScolarity = [
