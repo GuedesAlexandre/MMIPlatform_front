@@ -2,7 +2,7 @@ import RadioUI from "@/app/components/ui/radioUI";
 import { RadioModelProps } from "@/app/models/ui/radio.model";
 import { useEffect, useState } from "react";
 import { FieldValues, UseFormRegister, UseFormSetValue } from "react-hook-form";
-import { createArrayRadioUI } from "../helper/createArrayRadioUIPromo";
+import { createArrayRadioUI } from "@/app/presence/helper/createArrayRadioUIPromo";
 import { Label } from "@/components/ui/label";
 
 function GroupsBySwitch({

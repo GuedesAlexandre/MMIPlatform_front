@@ -1,21 +1,24 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import TitleHeaderUI from "../components/ui/TitleHeaderUI";
+import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
 import { FieldValues, useForm } from "react-hook-form";
-import SelectUI from "../components/ui/SelectUI";
-import { getModuleByEmailStore } from "../store/getResourcesByEmail.store";
+import SelectUI from "@/app/components/ui/SelectUI";
+
+import { getModuleByEmailStore } from "@/app/store/getResourcesByEmail.store";
+
 import {
   createModulesArray,
   promoToSelectArray,
-} from "./helper/getPromoInModule";
-import GroupsBySwitch from "./components/GroupsBySwitch";
-import ButtonsUI from "../components/ui/ButtonsUI";
-import { useStudentsByPromoAndGroup } from "../store/useStudentByPromoAndGroup.store";
-import { useStudentsSignatureStore } from "../store/presence.store";
-import { useAuthStore } from "../store/AuthRepository.store";
-import { DataTable } from "./components/FormPresenceStudents";
-import { columns } from "./helper/columnDef";
+} from "@/app/presence/helper/getPromoInModule";
+import GroupsBySwitch from "@/app/presence/components/GroupsBySwitch";
+import ButtonsUI from "@/app/components/ui/ButtonsUI";
+import { useStudentsByPromoAndGroup } from "@/app/store/useStudentByPromoAndGroup.store";
+import { useStudentsSignatureStore } from "@/app/store/presence.store";
+import { useAuthStore } from "@/app/store/AuthRepository.store";
+import { DataTable } from "@/app/presence/components/FormPresenceStudents";
+import { columns } from "@/app/presence/helper/columnDef";
+import withAuth from "@/app/HOC";
 
 function Page() {
   const { setStudentAndSetingsWithoutStudentSignature, studentsSignatures } =
@@ -185,4 +188,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default withAuth(Page);

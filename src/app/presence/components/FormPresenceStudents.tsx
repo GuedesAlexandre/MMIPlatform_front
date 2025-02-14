@@ -20,7 +20,7 @@ import { Student } from "@/app/matrix/models/students.model";
 import {
   SignatureStatusEnum,
   SignatureStudentData,
-} from "../models/signature.model";
+} from "@/app/presence/models/signature.model";
 import { useState, useEffect } from "react";
 import ButtonsUI from "@/app/components/ui/ButtonsUI";
 import { useStudentsSignatureStore } from "@/app/store/presence.store";

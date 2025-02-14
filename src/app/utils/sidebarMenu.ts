@@ -31,20 +31,21 @@ const menuForAdmin = [
     url: "/matrix",
     icon: Frame,
   },
-  {
-    title: "Salles",
-    url: "/3Dpages",
-    icon: Box,
-  },
+
   {
     title: "Gestion des stages",
     url: "/internship",
     icon: BriefcaseBusiness,
-  }
+  },
   {
     title: "Présence",
     url: "/presence",
     icon: Clock,
+  },
+  {
+    title: "Salles",
+    url: "/3Dpages",
+    icon: Box,
   },
 ];
 
@@ -86,6 +87,11 @@ const menuForTeacher = [
     title: "Matrices",
     url: "/matrix",
     icon: Frame,
+  },
+  {
+    title: "Présence",
+    url: "/presence",
+    icon: Clock,
   },
   {
     title: "Salles",
