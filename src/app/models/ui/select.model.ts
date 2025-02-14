@@ -9,4 +9,5 @@ export interface SelectUIProps {
   register: UseFormRegister<FieldValues>;
   rules?: RegisterOptions;
   haveError?: boolean;
+  disabled?: boolean;
 }
