@@ -27,6 +27,11 @@ const menuForAdmin = [
     icon: LayoutGrid,
   },
   {
+    title: "Présence",
+    url: "/presence",
+    icon: Clock,
+  },
+  {
     title: "Matrices",
     url: "/matrix",
     icon: Frame,
@@ -36,11 +41,6 @@ const menuForAdmin = [
     title: "Gestion des stages",
     url: "/internship",
     icon: BriefcaseBusiness,
-  },
-  {
-    title: "Présence",
-    url: "/presence",
-    icon: Clock,
   },
   {
     title: "Salles",
@@ -84,14 +84,14 @@ const menuForTeacher = [
     icon: LayoutGrid,
   },
   {
-    title: "Matrices",
-    url: "/matrix",
-    icon: Frame,
-  },
-  {
     title: "Présence",
     url: "/presence",
     icon: Clock,
+  },
+  {
+    title: "Matrices",
+    url: "/matrix",
+    icon: Frame,
   },
   {
     title: "Salles",

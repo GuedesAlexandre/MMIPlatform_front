@@ -99,7 +99,7 @@ function Page() {
   return (
     <div>
       <TitleHeaderUI label="Présence des étudiants" />
-      <div className={`${isHidden ? "hidden" : ""}`}>
+      <div className={isHidden ? "hidden" : ""}>
         <form
           onSubmit={handleSubmit(onSubmit)}
           autoComplete="off"

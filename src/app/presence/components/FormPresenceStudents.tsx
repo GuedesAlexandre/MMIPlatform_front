@@ -53,11 +53,11 @@ export function DataTable<TData extends Student, TValue>({
   }, [data]);
 
   const handleInputChange = (
-    numEdu: string,
+    numEtu: string,
     presentOrAbsent: "present" | "absent"
   ) => {
     const newSignatureStudents = signatureStudents.map((student) => {
-      if (student.studentWhoSign.numEtu === numEdu) {
+      if (student.studentWhoSign.numEtu === numEtu) {
         return {
           ...student,
           sign:
