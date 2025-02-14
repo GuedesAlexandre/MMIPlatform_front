@@ -6,6 +6,7 @@ import {
   Box,
   UserPen,
   BriefcaseBusiness,
+  Clock,
 } from "lucide-react";
 import { UserSessionJWT } from "@/app/models/UserSessionJWT";
 
@@ -40,6 +41,11 @@ const menuForAdmin = [
     url: "/internship",
     icon: BriefcaseBusiness,
   }
+  {
+    title: "Présence",
+    url: "/presence",
+    icon: Clock,
+  },
 ];
 
 const menuForScolarity = [
