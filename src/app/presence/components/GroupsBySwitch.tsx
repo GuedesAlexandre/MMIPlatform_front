@@ -1,51 +1,42 @@
 import RadioUI from "@/app/components/ui/radioUI";
-import React from "react";
+import { RadioModelProps } from "@/app/models/ui/radio.model";
+import { useEffect, useState } from "react";
 import { FieldValues, UseFormRegister, UseFormSetValue } from "react-hook-form";
+import { createArrayRadioUI } from "../helper/createArrayRadioUIPromo";
+import { Label } from "@/components/ui/label";
 
 function GroupsBySwitch({
   switchValue,
   register,
   trigger,
   setValue,
+  promo,
 }: {
   switchValue: boolean;
   register: UseFormRegister<FieldValues>;
   // eslint-disable-next-line no-unused-vars
   trigger: (field: string) => Promise<boolean>;
   setValue: UseFormSetValue<FieldValues>;
+  promo: string;
 }) {
-  return switchValue ? (
-    <RadioUI
-      name="Groups"
-      radios={[
-        { label: "TD-1" },
-        { label: "TD-2" },
-        { label: "TD-3" },
-        { label: "CM" },
-      ]}
-      register={register}
-      setValue={setValue}
-      trigger={trigger}
-      CustomeClassName="grid-cols-3"
-    />
-  ) : (
-    <div>
+  const [arrayRadiosData, setArrayRadiosData] = useState<RadioModelProps[]>([]);
+
+  useEffect(() => {
+    setArrayRadiosData(createArrayRadioUI(promo, switchValue));
+  }, [switchValue, promo]);
+
+  return (
+    <>
+      {arrayRadiosData.length !== 0 && <Label>Groupe</Label>}
       <RadioUI
-        name="Groups"
-        radios={[
-          { label: "TP-A" },
-          { label: "TP-B" },
-          { label: "TP-C" },
-          { label: "TP-D" },
-          { label: "TP-E" },
-          { label: "TP-F" },
-        ]}
+        name="groups"
+        radios={arrayRadiosData}
         register={register}
         setValue={setValue}
         trigger={trigger}
         CustomeClassName="grid-cols-3"
       />
-    </div>
+    </>
   );
 }
 

@@ -4,4 +4,5 @@ export interface ButtonsUIProps {
   label?: string;
   customClassName?: string;
   icon?: React.ReactNode;
+  onClick?: () => void;
 }
