@@ -7,6 +7,7 @@ function ButtonsUI({
   customClassName,
   disbled,
   icon,
+  onClick,
 }: ButtonsUIProps) {
   const buttonClasses = classNames(
     customClassName,
@@ -20,7 +21,12 @@ function ButtonsUI({
     }
   );
   return (
-    <button type={type} className={buttonClasses} disabled={disbled}>
+    <button
+      type={type}
+      className={buttonClasses}
+      disabled={disbled}
+      onClick={onClick}
+    >
       {icon ?? label}
     </button>
   );

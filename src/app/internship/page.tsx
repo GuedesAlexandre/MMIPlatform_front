@@ -5,6 +5,7 @@ import { useAuthStore } from "@/app/store/AuthRepository.store";
 import { getModuleByEmailStore } from "@/app/store/getResourcesByEmail.store";
 import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
 import PromoCard from "@/app/internship/components/PromoCard";
+import withAuth from "@/app/HOC";
 
 const Internship = () => {
   const { user } = useAuthStore();
@@ -21,7 +22,6 @@ const Internship = () => {
       setPromoList(uniquePromoList);
     }
   }, [moduleByEmail]);
-
 
   return (
     <>
@@ -48,4 +48,4 @@ const Internship = () => {
   );
 };
 
-export default Internship;
+export default withAuth(Internship);
