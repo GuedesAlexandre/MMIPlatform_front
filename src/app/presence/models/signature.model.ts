@@ -6,9 +6,16 @@ export enum SignatureStatusEnum {
   NONE = "NONE",
 }
 
+export enum JustificationStatusEnum {
+  NOT_JUSTIFIED = "NOT_JUSTIFIED",
+  JUSTIFIED = "JUSTIFIED",
+  JUSTSIGNED = "JUSTSIGNED",
+}
+
 export interface SignatureStudentData {
   studentWhoSign: Student;
   sign: SignatureStatusEnum;
+  justification: JustificationStatusEnum;
 }
 
 export interface SignatureSheet {
