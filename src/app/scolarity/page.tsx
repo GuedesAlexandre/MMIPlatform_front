@@ -1,43 +1,35 @@
-"use client";
+'use client'
 
-import TitleHeaderUI from "@/app/components/ui/TitleHeaderUI";
-import { useEffect, useState } from "react";
-import { useStudentsByPromo } from "@/app/store/useStudentsByPromo.store";
-import PromoCard from "@/app/scolarity/components/PromoCard";
-import withAuth from "@/app/HOC";
+import TitleHeaderUI from '@/app/components/ui/TitleHeaderUI'
+import withAuth from '@/app/HOC'
+import { CrumpledPaperIcon } from '@radix-ui/react-icons'
+import { ChevronRight } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 function Page() {
-  const { studentsByPromo, setStudentByPromo } = useStudentsByPromo();
-  const [CountMMI01, setCountMMI01] = useState<number | undefined>(undefined);
-  const [CountMMI02, setCountMMI02] = useState<number | undefined>(undefined);
-  const [CountMMI03, setCountMMI03] = useState<number | undefined>(undefined);
+  const router = useRouter()
 
-  useEffect(() => {
-    document.title = "Gestion de la scolarité et des absences";
-    setStudentByPromo("MMI01");
-    setCountMMI01(studentsByPromo?.length);
-    setStudentByPromo("MMI02");
-    setCountMMI02(studentsByPromo?.length);
-    setStudentByPromo("MMI03");
-    setCountMMI03(studentsByPromo?.length);
-  }, [setStudentByPromo]);
   return (
     <>
       <TitleHeaderUI
-        label={"Gestion de la scolarité et des absences"}
+        label={'Gestion de la scolarité et des absences'}
       ></TitleHeaderUI>
-      <div className="px-10">
-        <div className="flex justify-center items-center">
-          <h3>Séléctionnez une promotion</h3>
-        </div>
-        <div className="flex justify-center gap-8">
-          <PromoCard title="MMI01" number={CountMMI01} color="red"></PromoCard>
-          <PromoCard title="MMI02" number={CountMMI02} color="red"></PromoCard>
-          <PromoCard title="MMI03" number={CountMMI03} color="red"></PromoCard>
+      <div className='px-10'>
+        <div
+          onClick={() => {
+            router.push(`/scolarity/makeup`)
+          }}
+          className='flex flex-row justify-between border border-placeholder-color rounded-md px-4 py-5 cursor-pointer'
+        >
+          <div className='flex flex-row items-center'>
+            <CrumpledPaperIcon className='mr-1' />
+            <p>Valider les rattrapages</p>
+          </div>
+          <ChevronRight className='cursor-pointer' />
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default withAuth(Page);
+export default withAuth(Page)
