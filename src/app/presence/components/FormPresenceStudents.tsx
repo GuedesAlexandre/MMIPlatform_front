@@ -24,7 +24,7 @@ import {
 import { useState, useEffect } from 'react'
 import ButtonsUI from '@/app/components/ui/ButtonsUI'
 import { useStudentsSignatureStore } from '@/app/store/presence.store'
-import { JustificationStatusEnum } from '../models/signature.model'
+import { JustificationStatusEnum } from '@/app/presence/models/signature.model'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
