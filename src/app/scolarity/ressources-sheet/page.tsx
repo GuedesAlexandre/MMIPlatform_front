@@ -21,33 +21,22 @@ function Page() {
 
   return (
     <>
-      <TitleHeaderUI label={`Détail de la feuille de présence ${moduleName}`} />
+      <TitleHeaderUI label={`Listes des feuilles de présences ${moduleName}`} />
       <div className='px-10'>
-        <Accordion
-          open={true}
+        <DataTable
+          columns={columns}
           data={
-            <DataTable
-              columns={columns}
-              data={
-                studentSignatureSheetByModule?.sort((a, b) => {
-                  const dateA = new Date(a.createdAt).getTime()
-                  const dateB = new Date(b.createdAt).getTime()
-                  const finishA = a.finishAt
-                    ? new Date(a.finishAt).getTime()
-                    : 0
-                  const finishB = b.finishAt
-                    ? new Date(b.finishAt).getTime()
-                    : 0
-                  if (dateB - dateA !== 0) {
-                    return dateB - dateA
-                  }
-                  return finishB - finishA
-                }) ?? []
+            studentSignatureSheetByModule?.sort((a, b) => {
+              const dateA = new Date(a.createdAt).getTime()
+              const dateB = new Date(b.createdAt).getTime()
+              const finishA = a.finishAt ? new Date(a.finishAt).getTime() : 0
+              const finishB = b.finishAt ? new Date(b.finishAt).getTime() : 0
+              if (dateB - dateA !== 0) {
+                return dateB - dateA
               }
-            />
+              return finishB - finishA
+            }) ?? []
           }
-          name={'Listes'}
-          icon={<FileTextIcon />}
         />
       </div>
     </>

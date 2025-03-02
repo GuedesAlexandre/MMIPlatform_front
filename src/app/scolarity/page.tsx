@@ -7,7 +7,7 @@ import {
   CrumpledPaperIcon,
   FileTextIcon,
 } from '@radix-ui/react-icons'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, File, FileCheck, Files } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import Accordion from '@/app/components/accordion'
 import { DataTable } from '@/app/scolarity/components/SheetCurrentDay'
@@ -32,7 +32,7 @@ function Page() {
       ></TitleHeaderUI>
       <div className='px-10'>
         <Accordion
-          open={false}
+          open={true}
           data={
             <DataTable
               columns={columns}
@@ -51,7 +51,7 @@ function Page() {
             />
           }
           name={'Les derniers émergements'}
-          icon={<FileTextIcon />}
+          icon={<File strokeWidth={1} />}
         />
         <div
           onClick={() => {
@@ -60,7 +60,7 @@ function Page() {
           className='flex flex-row justify-between border border-placeholder-color rounded-md px-4 py-5 cursor-pointer mt-4'
         >
           <div className='flex flex-row items-center'>
-            <BackpackIcon className='mr-1' />
+            <Files strokeWidth={1} className='mr-1' />
             <p>Voir toutes les feuilles d’émargement.</p>
           </div>
           <ChevronRight className='cursor-pointer' />
@@ -73,7 +73,7 @@ function Page() {
           className='flex flex-row justify-between border border-placeholder-color rounded-md px-4 py-5 cursor-pointer mt-4'
         >
           <div className='flex flex-row items-center'>
-            <CrumpledPaperIcon className='mr-1' />
+            <FileCheck strokeWidth={1} className='mr-1' />
             <p>Valider les rattrapages</p>
           </div>
           <ChevronRight className='cursor-pointer' />

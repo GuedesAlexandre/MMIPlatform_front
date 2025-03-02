@@ -121,8 +121,8 @@ export function DataTable<TData extends SignatureStudentData, TValue>({
                                   {row.original.studentWhoSign.lastName}
                                 </AlertDialogTitle>
                                 <AlertDialogDescription className='mt-2 text-sm text-gray-600'>
-                                  Une fois validé, vous ne pourrez plus
-                                  retourner en arrière.
+                                  Une fois validée, cette action sera
+                                  irréversible.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
 
