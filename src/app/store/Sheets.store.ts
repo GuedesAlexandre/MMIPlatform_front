@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { create } from 'zustand'
 import Cookies from 'js-cookie'
 import {
@@ -19,6 +19,13 @@ export interface storeSheet {
   setSignatureSheetModule: (
     moduleName: string,
   ) => Promise<SignatureSheet[] | undefined>
+  justifyStudentSignature: (
+    moduleName: string,
+    promo: string,
+    createdAt: string,
+    finishAt: string,
+    numEtu: string,
+  ) => Promise<void>
 }
 
 export const storeSheet = create<storeSheet>((set) => ({
@@ -79,12 +86,32 @@ export const storeSheet = create<storeSheet>((set) => ({
           },
         },
       )
-      console.log(response)
       const data = response.data
       set({ studentSignatureSheetByModule: data })
       return data
     } catch (error) {
       console.error('Erreur lors de la récupération des modules :', error)
+    }
+  },
+  justifyStudentSignature: async (
+    moduleName: string,
+    promo: string,
+    createdAt: string,
+    finishAt: string,
+    numEtu: string,
+  ) => {
+    try {
+      const API_PATH = process.env.NEXT_PUBLIC_API_PATH
+
+      await axios.put<SignatureSheet>(
+        `${API_PATH}/sheets/${moduleName}/${promo}/${createdAt}/${finishAt}/${numEtu}`,
+      )
+    } catch (err: unknown) {
+      const error = err as AxiosError
+      console.error(
+        'Erreur lors de la création de la feuille de signature :',
+        error,
+      )
     }
   },
 }))
