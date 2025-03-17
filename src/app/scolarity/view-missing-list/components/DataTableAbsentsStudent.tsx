@@ -33,7 +33,8 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { useRouter } from 'next/navigation'
+import { storeSheet } from '@/app/store/Sheets.store'
+import { useSearchParams } from 'next/navigation'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -55,13 +56,19 @@ export function DataTable<TData extends SignatureStudentData, TValue>({
       },
     },
   })
-  const router = useRouter()
   const currentPage = table.getState().pagination.pageIndex + 1
   const totalPages = table.getPageCount()
   const pageSize = table.getState().pagination.pageSize
   const totalRows = table.getCoreRowModel().rows.length
   const startRow = (currentPage - 1) * pageSize + 1
   const endRow = Math.min(currentPage * pageSize, totalRows)
+
+  const searchParams = useSearchParams()
+  const moduleName = searchParams.get('moduleName') ?? ''
+  const promo = searchParams.get('promo') ?? ''
+  const createAt = searchParams.get('createAt') ?? ''
+  const finishAt = searchParams.get('finishAt') ?? ''
+  const { justifyStudentSignature, setSignatureSheetDetail } = storeSheet()
 
   return (
     <>
@@ -100,15 +107,16 @@ export function DataTable<TData extends SignatureStudentData, TValue>({
                     <TableCell className='flex w-fit gap-2'>
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
-                          {row.original.sign === SignatureStatusEnum.ABS && (
-                            <button
-                              className='
+                          {row.original.sign === SignatureStatusEnum.ABS &&
+                            row.original.justification !== 'JUSTIFIED' && (
+                              <button
+                                className='
                             px-4 py-2 text-white bg-primary-blue rounded-md hover:bg-blue-800 transition
                             '
-                            >
-                              Justifier
-                            </button>
-                          )}
+                              >
+                                Justifier
+                              </button>
+                            )}
                         </AlertDialogTrigger>
 
                         <AlertDialogContent className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
@@ -130,7 +138,25 @@ export function DataTable<TData extends SignatureStudentData, TValue>({
                                 <AlertDialogCancel className='px-4 py-2 text-white bg-danger rounded-md hover:bg-red-700 transition'>
                                   Non, annuler
                                 </AlertDialogCancel>
-                                <AlertDialogAction className='px-4 py-2 text-white bg-success rounded-md hover:bg-success-hover transition'>
+                                <AlertDialogAction
+                                  className='px-4 py-2 text-white bg-success rounded-md hover:bg-success-hover transition'
+                                  onClick={() =>
+                                    justifyStudentSignature(
+                                      moduleName,
+                                      promo,
+                                      createAt,
+                                      finishAt,
+                                      row.original.studentWhoSign.numEtu,
+                                    ).then(() =>
+                                      setSignatureSheetDetail(
+                                        moduleName,
+                                        promo,
+                                        createAt,
+                                        finishAt,
+                                      ),
+                                    )
+                                  }
+                                >
                                   Oui, justifier
                                 </AlertDialogAction>
                               </AlertDialogFooter>

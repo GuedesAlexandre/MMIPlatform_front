@@ -13,15 +13,12 @@ const Page = () => {
   const promo = searchParams.get('promo')
   const createAt = searchParams.get('createAt')
   const finishAt = searchParams.get('finishAt')
-  const {
-    setSignatureSheetDetail,
-    studentSignatureSheet: StudentSignatureSheet,
-  } = storeSheet()
+  const { setSignatureSheetDetail, studentSignatureSheet } = storeSheet()
 
   useEffect(() => {
     if (!moduleName || !promo || !createAt || !finishAt) return
     setSignatureSheetDetail(moduleName, promo, createAt, finishAt)
-  }, [])
+  }, [setSignatureSheetDetail])
 
   return (
     <>
@@ -30,7 +27,7 @@ const Page = () => {
         <DataTable
           columns={columns}
           data={
-            StudentSignatureSheet?.sort((a, b) =>
+            studentSignatureSheet?.sort((a, b) =>
               a.studentWhoSign.lastName.localeCompare(
                 b.studentWhoSign.lastName,
               ),
