@@ -1,4 +1,4 @@
-Ïimport axios, { AxiosError } from 'axios'
+import axios, { AxiosError } from 'axios'
 import { create } from 'zustand'
 import Cookies from 'js-cookie'
 import {
@@ -108,10 +108,7 @@ export const storeSheet = create<storeSheet>((set) => ({
       )
     } catch (err: unknown) {
       const error = err as AxiosError
-      console.error(
-        'Erreur lors de la justification de signature :',
-        error,
-      )
+      console.error('Erreur lors de la justification de signature :', error)
     }
   },
 }))
